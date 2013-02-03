@@ -32,31 +32,63 @@
 	    <!-- Page Content -->
 	    <div class="eleven floated">
 
-           <!--@foreach (var post in Model)
-            {-->
-                <article class="post">
-                    <section class="date">
-				        <span class="day">31</span>
-				        <span class="month">Ene</span>
-			        </section>
-
-                    <section class="post-content">
-
-				        <header class="meta">
-					        <h2><a href="blog-post.html">Test</a></h2>
-					        <span><i class="halflings user"></i>Por <a href="#">Javo</a></span>
-					        <span><i class="halflings tag"></i>Info, News</span>
-				        </header>
-
-				        <p>Prueba de post</p>
-
-				        <a href="blog-post.html" class="button color">Leer mas</a>
-			
-			        </section>
-                </article>
-                
-                <div class="line"></div>
-            <!--}-->
+			<?php if ($blogs): ?>
+				<?php foreach ($blogs as $b): ?>
+					<article class="post">
+						<?php 
+						$count=0; 
+						$found=false;
+						for($i=0;$i<count($bImages);$i++) {
+							if(array_key_exists($b['id'], $bImages)) {
+								 $count++; 
+								 $found=true;
+							}
+							if($found){ ?>
+								<section class="flexslider">
+								<ul class="slides post-img">
+							<?php } ?>
+								    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
+								    	<a href=<?php echo URL::base().$bImages[$b['id']] ?> rel="fancybox-gallery" title="Winter Mountains">
+								    		<img src=<?php echo URL::base().$bImages[$b['id']] ?> alt="">
+								    	</a>
+								    </li>
+							<?php if($found){ ?>
+								</ul>
+						    <?php }
+							 if($count > 1){ ?>
+					    	<ul class="flex-direction-nav">
+					    		<li><a class="flex-prev" href="#">Anterior</a></li>
+					    		<li><a class="flex-next" href="#">Siguiente</a></li>
+					    	</ul>
+					    <?php }
+						if($found){ ?>
+					    	</section>
+					    <?php }
+						} ?>
+			    
+	                    <section class="date">
+					        <span class="day"><?php echo $b['day']; ?></span>
+					        <span class="month"><?php echo $b['month']; ?></span>
+				        </section>
+	
+	                    <section class="post-content">
+	
+					        <header class="meta">
+						        <h2><a href="blog-post.html"><?php echo $b['title']; ?></a></h2>
+						        <span><i class="halflings user"></i>Por <a href="#"><?php echo $b['username']; ?></a></span>
+						        <span><i class="halflings tag"></i><?php echo $b['tags']; ?></span>
+					        </header>
+	
+					        <p><?php echo $b['text']; ?></p>
+	
+					        <a href="blog-post.html" class="button color">Leer mas</a>
+				
+				        </section>
+	                </article>
+	                
+	                <div class="line"></div>
+				<?php endforeach ?>
+			<?php endif ?>
 
 		    <!-- Post 
 		    <article class="post">
