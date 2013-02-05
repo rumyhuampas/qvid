@@ -32,43 +32,45 @@
 	    <!-- Page Content -->
 	    <div class="eleven floated">
 
-			<?php if ($blogs): ?>
-				<?php foreach ($blogs as $b): ?>
+			<?php $blogs = helpers_db::getblogs(); 
+				if ($blogs):
+				foreach ($blogs as $b): ?>
 					<article class="post">
-						<?php 
-						$count=0; 
-						$found=false;
-						for($i=0;$i<count($bImages);$i++) {
-							if(array_key_exists($b['id'], $bImages)) {
-								 $count++; 
-								 $found=true;
-							}
-							if($found){ ?>
-								<section class="flexslider">
+						<?php $bMedia = helpers_db::getBlogResources($b['id']);
+						if(count($bMedia) > 0)
+						{
+						?>
+							<section class="flexslider">
 								<ul class="slides post-img">
-							<?php } ?>
+								<?php foreach ($bMedia as $bMed): ?> 
 								    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-								    	<a href=<?php echo URL::base().$bImages[$b['id']] ?> rel="fancybox-gallery" title="Winter Mountains">
-								    		<img src=<?php echo URL::base().$bImages[$b['id']] ?> alt="">
+								    	<a href=<?php echo URL::base().$bMed['path'] ?> rel="fancybox-gallery" title=<?php echo $bMed['filename'] ?>>
+								    		<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
 								    	</a>
 								    </li>
-							<?php if($found){ ?>
+								<?php endforeach ?>
 								</ul>
-						    <?php }
-							 if($count > 1){ ?>
-					    	<ul class="flex-direction-nav">
-					    		<li><a class="flex-prev" href="#">Anterior</a></li>
-					    		<li><a class="flex-next" href="#">Siguiente</a></li>
-					    	</ul>
-					    <?php }
-						if($found){ ?>
+								
+								<!--FLEX SLIDER -->
+								<?php 
+								if(count($bMedia) > 1)
+								{
+								?>
+							    	<ul class="flex-direction-nav">
+							    		<li><a class="flex-prev" href="#">Anterior</a></li>
+							    		<li><a class="flex-next" href="#">Siguiente</a></li>
+							    	</ul>
+							    <?php 
+							    }
+							    ?>
 					    	</section>
-					    <?php }
-						} ?>
+				    	<?php
+						}
+				    	?>
 			    
 	                    <section class="date">
 					        <span class="day"><?php echo $b['day']; ?></span>
-					        <span class="month"><?php echo $b['month']; ?></span>
+					        <span class="month"><?php echo helpers_db::getMonthName($b['month']); ?></span>
 				        </section>
 	
 	                    <section class="post-content">
