@@ -92,110 +92,6 @@
 				<?php endforeach ?>
 			<?php endif ?>
 
-		    <!-- Post 
-		    <article class="post">
-
-			    <figure class="post-img">
-				    <a href="blog-post.html"><img src="images/blog-01.jpg" alt="" /></a>
-			    </figure>
-			
-			    <section class="date">
-				    <span class="day">28</span>
-				    <span class="month">Dec</span>
-			    </section>
-			
-			    <section class="post-content">
-
-				    <header class="meta">
-					    <h2><a href="blog-post.html">The Boating Life Begins With a Good Storm</a></h2>
-					    <span><i class="halflings user"></i>By <a href="#">admin</a></span>
-					    <span><i class="halflings tag"></i><a href="#">Boating</a>, <a href="#">Recreation</a></span>
-					    <span><i class="halflings comments"></i>With <a href="#">12 Comments</a></span>
-				    </header>
-
-				    <p>Maecenas dolor est, interdum a euismod eu, accumsan posuere nisl. Nam sed iaculis massa. Sed nisl lectus, tempor sed euismod quis, sollicitudin nec est. Suspendisse dignissim bibendum tempor. Nam erat felis, commodo sed semper commodo vel mauris suspendisse dignissim.</p>
-
-				    <a href="blog-post.html" class="button color">Read More</a>
-			
-			    </section>
-
-		    </article>-->
-
-
-		    <!-- Divider 
-		    <div class="line"></div>-->
-
-
-		    <!-- Post 
-		    <article class="post">
-			
-			    <section class="flexslider">
-				    <ul class="slides post-img">
-					    <li><a href="images/blog-02a-large.jpg" rel="fancybox-gallery" title="Winter Mountains"><img src="images/blog-02a.jpg" alt="" /></a></li>
-					    <li><a href="images/blog-02b-large.jpg" rel="fancybox-gallery" title="Tropical Mountains"><img src="images/blog-02b.jpg" alt="" /></a></li>
-					    <li><a href="images/blog-02c-large.jpg" rel="fancybox-gallery" title="Rolling Prarie Hills"><img src="images/blog-02c.jpg" alt="" /></a></li>
-				    </ul>
-			    </section>
-			
-			    <section class="date">
-				    <span class="day">14</span>
-				    <span class="month">Dec</span>
-			    </section>
-
-			    <section class="post-content">
-
-				    <header class="meta">
-					    <h2><a href="blog-post.html">Skiing to a Remote Retreat in the Canadian Rockies </a></h2>
-					    <span><i class="halflings user"></i>By <a href="#">admin</a></span>
-					    <span><i class="halflings tag"></i><a href="#">Mountains</a>, <a href="#">Skiing</a></span>
-					    <span><i class="halflings comments"></i>With <a href="#">12 Comments</a></span>
-				    </header>
-
-				    <p>Maecenas dolor est, interdum a euismod eu, accumsan posuere nisl. Nam sed iaculis massa. Sed nisl lectus, tempor sed euismod quis, sollicitudin nec est. Suspendisse dignissim bibendum tempor. Nam erat felis, commodo sed semper commodo vel mauris suspendisse dignissim.</p>
-
-				    <a href="blog-post.html" class="button color">Read More</a>
-
-			    </section>
-	
-		    </article>-->
-
-
-		    <!-- Divider 
-		    <div class="line"></div>-->
-
-
-		    <!-- Post 
-		    <article class="post">
-
-			    <figure class="post-img">
-				    <a href="blog-post.html"><img src="images/blog-03.jpg" alt="" /></a>
-			    </figure>
-			
-			    <section class="date">
-				    <span class="day">10</span>
-				    <span class="month">Dec</span>
-			    </section>
-			
-			    <section class="post-content">
-
-				    <header class="meta">
-					    <h2><a href="blog-post.html">Visiting Tuscany Without the Crowds</a></h2>
-					    <span><i class="halflings user"></i>By <a href="#">admin</a></span>
-					    <span><i class="halflings tag"></i><a href="#">Nature</a>, <a href="#">Tourism</a></span>
-					    <span><i class="halflings comments"></i>With <a href="#">12 Comments</a></span>
-				    </header>
-
-				    <p>Maecenas dolor est, interdum a euismod eu, accumsan posuere nisl. Nam sed iaculis massa. Sed nisl lectus, tempor sed euismod quis, sollicitudin nec est. Suspendisse dignissim bibendum tempor. Nam erat felis, commodo sed semper commodo vel mauris suspendisse dignissim.</p>
-
-				    <a href="blog-post.html" class="button color">Read More</a>
-
-			    </section>
-
-		    </article>-->
-
-		    <!-- Divider 
-		    <div class="line"></div>-->
-
 		    <!-- Pagination -->
 		    <nav class="pagination">
 			    <ul>
@@ -225,13 +121,13 @@
 
 			    <!-- Categories -->
 			    <nav class="widget">
-				    <h4>Categories</h4>
+				    <h4>Top Bloggers</h4>
 				    <ul class="categories">
-					    <li><a href="#">Business</a></li>
-					    <li><a href="#">Entertainment</a></li>
-					    <li><a href="#">News & Politics</a></li>
-					    <li><a href="#">Social Media</a></li>
-					    <li><a href="#">Technology</a></li>
+				    <?php $bloggers = helpers_db::getTopBloggers();
+					foreach($bloggers as $bggs): 
+				    ?>
+					    <li><a href="#"><?php echo $bggs['username'] ?> - <?php echo $bggs['usercount'] ?> blogs</a></li>
+					<?php endforeach ?>
 				    </ul>
 			    </nav>
 
@@ -239,14 +135,11 @@
 			    <div class="widget">
 				    <h4>Tags</h4>
 				    <nav class="tags">
-					    <a href="#">Mountains</a>
-					    <a href="#">Winter Sports</a>
-					    <a href="#">Boating</a>
-					    <a href="#">Recreation</a>
-					    <a href="#">Skiing</a>
-					    <a href="#">Tourism</a>
-					    <a href="#">Nature</a>
-					    <a href="#">Alps</a>
+			    	<?php $tags = helpers_db::getTopTags();
+					foreach($tags as $ts): 
+				    ?>
+					    <a href="#"><?php echo $ts['tags'] ?></a>
+					<?php endforeach ?>
 				    </nav>
 			    </div>
 
