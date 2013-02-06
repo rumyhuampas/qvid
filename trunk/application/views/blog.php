@@ -32,7 +32,7 @@
 	    <!-- Page Content -->
 	    <div class="eleven floated">
 
-			<?php $blogs = helpers_db::getblogs(); 
+			<?php $blogs = helpers_db::getBlogs(); 
 				if ($blogs):
 				foreach ($blogs as $b): ?>
 					<article class="post">
@@ -143,7 +143,7 @@
 				    </nav>
 			    </div>
 
-			    <!-- Archives -->
+			    <!-- Archives
 			    <nav class="widget">
 				    <h4>Archives</h4>
 				    <ul class="categories">
@@ -151,7 +151,7 @@
 					    <li><a href="#">November 2012</a></li>
 					    <li><a href="#">December 2012</a></li>
 				    </ul>
-			    </nav>
+			    </nav>-->
 
 			    <!-- Tweets-->
 			    <div class="widget">
