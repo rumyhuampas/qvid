@@ -1,6 +1,8 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 
 class helpers_db {
+	//---------- BLOG FUNCS----------
+	
     public static function getBlogs($amount = 0) {
     	if($amount == 'undefined' || $amount == 0){
     		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
@@ -60,11 +62,23 @@ class helpers_db {
 		return $result;
 	}
 	
+	//---------- HOME FUNCS----------
+	
 	public static function getHomeVideo(){
 		$query = DB::select('mediaresource.path', 'mediaresource.filename')
 					->from('mediaresource')
 					->where('resource_type', '=', 'VIDEO')
 					->and_where('filename', '=', 'HomeVideo');
+        $result = $query->execute();
+		return $result;	
+	}
+	
+	public static function getHomeSlides(){
+		$query = DB::select('mediaresource.path', 'mediaresource.filename')
+					->from('mediaresource')
+					->where('resource_type', '=', 'PICTURE')
+					->and_where('filename', '=', 'HomeSlide')
+					->order_by('created_At');
         $result = $query->execute();
 		return $result;	
 	}

@@ -7,40 +7,47 @@
     <!-- LayerSlider  -->
     <section id="layerslider-container">	
 	    <div id="layerslider" style="width: 1020px; height: 450px; margin: 0 auto;">
+	    	
+	    	<?php
+			$slides = helpers_db::getHomeSlides();
+			foreach ($slides as $sl):
+			?>
 		
-		    <!-- Slide 1 -->
+		    <!-- Slides -->
 		    <article class="ls-layer" style="slidedelay: 7000;">
-			    <img src="assets/images/resources/home/slide1.jpg" class="ls-bg" alt="">
+			    <img src=<?php echo URL::base().$sl['path'] ?> class="ls-bg" alt="">
 			    <!--<img class="ls-s4" src="images/slide-01a.png" style="top: 30px; left: 120px; slidedirection: bottom; slideoutdirection: bottom; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;" alt=""/>
 			    <h3 class="ls-s1 caption-color" style="top: 357px; left: 756px; slidedirection: right; slideoutdirection: right; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;">Powerful HTML5 Template</h3>-->
 		    </article>
+		    
+		    <?php endforeach ?>
 		
-		    <!-- Slide 2 -->
+		    <!-- Slide 2 
 		    <article class="ls-layer" style="slidedelay: 7000; slidedirection: top;">
 			    <img src="assets/images/resources/home/slide2.jpg" class="ls-bg" alt="">
-                <!--<img src="images/slide-02.png" class="ls-bg" alt="">
+                <img src="images/slide-02.png" class="ls-bg" alt="">
 			    <img class="ls-s4" src="images/slide-02a.png" style="top: 50%; left: 260px; slidedirection: left; slideoutdirection: left; durationin: 800; durationout: 800; easingin : easeOutExpo; delayin : 1200;" alt=""/>
 			    <img class="ls-s4" src="images/slide-02b.png" style="top: 50%; left: 544px; slidedirection: right; slideoutdirection: right; durationin: 800; durationout: 800; easingin : easeOutExpo; delayin : 1200;" alt=""/>
 			
 			    <img class="ls-s4" src="images/slide-02c.png" style="top: 230px; left: 494px; slidedirection: top; durationin: 800; durationout: 800; easingin : easeOutExpo; delayin : 1200;" alt=""/>
 			
 			    <img class="ls-s2" src="images/slide-02d.png" style="top: 15px; left: -142px; slidedirection: left; slideoutdirection: left; durationin: 600; durationout: 1000; easingin: easeOutExpo; delayin: 1200;" alt=""/>
-			    <img class="ls-s2" src="images/slide-02e.png" style="top: 15px; left: 784px; slidedirection: right; slideoutdirection: right; durationin: 600; durationout: 1000; easingin: easeOutExpo; delayin: 1200;" alt=""/>-->
+			    <img class="ls-s2" src="images/slide-02e.png" style="top: 15px; left: 784px; slidedirection: right; slideoutdirection: right; durationin: 600; durationout: 1000; easingin: easeOutExpo; delayin: 1200;" alt=""/>
 		    </article>
 		
-		    <!-- Slide 3 -->
+		    <!-- Slide 3
 		    <article class="ls-layer" style="slidedelay: 7000;">
 			    <img src="assets/images/resources/home/slide3.jpg" class="ls-bg" alt="">
-                <!--<img src="images/slide-03.jpg" class="ls-bg" alt="">
-			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">Image in Slide Directly</h3>-->
+                <img src="images/slide-03.jpg" class="ls-bg" alt="">
+			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">Image in Slide Directly</h3>
 		    </article>
 
-            <!-- Slide 4 -->
+            <!-- Slide 4
 		    <article class="ls-layer" style="slidedelay: 7000;">
 			    <img src="assets/images/resources/home/slide4.jpg" class="ls-bg" alt="">
-                <!--<img src="images/slide-03.jpg" class="ls-bg" alt="">
-			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">Image in Slide Directly</h3>-->
-		    </article>
+                <img src="images/slide-03.jpg" class="ls-bg" alt="">
+			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">Image in Slide Directly</h3>
+		    </article>-->
 
 	    </div>					
     </section>
