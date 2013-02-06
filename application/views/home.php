@@ -106,7 +106,12 @@
                 <section class="entire">
                 <div class="twelve columns">
 			        <div class="video">
-                        <iframe width="560" height="315" src="http://www.youtube.com/embed/A3PDXmYoF5U?rel=0&fs=0&showinfo=0" frameborder="0"></iframe>
+			        	<?php
+						$video = helpers_db::getHomeVideo();
+						if(count($video) > 0): 
+						?>
+                        <iframe width="560" height="315" src=<?php echo $video[0]['path']?> frameborder="0"></iframe>
+                        <?php endif ?>
                     </div>
                 </div>
             </section>
@@ -115,16 +120,6 @@
 	    </div>
     </div>
     <!-- 960 Container / End -->
-    
-    <!--<div class="container floated">
-	    <div class="blank floated">
-            <section class="entire">
-                <div class="video">
-                    <iframe width="560" height="315" src="http://www.youtube.com/embed/A3PDXmYoF5U?rel=0&fs=0&showinfo=0" frameborder="0"></iframe>
-                </div>
-            </section>
-        </div>
-    </div>-->
 
     <!-- 960 Container -->
     <div class="container floated">
@@ -269,27 +264,34 @@
 		
 		    <h3 class="margin-1">Noticias recientes <span>/ Material de nuestro Blog</span></h3>
 
+			<?php
+			$blogs = helpers_db::getBlogs(2);
+			if(count($blogs) > 0): 
+			?>
 		    <div class="four columns alpha">
 			    <article class="recent-blog">
 				    <section class="date">
-					    <span class="day">28</span>
-					    <span class="month">Dec</span>
+					    <span class="day"><?php echo $blogs[0]['day']; ?></span>
+					    <span class="month"><?php echo helpers_db::getMonthName($blogs[0]['month']); ?></span>
 				    </section>
-				    <h4><a href="blog-post.html">The Boating Life Begins With a Good Storm</a></h4>
-				    <p>Integer libero lectus, porta acean pulvinar ac, facilisis non arcu. <span class="cut">Maecenas enim orci, adipiscing dictum sit amet gusce dapibus.</span></p>
+				    <h4><a href="blog-post.html"><?php echo $blogs[0]['title']; ?></a></h4>
+				    <p><span class="cut"><?php echo $blogs[0]['text']; ?></span></p>
 			    </article>
 		    </div>
-		
-		    <div class="four columns omega">
-			    <article class="recent-blog">
-				    <section class="date">
-					    <span class="day">15</span>
-					    <span class="month">Dec</span>
-				    </section>
-				    <h4><a href="blog-post.html">Visiting Tuscany Without the Crowds</a></h4>
-				    <p>Integer libero lectus, porta acean pulvinar ac, facilisis non arcu. <span class="cut">Maecenas enim orci, adipiscing dictum sit amet gusce dapibus.</span></p>
-			    </article>
-		    </div>
+				<?php if(count($blogs) > 1): 
+				?>
+			    <div class="four columns omega">
+				    <article class="recent-blog">
+					    <section class="date">
+						    <span class="day"><?php echo $blogs[1]['day']; ?></span>
+					    	<span class="month"><?php echo helpers_db::getMonthName($blogs[1]['month']); ?></span>
+					    </section>
+					    <h4><a href="blog-post.html"><?php echo $blogs[1]['title']; ?></a></h4>
+					    <p><span class="cut"><?php echo $blogs[1]['text']; ?></span></p>
+				    </article>
+			    </div>
+			    <?php endif ?>
+		    <?php endif ?>
 
 	    </div>
 

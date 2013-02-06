@@ -1,13 +1,24 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 
 class helpers_db {
-    public static function getBlogs() {
-    	$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
+    public static function getBlogs($amount = 0) {
+    	if($amount == 'undefined' || $amount == 0){
+    		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
     				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
 					'blogs.title', 'blogs.tags', 'blogs.text', array('users.name', 'username'))
 					->from('blogs')
 					->join('users')->on('blogs.user_id', '=', 'users.id')
 					->order_by('blogs.createdAt', 'DESC');
+		}
+		else{
+			$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
+    				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
+					'blogs.title', 'blogs.tags', 'blogs.text', array('users.name', 'username'))
+					->from('blogs')
+					->join('users')->on('blogs.user_id', '=', 'users.id')
+					->order_by('blogs.createdAt', 'DESC')
+					->limit($amount);
+		}
         $result = $query->execute();
 		return $result;
     }
@@ -47,5 +58,14 @@ class helpers_db {
 					->order_by('tagscount', 'DESC');
         $result = $query->execute();
 		return $result;
+	}
+	
+	public static function getHomeVideo(){
+		$query = DB::select('mediaresource.path', 'mediaresource.filename')
+					->from('mediaresource')
+					->where('resource_type', '=', 'VIDEO')
+					->and_where('filename', '=', 'HomeVideo');
+        $result = $query->execute();
+		return $result;	
 	}
 }
