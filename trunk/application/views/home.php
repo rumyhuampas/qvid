@@ -151,109 +151,24 @@
 		    <!-- jCarousel -->
 		    <section class="jcarousel recent-work-jc">
 			    <ul>
-				    <!-- Recent Work Item -->
+			    	<?php
+					$services = helpers_db::getHomeServices();
+					foreach ($services as $srv):
+					?>
+					<!-- Recent Work Item -->
 				    <li class="four columns">
 					    <a href="#" class="portfolio-item">
 						    <figure>
-							    <img src="assets/images/resources/home/recent_work/alta-tension.jpg" alt=""/>
+							    <img src=<?php echo URL::base().$srv['path'] ?> alt=<?php echo $srv['filename'] ?>/>
 							    <figcaption class="item-description">
-								    <h5>Seguridad empresarial</h5>
-								    <span>Control y mantenimiento para lugares de dificil acceso</span>
+								    <h5><?php echo $srv['filename'] ?></h5>
+								    <span><?php echo $srv['description'] ?></span>
 							    </figcaption>
 						    </figure>
 					    </a>
 				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="#" class="portfolio-item">
-						    <figure>
-							    <img src="assets/images/resources/home/recent_work/atletico-tucuman.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>Filmaciones aereas</h5>
-								    <span>Ningun lugar es imposible</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="#" class="portfolio-item">
-						    <figure>
-							    <img src="assets/images/resources/home/recent_work/parapente.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>Eventos deportivos</h5>
-								    <span>Excelente para eventos deportivos</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="single-project.html" class="portfolio-item">
-						    <figure>
-							    <img src="images/portfolio/portfolio-04.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>Poppy Flower</h5>
-								    <span>Identity</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="single-project.html" class="portfolio-item">
-						    <figure>
-							    <img src="images/portfolio/portfolio-05.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>Death Valley</h5>
-								    <span>Photography</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="single-project.html" class="portfolio-item">
-						    <figure>
-							    <img src="images/portfolio/portfolio-06.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>Digital World</h5>
-								    <span>Technology</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="single-project.html" class="portfolio-item">
-						    <figure>
-							    <img src="images/portfolio/portfolio-07.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>American Football</h5>
-								    <span>Architecture</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
-
-				    <!-- Recent Work Item -->
-				    <li class="four columns">
-					    <a href="single-project.html" class="portfolio-item">
-						    <figure>
-							    <img src="images/portfolio/portfolio-08.jpg" alt=""/>
-							    <figcaption class="item-description">
-								    <h5>Casual Shoes</h5>
-								    <span>Identity</span>
-							    </figcaption>
-						    </figure>
-					    </a>
-				    </li>
+				    
+				    <?php endforeach ?>
 			    </ul>
 		    </section>
 		    <!-- jCarousel / End -->
@@ -272,7 +187,7 @@
 		    <h3 class="margin-1">Noticias recientes <span>/ Material de nuestro Blog</span></h3>
 
 			<?php
-			$blogs = helpers_db::getBlogs(2);
+			$blogs = helpers_db::getBlogs(2, 100);
 			if(count($blogs) > 0): 
 			?>
 		    <div class="four columns alpha">

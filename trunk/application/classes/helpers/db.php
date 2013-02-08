@@ -3,21 +3,27 @@
 class helpers_db {
 	//---------- BLOG FUNCS----------
 	
-    public static function getBlogs($amount = 0) {
+    public static function getBlogs($amount = 0, $textlimit = 250) {
     	if($amount == 'undefined' || $amount == 0){
     		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
     				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-					'blogs.title', 'blogs.tags', 'blogs.text', array('users.name', 'username'))
+					'blogs.title', 'blogs.tags', 
+					array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
+					array('users.name', 'username'))
 					->from('blogs')
 					->join('users')->on('blogs.user_id', '=', 'users.id')
+					->where('blogs.published', '=', 'T')
 					->order_by('blogs.createdAt', 'DESC');
 		}
 		else{
 			$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
     				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-					'blogs.title', 'blogs.tags', 'blogs.text', array('users.name', 'username'))
+					'blogs.title', 'blogs.tags', 
+					array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
+					array('users.name', 'username'))
 					->from('blogs')
 					->join('users')->on('blogs.user_id', '=', 'users.id')
+					->where('blogs.published', '=', 'T')
 					->order_by('blogs.createdAt', 'DESC')
 					->limit($amount);
 		}
@@ -38,7 +44,8 @@ class helpers_db {
 		$query = DB::select('mediaresource.path', 'mediaresource.filename')
 					->from('blog_media')
 					->join('mediaresource')->on('mediaresource.Id', '=', 'blog_media.mediaresource_id')
-					->where('blog_media.blog_id', '=', $blogId);
+					->where('blog_media.blog_id', '=', $blogId)
+					->and_where('blog_media.published', '=', 'T');
         $result = $query->execute();
 		return $result;	
 	}
@@ -68,16 +75,26 @@ class helpers_db {
 		$query = DB::select('mediaresource.path', 'mediaresource.filename')
 					->from('mediaresource')
 					->where('resource_type', '=', 'VIDEO')
-					->and_where('filename', '=', 'HomeVideo');
+					->and_where('filetag', '=', 'HomeVideo');
         $result = $query->execute();
 		return $result;	
 	}
 	
 	public static function getHomeSlides(){
-		$query = DB::select('mediaresource.path', 'mediaresource.filename')
+		$query = DB::select('mediaresource.path', 'mediaresource.filename', 'mediaresource.description')
 					->from('mediaresource')
 					->where('resource_type', '=', 'PICTURE')
-					->and_where('filename', '=', 'HomeSlide')
+					->and_where('filetag', '=', 'HomeSlide')
+					->order_by('created_At');
+        $result = $query->execute();
+		return $result;	
+	}
+	
+	public static function getHomeServices(){
+		$query = DB::select('mediaresource.path', 'mediaresource.filename', 'mediaresource.description')
+					->from('mediaresource')
+					->where('resource_type', '=', 'PICTURE')
+					->and_where('filetag', '=', 'HomeService')
 					->order_by('created_At');
         $result = $query->execute();
 		return $result;	

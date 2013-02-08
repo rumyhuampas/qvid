@@ -61,7 +61,7 @@
 		                <!-- Logo -->
 		                <div class="ten columns">
 			                <div id="logo">
-				                <h1><a href="#"><img src=<?php echo URL::base()."/assets/images/logo.png" ?> alt="QVid" /></a></h1>
+				                <h1><a href=<?php echo URL::base(); ?>><img src=<?php echo URL::base()."/assets/images/logo.png" ?> alt="QVid" /></a></h1>
 				                <div id="tagline">Quadcopter Videos</div>
 				                <div class="clearfix"></div>
 			                </div>

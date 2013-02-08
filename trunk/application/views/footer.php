@@ -12,7 +12,7 @@
 
 		        <!-- About -->
 		        <div class="six columns">
-			        <a href="#"><img id="logo-footer" src=<?php echo URL::base()."assets/images/logo-footer.png" ?> alt="" /></a>
+			        <a href=<?php echo URL::base(); ?>><img id="logo-footer" src=<?php echo URL::base()."assets/images/logo-footer.png" ?> alt="" /></a>
 			        <p>Videos grabados con la mas alta calidad usando avanzados quadcopters para obtener la mejor experiencia visual.</p>
 			
 		        </div>
@@ -81,7 +81,7 @@
 				        <ul>
 					        <li><a href="#">Preguntas frecuentes</a></li>
 					        <li><a href="#">Mapa del sitio</a></li>
-					        <li><a href="#">Contacto</a></li>
+					        <li><a href=<?php echo URL::base().'index.php/contact/index'; ?>>Contacto</a></li>
 				        </ul>
 			        </nav>
 		        </div>
