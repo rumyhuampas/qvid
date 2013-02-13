@@ -30,6 +30,22 @@ class helpers_db {
         $result = $query->execute();
 		return $result;
     }
+
+	public static function getBlog($id) {
+		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
+				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
+				'blogs.title', 'blogs.tags', 'blogs.text',
+				array('users.name', 'username'),
+				array('users.description', 'userdesc'),
+				array(DB::expr('(SELECT path from mediaresource where id=users.image_id)'), 'userimage'))
+				->from('blogs')
+				->join('users')->on('blogs.user_id', '=', 'users.id')
+				->where('blogs.published', '=', 'T')
+				->and_where('blogs.id', '=', $id)
+				->order_by('blogs.createdAt', 'DESC');
+        $result = $query->execute();
+		return $result;
+    }
 	
 	public static function getMonthName($monthNum){
 		$monthNames = array(
@@ -41,7 +57,7 @@ class helpers_db {
 	}
 	
 	public static function getBlogResources($blogId){
-		$query = DB::select('mediaresource.path', 'mediaresource.filename')
+		$query = DB::select('mediaresource.path', 'mediaresource.filename', 'mediaresource.resource_type')
 					->from('blog_media')
 					->join('mediaresource')->on('mediaresource.Id', '=', 'blog_media.mediaresource_id')
 					->where('blog_media.blog_id', '=', $blogId)
@@ -98,5 +114,42 @@ class helpers_db {
 					->order_by('created_At');
         $result = $query->execute();
 		return $result;	
+	}
+	
+	public static function getPageData($tag){
+		$query = DB::select('name', 'name2', 'text')
+					->from('pagedata')
+					->where('tag', '=', $tag)
+					->and_where('published', '=', 'T');
+        $result = $query->execute();
+		return $result;	
+	}
+	
+	public static function getOfficeData(){
+		$query = DB::select('name', 'name2', 'text')
+					->from('pagedata')
+					->where_open()
+					->or_where('tag', '=', 'SLOGAN')
+					->or_where('tag', '=', 'PHONE')
+					->or_where('tag', '=', 'ADDRESS')
+					->or_where('tag', '=', 'EMAIL')
+					->or_where('tag', '=', 'FACEBOOK')
+					->where_close()
+					->and_where('published', '=', 'T');
+        $result = $query->execute();
+		return $result;
+	}
+
+	//---------- TEAM FUNCS ----------
+	public static function getTeam(){
+		$query = DB::select('pagedata.name', 'pagedata.name2', 'pagedata.text', 
+					array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=pagedata.resource_id)'), 'imagepath'))
+					->from('pagedata')
+					->where_open()
+					->or_where('pagedata.tag', '=', 'TEAMMEMBER')
+					->where_close()
+					->and_where('pagedata.published', '=', 'T');
+        $result = $query->execute();
+		return $result;
 	}
 }

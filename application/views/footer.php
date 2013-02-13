@@ -21,9 +21,9 @@
 		        <div class="six columns">
 			        <h4>Detalles de Contacto</h4>
 			        <ul class="contact-details-alt">
-				        <li><i class="halflings white map-marker"></i> <p><strong>Dirección:</strong> Marco Avellaneda 540 3ro 'A' Block 2</p> <p>S. M. de Tucumán - Tucumán - Argentina</p></li>
-				        <li><i class="halflings white user"></i> <p><strong>Phone:</strong> (0381) 15-466-4218</p></li>
-				        <li><i class="halflings white envelope"></i> <p><strong>Email:</strong> <a href="#">rumyhuampas@gmail.com</a></p></li>
+				        <li><i class="halflings white map-marker"></i> <p><strong>Dirección: </strong><?php echo $offData[1]['text']?></p></li>
+				        <li><i class="halflings white user"></i> <p><strong>Telefono:</strong> <?php echo $offData[0]['text'] ?></p></li>
+				        <li><i class="halflings white envelope"></i> <p><strong>Email:</strong> <a href="#"><?php echo $offData[2]['text'] ?></a></p></li>
 			        </ul>
 		        </div>
 
@@ -41,7 +41,7 @@
 		        <div class="four columns">
 			        <h4>Social</h4>
 			        <ul id="facebook">
-                        <li><a href="http://www.facebook.com/qvid">www.facebook.com/qvid</a></li>
+                        <li><a href="http://www.facebook.com/qvid"><?php echo $offData[3]['text'] ?></a></li>
                     </ul>
                             
 				        <!-- <script type="text/javascript">
@@ -79,7 +79,7 @@
 		        <div class="eight columns">
 			        <nav id="sub-menu">
 				        <ul>
-					        <li><a href="#">Preguntas frecuentes</a></li>
+					        <!-- <li><a href="#">Preguntas frecuentes</a></li> -->
 					        <li><a href="#">Mapa del sitio</a></li>
 					        <li><a href=<?php echo URL::base().'index.php/contact/index'; ?>>Contacto</a></li>
 				        </ul>

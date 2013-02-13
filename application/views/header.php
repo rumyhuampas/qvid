@@ -46,6 +46,7 @@
     <body>
 
         <!-- Wrapper / Start -->
+        
         <div id="wrapper">
 
             <!-- Header
@@ -57,12 +58,14 @@
 
 	                <!-- Header -->
 	                <header id="header">
+	                
+	                	<?php $offData = helpers_db::getOfficeData(); ?>
 
 		                <!-- Logo -->
 		                <div class="ten columns">
 			                <div id="logo">
 				                <h1><a href=<?php echo URL::base(); ?>><img src=<?php echo URL::base()."/assets/images/logo.png" ?> alt="QVid" /></a></h1>
-				                <div id="tagline">Quadcopter Videos</div>
+				                <div id="tagline"><?php echo $offData[4]['text']?></div>
 				                <div class="clearfix"></div>
 			                </div>
 		                </div>
@@ -74,23 +77,25 @@
 			                <ul class="social-icons">
 				                <li class="twitter"><a href="#" title="Twitter">Twitter</a></li>
 				                <li class="facebook"><a href="#" title="Facebook">Facebook</a></li>
-				                <li class="dribbble"><a href="#" title="Dribbble">Dribbble</a></li>
+				                <!-- <li class="dribbble"><a href="#" title="Dribbble">Dribbble</a></li>
 				                <li class="linkedin"><a href="#" title="LinkedIn">LinkedIn</a></li>
-				                <li class="rss"><a href="#" title="RSS">RSS</a></li>
+				                <li class="rss"><a href="#" title="RSS">RSS</a></li> -->
+				                
 			                </ul>
 
 			                <div class="clearfix"></div>
 
 			                <!-- Contact Details -->
-			                <div class="contact-details">Contacto: (0381) 15-466-4218</div>
+			                <!-- <div class="contact-details">Contacto: <?php echo $offData[0]['text'] ?> </div> -->
 
 			                <div class="clearfix"></div>
 
 			                <!-- Search -->
 			                <nav class="top-search">
-				                <form action="http://vasterad.com/themes/nevia/404-page.html" method="get">
-					                <button class="search-btn"></button>
-					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Buscar';" onfocus="if(this.value=='Buscar')this.value='';" value="Buscar" />
+				                <form action= <?php URL::base().Route::get('default')->uri(array('controller' => 'look')); ?> method="get">					                
+					                <button class="log-btn"></button>
+					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Usuario';" onfocus="if(this.value=='Usuario')this.value='';" value="Usuario" />
+					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Contraseña';" onfocus="if(this.value=='Contraseña')this.value='';" value="Contraseña" />
 				                </form>
 			                </nav>
 
@@ -117,17 +122,17 @@
 
 	                <li><a href="#" id="2" menuid=<?php echo $menuid; ?>><i class="halflings white file"></i> Información</a>
 		                <ul>
-					        <li><a href=<?php echo URL::base().'index.php/about/index'; ?> >Acerca de QVid</a></li>
-					        <li><a href=<?php echo URL::base().'index.php/team/index'; ?> >Nuestro equipo</a></li>
+					        <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'about')); ?> >Acerca de QVid</a></li>
+					        <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'team')); ?> >Nuestro equipo</a></li>
 		                </ul>
 	                </li>
 
 	                <li><a href="#" id="3" menuid=<?php echo $menuid; ?>><i class="halflings white cog"></i> Servicios</a>
 		                <!-- Second Level / Start -->
 		                <ul>
-			                <li><a href=<?php echo URL::base().'index.php/servsecurity/index'; ?> >Seguridad</a></li>
-			                <li><a href=<?php echo URL::base().'index.php/servevent/index'; ?> >Eventos deportivos</a></li>
-			                <li><a href=<?php echo URL::base().'index.php/servcinema/index'; ?> >Cine/Entretenimiento</a></li>
+			                <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'servsecurity')); ?> >Seguridad</a></li>
+			                <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'servevent')); ?> >Eventos deportivos</a></li>
+			                <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'servcinema')); ?> >Cine/Entretenimiento</a></li>
 			                <li><a href="typography.html">Seguimiento de obras</a></li>
                             <li><a href="typography.html">Mensura</a></li>
                             <li><a href="typography.html">Prevencion de catastrofes</a></li>
@@ -138,10 +143,10 @@
 		                <!-- Second Level / End -->
 	                </li>
 
-	                <li><a href=<?php echo URL::base().'index.php/blog/index'; ?> id="4" menuid=<?php echo $menuid; ?>><i class="halflings white pencil"></i> Blog</a>
+	                <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'blog')); ?> id="4" menuid=<?php echo $menuid; ?>><i class="halflings white pencil"></i> Blog</a>
 	                </li>
 
-	                <li><a href=<?php echo URL::base().'index.php/contact/index'; ?> id="5" menuid=<?php echo $menuid; ?>><i class="halflings white envelope"></i> Contacto</a></li>
+	                <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'contact')); ?> id="5" menuid=<?php echo $menuid; ?>><i class="halflings white envelope"></i> Contacto</a></li>
 
                 </ul>
                 </nav>

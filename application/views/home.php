@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include Kohana::find_file('views', 'header'); ?>
 
 <!-- Content
 ================================================== -->
@@ -10,17 +10,36 @@
 	    	
 	    	<?php
 			$slides = helpers_db::getHomeSlides();
+			$i = 0;
 			foreach ($slides as $sl):
-			?>
-		
+			if($i % 2 == 0){ ?>
 		    <!-- Slides -->
 		    <article class="ls-layer" style="slidedelay: 7000;">
 			    <img src=<?php echo URL::base().$sl['path'] ?> class="ls-bg" alt="">
-			    <!--<img class="ls-s4" src="images/slide-01a.png" style="top: 30px; left: 120px; slidedirection: bottom; slideoutdirection: bottom; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;" alt=""/>
-			    <h3 class="ls-s1 caption-color" style="top: 357px; left: 756px; slidedirection: right; slideoutdirection: right; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;">Powerful HTML5 Template</h3>-->
+			    <!--<img class="ls-s4" src="images/slide-01a.png" style="top: 30px; left: 120px; slidedirection: bottom; slideoutdirection: bottom; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;" alt=""/>-->
+			    <h3 class="ls-s1 caption-color"
+			    	style="top: 357px; left: 756px; 
+			    	slidedirection: right; slideoutdirection: right; 
+			    	durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;">
+			    	<?php echo $sl['description'] ?>
+			    </h3>
+		    <?php 
+			}
+			else {
+		    ?>
+		    <article class="ls-layer" style="slidedelay: 7000; slidedirection: top;">
+			    <img src=<?php echo URL::base().$sl['path'] ?> class="ls-bg" alt="">
+			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">
+			    	<?php echo $sl['description'] ?>
+			    </h3>
+		    <?php
+			}
+			?>
 		    </article>
 		    
-		    <?php endforeach ?>
+		    <?php 
+		    $i++;
+		    endforeach ?>
 		
 		    <!-- Slide 2 
 		    <article class="ls-layer" style="slidedelay: 7000; slidedirection: top;">
@@ -112,14 +131,16 @@
 		    </div>
                 <section class="entire">
                 <div class="twelve columns">
-			        <div class="video">
-			        	<?php
-						$video = helpers_db::getHomeVideo();
-						if(count($video) > 0): 
-						?>
-                        <iframe width="560" height="315" src=<?php echo $video[0]['path']?> frameborder="0"></iframe>
-                        <?php endif ?>
-                    </div>
+				    <div class="video">
+				    	<div class="videoloader">
+				        	<?php
+							$video = helpers_db::getHomeVideo();
+							if(count($video) > 0): 
+							?>
+	                        <iframe width="560" height="315" src=<?php echo $video[0]['path']?> frameborder="0"></iframe>
+	                        <?php endif ?>
+	                    </div>
+                   	</div>
                 </div>
             </section>
 			<div class="clearfix"></div>
@@ -196,7 +217,10 @@
 					    <span class="day"><?php echo $blogs[0]['day']; ?></span>
 					    <span class="month"><?php echo helpers_db::getMonthName($blogs[0]['month']); ?></span>
 				    </section>
-				    <h4><a href="blog-post.html"><?php echo $blogs[0]['title']; ?></a></h4>
+				    <h4><a href=<?php echo URL::base().Route::get('default')->uri(
+			        	array('controller' => 'blog',
+			        	'action' => 'read',
+						'id' => $blogs[0]['id'])); ?> ><?php echo $blogs[0]['title']; ?></a></h4>
 				    <p><span class="cut"><?php echo $blogs[0]['text']; ?></span></p>
 			    </article>
 		    </div>
@@ -208,7 +232,10 @@
 						    <span class="day"><?php echo $blogs[1]['day']; ?></span>
 					    	<span class="month"><?php echo helpers_db::getMonthName($blogs[1]['month']); ?></span>
 					    </section>
-					    <h4><a href="blog-post.html"><?php echo $blogs[1]['title']; ?></a></h4>
+					    <h4><a href=<?php echo URL::base().Route::get('default')->uri(
+						        	array('controller' => 'blog',
+						        	'action' => 'read',
+									'id' => $blogs[1]['id'])); ?> ><?php echo $blogs[1]['title']; ?></a></h4>
 					    <p><span class="cut"><?php echo $blogs[1]['text']; ?></span></p>
 				    </article>
 			    </div>
@@ -222,32 +249,20 @@
 
 		    <h3 class="margin-1">Testimonios <span>/ Que dicen nuestros clientes</span></h3>
 
+			<?php $testimonials = helpers_db::getPageData('TESTIMONIAL') ?>
+			
 		    <!-- Testimonial Rotator -->
 		    <section class="flexslider testimonial-slider">
 			    <ul class="slides">
+			    	<?php foreach($testimonials as $tmonial): ?>
+			    		
 				    <li class="testimonial">
-					    <div class="testimonials">Integer eu libero sit amet nisl vestibulum semper. Fusce costant Proin sit amet mauris odio pellentesque iaculis posuer dapibus natoque penatibus et magnis dis parturient montes.</div>
+					    <div class="testimonials"><?php echo $tmonial['text'] ?></div>
 					    <div class="testimonials-bg"></div>
-					    <div class="testimonials-author">Michael, <span>Flash Developer</span></div>
+					    <div class="testimonials-author"><?php echo $tmonial['name'] ?>, <span><?php echo $tmonial['name2'] ?></span></div>
 				    </li>
-
-				    <li class="testimonial">
-					    <div class="testimonials">Posuere erat a ante venenatis dapibus posuere velit aliquet. Proin sit amet mauris odio pellentesque iaculis. Cum sociis natoque penatibus et lorem magnis dis parturient montes, nascetur ridiculus mus. Duisean lorem llis noenan coeammodo luctus.</div>
-					    <div class="testimonials-bg"></div>
-					    <div class="testimonials-author">John, <span>Web Developer</span></div>
-				    </li>
-
-				    <li class="testimonial">
-					    <div class="testimonials">Cras sed odio est, sit amet porttitor elit. Vestibulum Proin sit amet mauris et odio pellentesque iaculis. Cum sociis natoque proin sit amet mauris odio pellentesque iaculis.</div>
-					    <div class="testimonials-bg"></div>
-					    <div class="testimonials-author">Peter, <span>Project Manager</span></div>
-				    </li>
-
-				    <li class="testimonial">
-					    <div class="testimonials">Elementum erat vitae ante venenatis dapibus. Maecenas cursus  cursus Proin sit amet mauris et odio pellentesque iaculis.</div>
-					    <div class="testimonials-bg"></div>
-					    <div class="testimonials-author">Kathy, <span>Art Director</span></div>
-				    </li>
+				    
+				    <?php endforeach ?>
 			    </ul>
 		    </section>
 		    <!-- Testomonial Rotator / End -->
@@ -261,4 +276,4 @@
 <!-- Content / End -->
 
 
-<?php include "footer.php"; ?>
+<?php include Kohana::find_file('views', 'footer'); ?>

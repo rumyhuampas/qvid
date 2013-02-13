@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include Kohana::find_file('views', 'header'); ?>
 
 <!-- Content
 ================================================== -->
@@ -42,14 +42,13 @@
 				    <h4>Informacion General</h4>
 
 				    <ul class="contact-informations">
-					    <li><span class="address">Marco Avellaneda 540, 3 'A' - Block 2</span></li>
-					    <li><span class="address">San Miguel de Tucuman - Tucuman, CP 4000, Argentina</span></li>
+					    <li><span class="address"><?php echo $offData[1]['text'] ?></span></li>
 				    </ul>
 
 				    <ul class="contact-informations second">
-					    <li><i class="halflings headphones"></i> <p>(0381) 15-466-4218</p></li>
-					    <li><i class="halflings envelope"></i> <p>contacto@qvid.com.ar</p></li>
-					    <li><i class="halflings globe"></i> <p>www.qvid.com.ar</p></li>
+					    <li><i class="halflings headphones"></i> <p><?php echo $offData[0]['text'] ?></p></li>
+					    <li><i class="halflings envelope"></i> <p><?php echo $offData[2]['text'] ?></p></li>
+					    <li><i class="halflings globe"></i> <p><?php echo $offData[3]['text'] ?></p></li>
 				    </ul>
 
 			    </div>
@@ -152,4 +151,4 @@
 </div>
 <!-- Content / End -->
 
-<?php include "footer.php"; ?>
+<?php include Kohana::find_file('views', 'footer'); ?>

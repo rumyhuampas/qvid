@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include Kohana::find_file('views', 'header'); ?>
 
 <!-- Content
 ================================================== -->
@@ -78,4 +78,4 @@
 </div>
 <!-- Content / End -->
 
-<?php include "footer.php"; ?>
+<?php include Kohana::find_file('views', 'footer'); ?>
