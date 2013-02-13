@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include Kohana::find_file('views', 'header'); ?>
 
 <!-- Content
 ================================================== -->
@@ -45,7 +45,16 @@
 								<?php foreach ($bMedia as $bMed): ?> 
 								    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
 								    	<a href=<?php echo URL::base().$bMed['path'] ?> rel="fancybox-gallery" title=<?php echo $bMed['filename'] ?>>
-								    		<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
+								    		<?php if($bMed['resource_type'] == 'PICTURE'){ ?>
+								    			<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
+								    		<?php 
+											}
+											else
+											{?>
+												<div class="video"><iframe width="560" height="315" src=<?php echo $bMed['path']?> frameborder="0"></iframe></div>	
+											<?php 
+											} 
+											?>
 								    	</a>
 								    </li>
 								<?php endforeach ?>
@@ -76,14 +85,20 @@
 	                    <section class="post-content">
 	
 					        <header class="meta">
-						        <h2><a href="blog-post.html"><?php echo $b['title']; ?></a></h2>
+						        <h2><a href=<?php echo URL::base().Route::get('default')->uri(
+						        	array('controller' => 'blog',
+						        	'action' => 'read',
+									'id' => $b['id'])); ?> ><?php echo $b['title']; ?></a></h2>
 						        <span><i class="halflings user"></i>Por <a href="#"><?php echo $b['username']; ?></a></span>
 						        <span><i class="halflings tag"></i><?php echo $b['tags']; ?></span>
 					        </header>
 	
 					        <p><?php echo $b['text']; ?></p>
 	
-					        <a href="blog-post.html" class="button color">Leer mas</a>
+					        <a href=<?php echo URL::base().Route::get('default')->uri(
+						        	array('controller' => 'blog',
+						        	'action' => 'read',
+									'id' => $b['id'])); ?> class="button color">Leer mas</a>
 				
 				        </section>
 	                </article>
@@ -107,70 +122,7 @@
 
 
 	    <!-- Sidebar -->
-	    <div class="four floated sidebar right">
-		    <aside class="sidebar">
-
-			    <!-- Search -->
-			    <nav class="widget-search">
-				    <form action="http://vasterad.com/themes/nevia/404-page.html" method="get">
-					    <button class="search-btn-widget"></button>
-					    <input class="search-field" type="text" onblur="if(this.value=='')this.value='Buscar';" onfocus="if(this.value=='Buscar')this.value='';" value="Buscar" />
-				    </form>
-			    </nav>
-			    <div class="clearfix"></div>
-
-			    <!-- Categories -->
-			    <nav class="widget">
-				    <h4>Top Bloggers</h4>
-				    <ul class="categories">
-				    <?php $bloggers = helpers_db::getTopBloggers();
-					foreach($bloggers as $bggs): 
-				    ?>
-					    <li><a href="#"><?php echo $bggs['username'] ?> - <?php echo $bggs['usercount'] ?> blogs</a></li>
-					<?php endforeach ?>
-				    </ul>
-			    </nav>
-
-			    <!-- Tags -->
-			    <div class="widget">
-				    <h4>Tags</h4>
-				    <nav class="tags">
-			    	<?php $tags = helpers_db::getTopTags();
-					foreach($tags as $ts): 
-				    ?>
-					    <a href="#"><?php echo $ts['tags'] ?></a>
-					<?php endforeach ?>
-				    </nav>
-			    </div>
-
-			    <!-- Archives
-			    <nav class="widget">
-				    <h4>Archives</h4>
-				    <ul class="categories">
-					    <li><a href="#">October 2012</a></li>
-					    <li><a href="#">November 2012</a></li>
-					    <li><a href="#">December 2012</a></li>
-				    </ul>
-			    </nav>-->
-
-			    <!-- Tweets-->
-			    <div class="widget">
-				    <h4>Twitter</h4>
-				    <ul id="twitter-blog"></ul>
-					    <script type="text/javascript">
-					        jQuery(document).ready(function ($) {
-					            $.getJSON('http://api.twitter.com/1/statuses/user_timeline/purethemes.json?count=2&amp;callback=?', function (tweets) {
-					                $("#twitter-blog").html(tz_format_twitter(tweets));
-					            });
-					        });
-					    </script>
-				    <div class="clearfix"></div>
-			    </div>
-
-
-		    </aside>
-	    </div>
-	    <!-- Page Content / End -->
+	    <?php include "blogsidebar.php"; ?>
 
     </div>
     <!-- 960 Container / End -->
@@ -178,4 +130,4 @@
 </div>
 <!-- Content / End -->
 
-<?php include "footer.php"; ?>
+<?php include Kohana::find_file('views', 'footer'); ?>

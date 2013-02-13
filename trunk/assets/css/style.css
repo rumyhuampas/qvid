@@ -52,6 +52,21 @@
 	box-shadow:none;
 }
 
+.log-btn  {
+	float:right;
+	position:relative;
+	padding:0;
+	top:0;
+	right:0;
+	margin:1px 0 0 -35px;
+	background:url(../images/categories.png) center center no-repeat;
+	width:35px;
+	height:32px;
+	cursor:pointer;
+	border:none;
+	z-index:100;
+	box-shadow:none;
+}
  .search-field  {
 	float:right;
 	position:relative;
@@ -753,6 +768,7 @@
 	padding:0;
 	z-index:1;
 	position:relative;
+	background: url(../images/layerslider-loader.gif) no-repeat center;
 }
 
  .flexslider .slides>li  {
@@ -1227,7 +1243,7 @@
 
  #not-found h2  {
 	text-align:center;
-	font-size:210px;
+	font-size:150px;
 	line-height:210px;
 	font-weight:400;
 	letter-spacing:-5px;
@@ -1619,6 +1635,7 @@
 
  .google-map-container  {
 	margin:-4px 0 30px 0;
+	background: url(../images/layerslider-loader.gif) no-repeat center;
 }
 
  .google-map-container img  {
@@ -3477,15 +3494,22 @@
 }
 
 /*JLB*/
+.videoloader
+{
+	position: relative;
+    width:592px;
+    height:332px;
+	background: url(../images/layerslider-loader.gif) no-repeat center;
+}
+
 .video
 {
     position: relative;
     width:592px;
     height:371px;
     margin:0 auto;
-    margin-bottom:30px;
+    /*margin-bottom:30px;*/
     background:url(../images/bg-video.png) 0 0 no-repeat;
-    /*float: right;*/
 }
 
 .video iframe
@@ -3496,6 +3520,28 @@
     top: 5px;
     left: 5px;
 }
+
+/* -------------  KOHANA ERROR --------------*/
+#kohana_error { background: #fff; font-size: 1em; font-family:sans-serif; text-align: left; color: #111; }
+#kohana_error h1,
+#kohana_error h2 { margin: 0; padding: 1em; font-size: 1em; font-weight: normal; background: #911; color: #fff; }
+	#kohana_error h1 a,
+	#kohana_error h2 a { color: #1B323B; }
+#kohana_error h2 { background: #CCC; }
+#kohana_error h3 { margin: 0; padding: 0.4em 0 0; font-size: 1em; font-weight: normal; }
+#kohana_error p { margin: 0; padding: 0.2em 0; }
+#kohana_error a { color: #888; }
+#kohana_error pre { overflow: auto; white-space: pre-wrap; }
+#kohana_error table { width: 100%; display: block; margin: 0 0 0.4em; padding: 0; border-collapse: collapse; background: #fff; }
+	#kohana_error table td { border: solid 1px #ddd; text-align: left; vertical-align: top; padding: 0.4em; }
+#kohana_error div.content { padding: 0.4em 1em 1em; overflow: hidden; }
+#kohana_error pre.source { margin: 0 0 1em; padding: 0.4em; background: #fff; border: dotted 1px #b7c680; line-height: 1.2em; }
+	#kohana_error pre.source span.line { display: block; height: 15px; important;}
+	#kohana_error pre.source span.highlight { background: #ccc; }
+		#kohana_error pre.source span.line span.number { color: #666; }
+#kohana_error ol.trace { display: block; margin: 0 0 0 2em; padding: 0; list-style: decimal; }
+	#kohana_error ol.trace li { margin: 0; padding: 0; }
+.js .collapsed { display: none; }
 
  @media only screen and (min-width: 960px)  {
 	.jcarousel  {
@@ -3894,6 +3940,11 @@
 
  .search-btn  {
 	background:url(../images/search_2x.png) center center no-repeat;
+	background-size:13px auto;
+}
+
+ .log-btn  {
+	background:url(../images/categories_2x.png) center center no-repeat;
 	background-size:13px auto;
 }
 

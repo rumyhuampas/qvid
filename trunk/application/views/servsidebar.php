@@ -15,9 +15,9 @@
 	    <nav class="widget">
 		    <h4>Servicios</h4>
 		    <ul class="categories">
-			    <li><a href="#">Seguridad</a></li>
-			    <li><a href="#">Eventos deportivos</a></li>
-			    <li><a href="#">Cine/Entretenimiento</a></li>
+			    <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'servsecurity')); ?>>Seguridad</a></li>
+			    <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'servevent')); ?>>Eventos deportivos</a></li>
+			    <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'servcinema')); ?>>Cine/Entretenimiento</a></li>
 			    <li><a href="#">Seguimiento de obras</a></li>
 			    <li><a href="#">Mensura</a></li>
 			    <li><a href="#">Prevencion de catastrofes</a></li>
@@ -26,7 +26,7 @@
 		    </ul>
 	    </nav>
 
-	    <!-- Tweets-->
+	    <!-- Tweets
 	    <div class="widget">
 		    <h4>Ultimos blogs</h4>
 		    <ul id="twitter-blog"></ul>
@@ -38,7 +38,23 @@
 			        });
 			    </script>
 		    <div class="clearfix"></div>
-	    </div>
+	    </div>-->
+	    
+	    <div class="widget">
+			<h4>Ultimos blogs</h4>
+			<ul id="twitter-blog"></ul>
+	    	<?php
+			$blogs = helpers_db::getBlogs(2, 100);
+			foreach($blogs as $b): 
+			?>
+			<li>
+			    <h5><a href=<?php echo URL::base().Route::get('default')->uri(
+		        	array('controller' => 'blog',
+		        	'action' => 'read',
+					'id' => $b['id'])); ?> ><?php echo $b['title']; ?></a></h5>
+			    <p><span class="cut"><?php echo $b['text']; ?></span></p>
+		    </li>
+		    <?php endforeach ?>
     </aside>
 </div>
 <!-- Sidebar / End -->

@@ -35,28 +35,15 @@
 		        <h3>Conozca a nuestro equipo</h3><br />
 	        </div>
 
+			<?php $team = helpers_db::getTeam(); 
+			foreach($team as $t): ?>
 	        <!-- About -->
 	        <div class="one-third column">
-		        <img src="assets/images/resources/about/javier.jpg")" alt=""/>
-		        <div class="team-name"><h5>Javier L. Boero</h5> <span>Ingeniero en sistemas</span></div>
-		        <div class="team-about"><p>.</p></div>
+		        <img src=<?php echo URL::base().$t['imagepath']?> alt=""/>
+		        <div class="team-name"><h5><?php echo $t['name']?></h5> <span><?php echo $t['name2']?></span></div>
+		        <div class="team-about"><p><?php echo $t['text']?></p></div>
 	        </div>
-
-	        <!-- About -->
-	        <div class="one-third column">
-		        <div class="clear"></div>
-		        <img src="images/about-02.jpg" alt=""/>
-		        <div class="team-name"><h5>Juan Pablo Gonzalez Quinteros</h5> <span>Ingeniero en sistemas</span></div>
-		        <div class="team-about"><p>Consectetur dolor ipsum quiam dolor adipisci velit, aenean at lorem vel est posuere feugiat sed quia noneas numquasa mode tempora incidunt.</p></div>
-	        </div>
-
-	        <!-- About -->
-	        <div class="one-third column">
-		        <img src="images/about-03.jpg" alt=""/>
-		        <div class="team-name"><h5>Juan Ignacio Gonzalez Tonello</h5> <span>Tecnico de vuelo</span></div>
-		        <div class="team-about"><p>Consectetur dolor ipsum quiam dolor adipisci velit, aenean at lorem vel est posuere feugiat sed quia noneas numquasa mode tempora incidunt.</p></div>
-	        </div>
-
+	        <?php endforeach; ?>
         </div>
         <!-- 960 Container / End -->
         

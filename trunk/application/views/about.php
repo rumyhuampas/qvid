@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include Kohana::find_file('views', 'header'); ?>
 
 <!-- Content
 ================================================== -->
@@ -35,8 +35,10 @@
 	        <!-- Texts -->
 	        <div class="eight column">
 		        <h3 style="margin: -10px 0 15px 0;">Quienes somos?</h3>
-		        <p>QVid es una empresa dedicada a brindarle a usted la mejor y mas profesional atencion contando con la participacion de profesionales q dia a dia trabajan para mantener nuestro servicio en lo mas alto.</p>
-		        <p>Nunc et rutrum consetetur sadipscing dolor elitr, sed diam nonumy lore at volutpat. Sed consectetur suscipit lorem nunc.adipiscing elit. Integercommodo tristique odio, quis fringilla ligula aliquet. Proin iaculis purus consequat dursus dolor dignitea onecade lore porttitora suscipit aenean roncus posuere odio tincidunt posuere molestie. Nam aliquam volutpat vel bibendum nunc elit purus tempus pulvinar rhoncus eges tas vel nibheas volutpat leo aliquam in scelerise sagittis.</p>
+		        <p>QVid es una empresa dedicada a brindarle a usted un servicio unico de filmaciones aereas de calidad profesional con aplicaciones muy diversas.</p>
+		        <p>Nuestras areas de aplicacion son muy amplias, desde videos de inspeccion tecnica para mantenimiento de lugares de dificil acceso, filmaciones de eventos deportivos hasta inclusive planos aereos para peliculas o series de television.</p>
+		        <p>QVid quiere brindarle a usted la mejor y mas profesional atencion contando con la participacion de profesionales q dia a dia trabajan para mantener nuestro servicio en lo mas alto.</p>
+		        <p>Nuestro objetivo es crecer dia a dia y ser mejores siempre, ampliando nuestro espectro de trabajo y cubriendo cada uno de los posibles servicios.</p>
 	        </div>
 	        <!-- Texts / End -->
 
@@ -50,36 +52,36 @@
 
 	        <!-- Extras -->
 	        <div class="eight columns">
-			        <!-- Headline --><br />
-			        <h3 class="margin-reset">Como lo hacemos?</h3><br />
+		        <!-- Headline --><br />
+		        <h3 class="margin-reset">Como lo hacemos?</h3><br />
 
-			        <!-- Accordion -->
-			        <div id="accordion">
+		        <!-- Accordion -->
+		        <div id="accordion">
 
-				        <!-- Section 1 -->
-				        <h3>Nuestra mision</h3>
-				        <div>
-					        <p>Brindar un servicio de gran impacto tecnologico utilizando para ello los mejores recursos disponibles del mercado.</p>
-				        </div>
-
-				        <!-- Section 2 -->
-				        <h3>Nuestra vision</h3>
-				        <div>
-					        <p>Ser la empresa emblema y orgullo del noroeste argentino, reconocida por su eficiencia en todo lo referente a multimedia.</p>
-				        </div>
-
-				        <!-- Section 3 -->
-				        <h3>Nuestros valores</h3>
-				        <div>
-					        <h5>Tecnologia</h5>
-                            <p>Estar a la vanguardia de la tecnologia disponible en el mercado.</p>
-                            <h5>Eficiencia</h5>
-                            <p>Brindar un servicio rapido y de alta calidad.</p>
-                            <h5>Seriedad</h5>
-                            <p>Nuestro cliente es nuestro activo mas importante.</p>
-				        </div>
+			        <!-- Section 1 -->
+			        <h3>Nuestra mision</h3>
+			        <div>
+				        <p>Brindar un servicio de gran impacto tecnologico utilizando para ello los mejores recursos disponibles del mercado.</p>
 			        </div>
-			        <!-- Accordion / End -->
+
+			        <!-- Section 2 -->
+			        <h3>Nuestra vision</h3>
+			        <div>
+				        <p>Ser la empresa emblema y orgullo del noroeste argentino, reconocida por su eficiencia en todo lo referente a multimedia.</p>
+			        </div>
+
+			        <!-- Section 3 -->
+			        <h3>Nuestros valores</h3>
+			        <div>
+				        <h5>Tecnologia</h5>
+                        <p>Estar a la vanguardia de la tecnologia disponible en el mercado.</p>
+                        <h5>Eficiencia</h5>
+                        <p>Brindar un servicio rapido y de alta calidad.</p>
+                        <h5>Seriedad</h5>
+                        <p>Nuestro cliente es nuestro activo mas importante.</p>
+			        </div>
+		        </div>
+		        <!-- Accordion / End -->
 	        </div>
 
 	        <!--<div class="eight columns">
@@ -105,4 +107,4 @@
 </div>
 <!-- Content / End -->
 
-<?php include "footer.php"; ?>
+<?php include Kohana::find_file('views', 'footer'); ?>

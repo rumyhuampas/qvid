@@ -30,7 +30,7 @@ date_default_timezone_set('America/Chicago');
  * @link http://kohanaframework.org/guide/using.configuration
  * @link http://www.php.net/manual/function.setlocale
  */
-setlocale(LC_ALL, 'en_US.utf-8');
+setlocale(LC_ALL, 'es_ES.utf-8');
 
 /**
  * Enable the Kohana auto-loader.
@@ -61,7 +61,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 /**
  * Set the default language
  */
-I18n::lang('en-us');
+I18n::lang('es-es');
 
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
@@ -91,6 +91,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'   => '/qvid/',
+	'index_file' => FALSE,
 ));
 
 /**
