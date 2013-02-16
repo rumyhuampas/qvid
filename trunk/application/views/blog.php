@@ -5,25 +5,7 @@
 <div id="content">
 
 
-    <!-- 960 Container -->
-    <div class="container floated">
-
-	    <div class="sixteen floated page-title">
-
-		    <h2>QVid Blog</h2>
-
-		    <nav id="breadcrumbs">
-			    <ul>
-				    <li>Usted esta aqui:</li>
-				    <li><a href=<?php echo URL::base(); ?> >Inicio</a></li>
-				    <li>Blog</li>
-			    </ul>
-		    </nav>
-
-	    </div>
-
-    </div>
-    <!-- 960 Container / End -->
+    <?php include Kohana::find_file('views', 'blogheader'); ?>
 
 
     <!-- 960 Container -->
@@ -32,32 +14,34 @@
 	    <!-- Page Content -->
 	    <div class="eleven floated">
 
-			<?php $blogs = helpers_db::getBlogs(); 
+			<?php
+				if($userid == -1){
+					if($tag == ''){ 
+						$blogs = helpers_db::getBlogs();
+					}
+					else{
+						$blogs = helpers_db::getTagBlogs($tag);
+					}
+				}
+				else{
+					$blogs = helpers_db::getUserBlogs($userid);
+				} 
 				if ($blogs):
 				foreach ($blogs as $b): ?>
 					<article class="post">
-						<?php $bMedia = helpers_db::getBlogResources($b['id']);
+						<?php $bMedia = helpers_db::getBlogPictures($b['id']);
 						if(count($bMedia) > 0)
 						{
 						?>
 							<section class="flexslider">
 								<ul class="slides post-img">
-								<?php foreach ($bMedia as $bMed): ?> 
+								<?php foreach ($bMedia as $bMed):?> 
 								    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
 								    	<a href=<?php echo URL::base().$bMed['path'] ?> rel="fancybox-gallery" title=<?php echo $bMed['filename'] ?>>
-								    		<?php if($bMed['resource_type'] == 'PICTURE'){ ?>
-								    			<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
-								    		<?php 
-											}
-											else
-											{?>
-												<div class="video"><iframe width="560" height="315" src=<?php echo $bMed['path']?> frameborder="0"></iframe></div>	
-											<?php 
-											} 
-											?>
+								    		<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
 								    	</a>
 								    </li>
-								<?php endforeach ?>
+							    <?php endforeach ?>
 								</ul>
 								
 								<!--FLEX SLIDER -->
@@ -74,6 +58,16 @@
 							    ?>
 					    	</section>
 				    	<?php
+						}
+						else{
+						 	$bVids = helpers_db::getBlogVideos($b['id']);
+							if(count($bVids) > 0)
+							{?>
+							    	<a href=<?php echo URL::base().$bVids[0]['path'] ?> rel="fancybox-gallery" title=<?php echo $bVids[0]['filename'] ?>>
+						    			<div class="video"><iframe width="560" height="315" src=<?php echo $bVids[0]['path']?> frameborder="0"></iframe></div>
+							    	</a>
+							<?php
+							}
 						}
 				    	?>
 			    

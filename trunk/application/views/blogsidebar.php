@@ -18,7 +18,11 @@
 		    <?php $bloggers = helpers_db::getTopBloggers();
 			foreach($bloggers as $bggs): 
 		    ?>
-			    <li><a href="#"><?php echo $bggs['username'] ?> - <?php echo $bggs['usercount'] ?> blogs</a></li>
+		    
+			    <li><a href=<?php echo URL::base().Route::get('default')->uri(
+					        	array('controller' => 'blog',
+					        	'action' => 'getuserblogs',
+								'id' => $bggs['userid'])); ?>><?php echo $bggs['username'] ?> - <?php echo $bggs['usercount'] ?> blogs</a></li>
 			<?php endforeach ?>
 		    </ul>
 	    </nav>
@@ -30,7 +34,10 @@
 	    	<?php $tags = helpers_db::getTopTags();
 			foreach($tags as $ts): 
 		    ?>
-			    <a href="#"><?php echo $ts['tags'] ?></a>
+			    <a href=<?php echo URL::base().Route::get('default')->uri(
+					        	array('controller' => 'blog',
+					        	'action' => 'gettagblogs',
+								'id' => $ts)); ?>><?php echo $ts ?></a>
 			<?php endforeach ?>
 		    </nav>
 	    </div>

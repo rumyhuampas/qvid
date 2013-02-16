@@ -178,7 +178,7 @@
 					?>
 					<!-- Recent Work Item -->
 				    <li class="four columns">
-					    <a href="#" class="portfolio-item">
+					    <a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => $srv['link'])); ?> class="portfolio-item">
 						    <figure>
 							    <img src=<?php echo URL::base().$srv['path'] ?> alt=<?php echo $srv['filename'] ?>/>
 							    <figcaption class="item-description">

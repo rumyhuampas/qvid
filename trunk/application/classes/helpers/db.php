@@ -5,28 +5,67 @@ class helpers_db {
 	
     public static function getBlogs($amount = 0, $textlimit = 250) {
     	if($amount == 'undefined' || $amount == 0){
-    		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-    				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-					'blogs.title', 'blogs.tags', 
-					array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
-					array('users.name', 'username'))
-					->from('blogs')
-					->join('users')->on('blogs.user_id', '=', 'users.id')
-					->where('blogs.published', '=', 'T')
-					->order_by('blogs.createdAt', 'DESC');
+			$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
+				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
+				'blogs.title', 'blogs.tags', 
+				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
+				array('users.name', 'username'))
+				->from('blogs')
+				->join('users')->on('blogs.user_id', '=', 'users.id')
+				->where('blogs.published', '=', 'T')
+				->order_by('blogs.createdAt', 'DESC');
 		}
 		else{
 			$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-    				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-					'blogs.title', 'blogs.tags', 
-					array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
-					array('users.name', 'username'))
-					->from('blogs')
-					->join('users')->on('blogs.user_id', '=', 'users.id')
-					->where('blogs.published', '=', 'T')
-					->order_by('blogs.createdAt', 'DESC')
-					->limit($amount);
+				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
+				'blogs.title', 'blogs.tags', 
+				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
+				array('users.name', 'username'))
+				->from('blogs')
+				->join('users')->on('blogs.user_id', '=', 'users.id')
+				->where('blogs.published', '=', 'T')
+				->order_by('blogs.createdAt', 'DESC')
+				->limit($amount);
 		}
+        $result = $query->execute();
+		return $result;
+    }
+
+	public static function getUserBlogs($userid, $textlimit = 250) {
+		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
+				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
+				'blogs.title', 'blogs.tags',
+				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
+				array('users.name', 'username'))
+				->from('blogs')
+				->join('users')->on('blogs.user_id', '=', 'users.id')
+				->where('blogs.published', '=', 'T')
+				->and_where('blogs.user_id', '=', $userid)
+				->order_by('blogs.createdAt', 'DESC');
+        $result = $query->execute();
+		return $result;
+    }
+
+	public static function getUserName($userid) {
+		$query = DB::select('name')
+				->from('users')
+				->where('id', '=', $userid);
+        $result = $query->execute();
+		return $result[0]['name'];
+    }
+
+	
+	public static function getTagBlogs($tag, $textlimit = 250) {
+		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
+				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
+				'blogs.title', 'blogs.tags',
+				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
+				array('users.name', 'username'))
+				->from('blogs')
+				->join('users')->on('blogs.user_id', '=', 'users.id')
+				->where('blogs.published', '=', 'T')
+				->and_where('blogs.tags', 'LIKE', '%'.$tag.'%')
+				->order_by('blogs.createdAt', 'DESC');
         $result = $query->execute();
 		return $result;
     }
@@ -56,18 +95,28 @@ class helpers_db {
 		return $monthNames[$monthNum];
 	}
 	
-	public static function getBlogResources($blogId){
+	private static function getBlogResources($blogId, $rtype){
 		$query = DB::select('mediaresource.path', 'mediaresource.filename', 'mediaresource.resource_type')
 					->from('blog_media')
 					->join('mediaresource')->on('mediaresource.Id', '=', 'blog_media.mediaresource_id')
 					->where('blog_media.blog_id', '=', $blogId)
+					->and_where('mediaresource.resource_type', '=', $rtype)
 					->and_where('blog_media.published', '=', 'T');
         $result = $query->execute();
 		return $result;	
 	}
 
+	public static function getBlogPictures($blogId){
+		return helpers_db::getBlogResources($blogId, 'PICTURE');	
+	}
+	
+	public static function getBlogVideos($blogId){
+		return helpers_db::getBlogResources($blogId, 'VIDEO');
+	}
+
 	public static function getTopBloggers(){
-		$query = DB::select(array('users.name', 'username'), array(DB::expr('COUNT(blogs.user_id)'), 'usercount'))
+		$query = DB::select(array('blogs.user_id', 'userid'), array('users.name', 'username'),
+					array(DB::expr('COUNT(blogs.user_id)'), 'usercount'))
 					->from('blogs')
 					->join('users')->on('blogs.user_id', '=', 'users.id')
 					->group_by('blogs.user_id')
@@ -77,12 +126,22 @@ class helpers_db {
 	}
 	
 	public static function getTopTags(){
-		$query = DB::select(array('blogs.tags', 'tags'), array(DB::expr('COUNT(blogs.tags)'), 'tagscount'))
-					->from('blogs')
-					->group_by('blogs.tags')
-					->order_by('tagscount', 'DESC');
+		$query = DB::select('tags')
+					->from('blogs');
         $result = $query->execute();
-		return $result;
+		$arrayres = array();
+		foreach($result as $r){
+			$arrayres = array_merge($arrayres, explode(',', $r['tags']));	
+		}
+		$arrayres = array_count_values($arrayres);
+		arsort($arrayres);
+		$arrayres = array_keys($arrayres);
+		$arrayres = array_slice($arrayres, 0, 10);
+		return $arrayres;
+	}
+	
+	public static function splitField($field, $delimiter){
+		return explode($field, $delimiter);
 	}
 	
 	//---------- HOME FUNCS----------
@@ -107,7 +166,7 @@ class helpers_db {
 	}
 	
 	public static function getHomeServices(){
-		$query = DB::select('mediaresource.path', 'mediaresource.filename', 'mediaresource.description')
+		$query = DB::select('path', 'filename', 'description', 'link')
 					->from('mediaresource')
 					->where('resource_type', '=', 'PICTURE')
 					->and_where('filetag', '=', 'HomeService')
