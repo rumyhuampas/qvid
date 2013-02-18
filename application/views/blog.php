@@ -14,22 +14,12 @@
 	    <!-- Page Content -->
 	    <div class="eleven floated">
 
-			<?php
-				if($userid == -1){
-					if($tag == ''){ 
-						$blogs = helpers_db::getBlogs();
-					}
-					else{
-						$blogs = helpers_db::getTagBlogs($tag);
-					}
-				}
-				else{
-					$blogs = helpers_db::getUserBlogs($userid);
-				} 
-				if ($blogs):
-				foreach ($blogs as $b): ?>
+			<?php foreach ($blogs as $b): ?>
 					<article class="post">
-						<?php $bMedia = helpers_db::getBlogPictures($b['id']);
+						<?php $bMedia = ORM::factory('mediaresource')
+							->join('blogmedia')->on('mediaresource.Id', '=', 'blogmedia.mediaresource_id')
+							->where('blogmedia.Blog_Id', '=', $b->Id)->and_where('mediaresource.resource_type', '=', 'PICTURE')
+							->and_where('blogmedia.published', '=', 'T')->find_all();
 						if(count($bMedia) > 0)
 						{
 						?>
@@ -37,8 +27,8 @@
 								<ul class="slides post-img">
 								<?php foreach ($bMedia as $bMed):?> 
 								    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-								    	<a href=<?php echo URL::base().$bMed['path'] ?> rel="fancybox-gallery" title=<?php echo $bMed['filename'] ?>>
-								    		<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
+								    	<a href=<?php echo URL::base().$bMed->Path ?> rel="fancybox-gallery" title=<?php echo $bMed->FileName ?>>
+								    		<img src=<?php echo URL::base().$bMed->Path ?> alt="">
 								    	</a>
 								    </li>
 							    <?php endforeach ?>
@@ -60,11 +50,14 @@
 				    	<?php
 						}
 						else{
-						 	$bVids = helpers_db::getBlogVideos($b['id']);
+						 	$bVids = ORM::factory('mediaresource')
+								->join('blogmedia')->on('mediaresource.Id', '=', 'blogmedia.mediaresource_id')
+								->where('blogmedia.Blog_Id', '=', $b->Id)->and_where('mediaresource.resource_type', '=', 'VIDEO')
+								->and_where('blogmedia.published', '=', 'T')->find_all();
 							if(count($bVids) > 0)
 							{?>
-							    	<a href=<?php echo URL::base().$bVids[0]['path'] ?> rel="fancybox-gallery" title=<?php echo $bVids[0]['filename'] ?>>
-						    			<div class="video"><iframe width="560" height="315" src=<?php echo $bVids[0]['path']?> frameborder="0"></iframe></div>
+							    	<a href=<?php echo URL::base().$bVids[0]->Path ?> rel="fancybox-gallery" title=<?php echo $bVids[0]->FileName ?>>
+						    			<div class="video"><iframe width="560" height="315" src=<?php echo $bVids[0]->Path?> frameborder="0"></iframe></div>
 							    	</a>
 							<?php
 							}
@@ -72,8 +65,8 @@
 				    	?>
 			    
 	                    <section class="date">
-					        <span class="day"><?php echo $b['day']; ?></span>
-					        <span class="month"><?php echo helpers_db::getMonthName($b['month']); ?></span>
+					        <span class="day"><?php echo date("d", strtotime($b->Created_At)); ?></span>
+					        <span class="month"><?php echo helpers_db::getMonthName((int)date("m", strtotime($b->Created_At))); ?></span>
 				        </section>
 	
 	                    <section class="post-content">
@@ -82,24 +75,24 @@
 						        <h2><a href=<?php echo URL::base().Route::get('default')->uri(
 						        	array('controller' => 'blog',
 						        	'action' => 'read',
-									'id' => $b['id'])); ?> ><?php echo $b['title']; ?></a></h2>
-						        <span><i class="halflings user"></i>Por <a href="#"><?php echo $b['username']; ?></a></span>
-						        <span><i class="halflings tag"></i><?php echo $b['tags']; ?></span>
+									'id' => $b->Id)); ?> ><?php echo $b->Title; ?></a></h2>
+								<?php $user = ORM::factory('user', $b->User_Id)?>
+						        <span><i class="halflings user"></i>Por <a href="#"><?php echo $user->Name ?></a></span>
+						        <span><i class="halflings tag"></i><?php echo $b->Tags; ?></span>
 					        </header>
 	
-					        <p><?php echo $b['text']; ?></p>
+					        <p><?php echo substr($b->Text, 0, 250).'...'; ?></p>
 	
 					        <a href=<?php echo URL::base().Route::get('default')->uri(
 						        	array('controller' => 'blog',
 						        	'action' => 'read',
-									'id' => $b['id'])); ?> class="button color">Leer mas</a>
+									'id' => $b->Id)); ?> class="button color">Leer mas</a>
 				
 				        </section>
 	                </article>
 	                
 	                <div class="line"></div>
 				<?php endforeach ?>
-			<?php endif ?>
 
 		    <!-- Pagination -->
 		    <nav class="pagination">

@@ -13,86 +13,90 @@
 
 	    <!-- Page Content -->
 	    <div class="eleven floated">
-
-			<?php $blog = helpers_db::getBlog($blogid); 
-				if ($blog): 
-					$b=$blog[0]; ?>
-					<article class="post">
-						<?php $bMedia = helpers_db::getBlogPictures($b['id']);
-						if(count($bMedia) > 0)
+			<article class="post">
+				<?php $bMedia = ORM::factory('mediaresource')
+					->join('blogmedia')->on('mediaresource.Id', '=', 'blogmedia.mediaresource_id')
+					->where('blogmedia.Blog_Id', '=', $blog->Id)->and_where('mediaresource.resource_type', '=', 'PICTURE')
+					->and_where('blogmedia.published', '=', 'T')->find_all();
+				if(count($bMedia) > 0)
+				{
+				?>
+					<section class="flexslider">
+						<ul class="slides post-img">
+						<?php foreach ($bMedia as $bMed):?> 
+						    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
+						    	<a href=<?php echo URL::base().$bMed->Path ?> rel="fancybox-gallery" title=<?php echo $bMed->FileName ?>>
+						    		<img src=<?php echo URL::base().$bMed->Path ?> alt="">
+						    	</a>
+						    </li>
+					    <?php endforeach ?>
+						</ul>
+						
+						<!--FLEX SLIDER -->
+						<?php 
+						if(count($bMedia) > 1)
 						{
 						?>
-							<section class="flexslider">
-								<ul class="slides post-img">
-								<?php foreach ($bMedia as $bMed):?> 
-								    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-								    	<a href=<?php echo URL::base().$bMed['path'] ?> rel="fancybox-gallery" title=<?php echo $bMed['filename'] ?>>
-								    		<img src=<?php echo URL::base().$bMed['path'] ?> alt="">
-								    	</a>
-								    </li>
-							    <?php endforeach ?>
-								</ul>
-								
-								<!--FLEX SLIDER -->
-								<?php 
-								if(count($bMedia) > 1)
-								{
-								?>
-							    	<ul class="flex-direction-nav">
-							    		<li><a class="flex-prev" href="#">Anterior</a></li>
-							    		<li><a class="flex-next" href="#">Siguiente</a></li>
-							    	</ul>
-							    <?php 
-							    }
-							    ?>
-					    	</section>
-				    	<?php
-						}
-					 	$bVids = helpers_db::getBlogVideos($b['id']);
-						if(count($bVids) > 0)
-						{
-							foreach ($bVids as $bV): ?>
-						    	<a href=<?php echo URL::base().$bV['path'] ?> rel="fancybox-gallery" title=<?php echo $bV['filename'] ?>>
-					    			<div class="video"><iframe width="560" height="315" src=<?php echo $bV['path']?> frameborder="0"></iframe></div>
-						    	</a>
-							<?php endforeach;
-						}
-				    	?>
-		    
-                    <section class="date">
-				        <span class="day"><?php echo $b['day']; ?></span>
-				        <span class="month"><?php echo helpers_db::getMonthName($b['month']); ?></span>
-			        </section>
+					    	<ul class="flex-direction-nav">
+					    		<li><a class="flex-prev" href="#">Anterior</a></li>
+					    		<li><a class="flex-next" href="#">Siguiente</a></li>
+					    	</ul>
+					    <?php 
+					    }
+					    ?>
+			    	</section>
+		    	<?php
+				}
+			 	$bVids = ORM::factory('mediaresource')
+					->join('blogmedia')->on('mediaresource.Id', '=', 'blogmedia.mediaresource_id')
+					->where('blogmedia.Blog_Id', '=', $blog->Id)->and_where('mediaresource.resource_type', '=', 'VIDEO')
+					->and_where('blogmedia.published', '=', 'T')->find_all();
+				foreach ($bVids as $bVid) 
+				{?>
+			    	<a href=<?php echo URL::base().$bVid->Path ?> rel="fancybox-gallery" title=<?php echo $bVid->FileName ?>>
+		    			<div class="video"><iframe width="560" height="315" src=<?php echo $bVid->Path?> frameborder="0"></iframe></div>
+			    	</a>
+				<?php
+				}
+		    	?>
+	    
+                <section class="date">
+			        <span class="day"><?php echo date("d", strtotime($blog->Created_At)); ?></span>
+			        <span class="month"><?php echo helpers_db::getMonthName((int)date("m", strtotime($blog->Created_At))); ?></span>
+		        </section>
 
-                    <section class="post-content">
+                <section class="post-content">
 
-				        <header class="meta">
-					        <h2><a href="blog-post.html"><?php echo $b['title']; ?></a></h2>
-					        <span><i class="halflings user"></i>Por <a href="#"><?php echo $b['username']; ?></a></span>
-					        <span><i class="halflings tag"></i><?php echo $b['tags']; ?></span>
-				        </header>
+			        <header class="meta">
+				        <h2><a href=<?php echo URL::base().Route::get('default')->uri(
+				        	array('controller' => 'blog',
+				        	'action' => 'read',
+							'id' => $blog->Id)); ?> ><?php echo $blog->Title; ?></a></h2>
+						<?php $user = ORM::factory('user', $blog->User_Id)?>
+				        <span><i class="halflings user"></i>Por <a href="#"><?php echo $user->Name ?></a></span>
+				        <span><i class="halflings tag"></i><?php echo $blog->Tags; ?></span>
+			        </header>
 
-				        <p><?php echo $b['text']; ?></p>
-			
-			        </section>
-                </article>
-                
-                <!-- About Author -->
-                <section class="about-author">
-					<img src=<?php echo URL::base().$b['userimage']?> alt="">
-					<div class="about-description">
-						<h4><?php echo $b['username']?></h4>
-						<p><?php echo $b['userdesc']?></p>
-					</div>
-				</section>
-				
-				<article class="post">
-					<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'blog')); ?> class="button color">Volver al blog</a>
-				</article> 
-                
-                <div class="line"></div>
-			<?php endif ?>
-			
+			        <p><?php echo $blog->Text; ?></p>
+		
+		        </section>
+            </article>
+        
+        <!-- About Author -->
+        <section class="about-author">
+        	<?php $userImg = ORM::factory('mediaresource', $user->Image_Id); ?>
+			<img src=<?php echo URL::base().$userImg->Path; ?> alt="">
+			<div class="about-description">
+				<h4><?php echo $user->Name?></h4>
+				<p><?php echo $user->Description?></p>
+			</div>
+		</section>
+		
+		<article class="post">
+			<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'blog')); ?> class="button color">Volver al blog</a>
+		</article> 
+        
+        <div class="line"></div>
 	    </div>
 	    <!-- Content / End -->
 
