@@ -144,3 +144,233 @@
 #6 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #7 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
 #8 {main} in C:\wamp\www\qvid\application\classes\helpers\db.php:54
+2013-02-16 15:10:31 --- CRITICAL: Kohana_Exception [ 0 ]: The name property does not exist in the Model_User class ~ MODPATH\orm\classes\Kohana\ORM.php [ 684 ] in C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php:600
+2013-02-16 15:10:31 --- DEBUG: #0 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(600): Kohana_ORM->get('name')
+#1 C:\wamp\www\qvid\application\classes\Controller\blog.php(32): Kohana_ORM->__get('name')
+#2 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_getuserblogs()
+#3 [internal function]: Kohana_Controller->execute()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#8 {main} in C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php:600
+2013-02-16 15:37:15 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:37:15 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(48): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_gettagblogs()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:37:24 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:37:24 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:40:21 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:40:21 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:40:58 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:40:58 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:41:03 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:41:03 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:42:12 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:42:12 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:47:00 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:47:00 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:47:40 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:47:40 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:47:47 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:47:47 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:48:17 --- CRITICAL: ErrorException [ 4 ]: syntax error, unexpected '[' ~ APPPATH\classes\Controller\blog.php [ 34 ] in :
+2013-02-16 15:48:17 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2013-02-16 15:48:33 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:48:33 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:49:21 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:49:21 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:49:31 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:49:31 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:52:21 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:52:21 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:55:10 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:55:10 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:55:14 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: blogs ~ APPPATH\views\blog.php [ 29 ] in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:55:14 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(13): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:29
+2013-02-16 15:55:35 --- CRITICAL: ErrorException [ 2 ]: Missing argument 3 for Kohana_ORM::where(), called in C:\wamp\www\qvid\application\classes\Controller\blog.php on line 34 and defined ~ MODPATH\orm\classes\Kohana\ORM.php [ 1846 ] in C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php:1846
+2013-02-16 15:55:35 --- DEBUG: #0 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1846): Kohana_Core::error_handler(2, 'Missing argumen...', 'C:\wamp\www\qvi...', 1846, Array)
+#1 C:\wamp\www\qvid\application\classes\Controller\blog.php(34): Kohana_ORM->where('user_id', '1')
+#2 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_getuserblogs()
+#3 [internal function]: Kohana_Controller->execute()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#8 {main} in C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php:1846
+2013-02-16 16:01:57 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: bMedia ~ APPPATH\views\blog.php [ 37 ] in C:\wamp\www\qvid\application\views\blog.php:37
+2013-02-16 16:01:57 --- DEBUG: #0 C:\wamp\www\qvid\application\views\blog.php(37): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 37, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\blog.php(34): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Blog->action_getuserblogs()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Blog))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\blog.php:37
+2013-02-16 16:02:47 --- CRITICAL: ErrorException [ 1 ]: Cannot use object of type Model_Blog as array ~ APPPATH\views\blog.php [ 74 ] in :
+2013-02-16 16:02:47 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2013-02-16 16:04:16 --- CRITICAL: ErrorException [ 4 ]: syntax error, unexpected ';' ~ APPPATH\views\blog.php [ 74 ] in :
+2013-02-16 16:04:16 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2013-02-16 16:04:58 --- CRITICAL: ErrorException [ 1 ]: Cannot use object of type Model_Blog as array ~ APPPATH\views\blog.php [ 89 ] in :
+2013-02-16 16:04:58 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2013-02-16 16:05:08 --- CRITICAL: ErrorException [ 1 ]: Cannot use object of type Model_Blog as array ~ APPPATH\views\blog.php [ 62 ] in :
+2013-02-16 16:05:08 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2013-02-16 16:12:45 --- CRITICAL: ErrorException [ 1 ]: Call to undefined method Database_MySQL_Result::order_by() ~ APPPATH\classes\Controller\blog.php [ 11 ] in :
+2013-02-16 16:12:45 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :

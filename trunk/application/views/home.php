@@ -208,20 +208,19 @@
 		    <h3 class="margin-1">Noticias recientes <span>/ Material de nuestro Blog</span></h3>
 
 			<?php
-			$blogs = helpers_db::getBlogs(2, 100);
 			if(count($blogs) > 0): 
 			?>
 		    <div class="four columns alpha">
 			    <article class="recent-blog">
 				    <section class="date">
-					    <span class="day"><?php echo $blogs[0]['day']; ?></span>
-					    <span class="month"><?php echo helpers_db::getMonthName($blogs[0]['month']); ?></span>
+					    <span class="day"><?php echo date("d", strtotime($blogs[0]->Created_At)); ?></span>
+			        	<span class="month"><?php echo helpers_db::getMonthName((int)date("m", strtotime($blogs[0]->Created_At))); ?></span>
 				    </section>
 				    <h4><a href=<?php echo URL::base().Route::get('default')->uri(
 			        	array('controller' => 'blog',
 			        	'action' => 'read',
-						'id' => $blogs[0]['id'])); ?> ><?php echo $blogs[0]['title']; ?></a></h4>
-				    <p><span class="cut"><?php echo $blogs[0]['text']; ?></span></p>
+						'id' => $blogs[0]->Id)); ?> ><?php echo $blogs[0]->Title; ?></a></h4>
+				    <p><span class="cut"><?php echo substr($blogs[0]->Text, 0, 100).'...'; ?></span></p>
 			    </article>
 		    </div>
 				<?php if(count($blogs) > 1): 
@@ -229,14 +228,14 @@
 			    <div class="four columns omega">
 				    <article class="recent-blog">
 					    <section class="date">
-						    <span class="day"><?php echo $blogs[1]['day']; ?></span>
-					    	<span class="month"><?php echo helpers_db::getMonthName($blogs[1]['month']); ?></span>
+						    <span class="day"><?php echo date("d", strtotime($blogs[1]->Created_At)); ?></span>
+			        		<span class="month"><?php echo helpers_db::getMonthName((int)date("m", strtotime($blogs[1]->Created_At))); ?></span>
 					    </section>
 					    <h4><a href=<?php echo URL::base().Route::get('default')->uri(
 						        	array('controller' => 'blog',
 						        	'action' => 'read',
-									'id' => $blogs[1]['id'])); ?> ><?php echo $blogs[1]['title']; ?></a></h4>
-					    <p><span class="cut"><?php echo $blogs[1]['text']; ?></span></p>
+									'id' => $blogs[1]->Id)); ?> ><?php echo $blogs[1]->Title; ?></a></h4>
+					    <p><span class="cut"><?php echo substr($blogs[1]->Text, 0, 100).'...'; ?></span></p>
 				    </article>
 			    </div>
 			    <?php endif ?>

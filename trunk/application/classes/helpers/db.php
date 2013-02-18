@@ -1,90 +1,6 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 
 class helpers_db {
-	//---------- BLOG FUNCS----------
-	
-    public static function getBlogs($amount = 0, $textlimit = 250) {
-    	if($amount == 'undefined' || $amount == 0){
-			$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-				'blogs.title', 'blogs.tags', 
-				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
-				array('users.name', 'username'))
-				->from('blogs')
-				->join('users')->on('blogs.user_id', '=', 'users.id')
-				->where('blogs.published', '=', 'T')
-				->order_by('blogs.createdAt', 'DESC');
-		}
-		else{
-			$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-				'blogs.title', 'blogs.tags', 
-				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
-				array('users.name', 'username'))
-				->from('blogs')
-				->join('users')->on('blogs.user_id', '=', 'users.id')
-				->where('blogs.published', '=', 'T')
-				->order_by('blogs.createdAt', 'DESC')
-				->limit($amount);
-		}
-        $result = $query->execute();
-		return $result;
-    }
-
-	public static function getUserBlogs($userid, $textlimit = 250) {
-		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-				'blogs.title', 'blogs.tags',
-				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
-				array('users.name', 'username'))
-				->from('blogs')
-				->join('users')->on('blogs.user_id', '=', 'users.id')
-				->where('blogs.published', '=', 'T')
-				->and_where('blogs.user_id', '=', $userid)
-				->order_by('blogs.createdAt', 'DESC');
-        $result = $query->execute();
-		return $result;
-    }
-
-	public static function getUserName($userid) {
-		$query = DB::select('name')
-				->from('users')
-				->where('id', '=', $userid);
-        $result = $query->execute();
-		return $result[0]['name'];
-    }
-
-	
-	public static function getTagBlogs($tag, $textlimit = 250) {
-		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-				'blogs.title', 'blogs.tags',
-				array(DB::expr('CONCAT(SUBSTRING(blogs.text, 1, '.$textlimit.'), "...")'), 'text'),
-				array('users.name', 'username'))
-				->from('blogs')
-				->join('users')->on('blogs.user_id', '=', 'users.id')
-				->where('blogs.published', '=', 'T')
-				->and_where('blogs.tags', 'LIKE', '%'.$tag.'%')
-				->order_by('blogs.createdAt', 'DESC');
-        $result = $query->execute();
-		return $result;
-    }
-
-	public static function getBlog($id) {
-		$query = DB::select('blogs.id', array(DB::expr('DAY(blogs.createdAt)'), 'day'),
-				array(DB::expr('MONTH(blogs.createdAt)'), 'month'),
-				'blogs.title', 'blogs.tags', 'blogs.text',
-				array('users.name', 'username'),
-				array('users.description', 'userdesc'),
-				array(DB::expr('(SELECT path from mediaresource where id=users.image_id)'), 'userimage'))
-				->from('blogs')
-				->join('users')->on('blogs.user_id', '=', 'users.id')
-				->where('blogs.published', '=', 'T')
-				->and_where('blogs.id', '=', $id)
-				->order_by('blogs.createdAt', 'DESC');
-        $result = $query->execute();
-		return $result;
-    }
 	
 	public static function getMonthName($monthNum){
 		$monthNames = array(
@@ -93,25 +9,6 @@ class helpers_db {
 			9 => 'Sep',	10 => 'Oct', 11 => 'Nov', 12 => 'Dic'
 		);
 		return $monthNames[$monthNum];
-	}
-	
-	private static function getBlogResources($blogId, $rtype){
-		$query = DB::select('mediaresource.path', 'mediaresource.filename', 'mediaresource.resource_type')
-					->from('blog_media')
-					->join('mediaresource')->on('mediaresource.Id', '=', 'blog_media.mediaresource_id')
-					->where('blog_media.blog_id', '=', $blogId)
-					->and_where('mediaresource.resource_type', '=', $rtype)
-					->and_where('blog_media.published', '=', 'T');
-        $result = $query->execute();
-		return $result;	
-	}
-
-	public static function getBlogPictures($blogId){
-		return helpers_db::getBlogResources($blogId, 'PICTURE');	
-	}
-	
-	public static function getBlogVideos($blogId){
-		return helpers_db::getBlogResources($blogId, 'VIDEO');
 	}
 
 	public static function getTopBloggers(){
