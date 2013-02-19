@@ -7,6 +7,7 @@ Class Controller_Servsecurity extends Controller
         $view=View::factory('servsecurity');
 		$view->title = "Servicios - Seguridad";
 		$view->menuid = '3';
+		$view->blogs = ORM::factory('blog')->where('published', '=', 'T')->order_by('Created_At', 'DESC')->limit(2)->find_all();
 		$this->response->body($view->render());
     }
 } // End ServSecurity

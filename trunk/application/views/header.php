@@ -6,7 +6,7 @@
 
         <!-- Basic Page Needs
         ================================================== -->
-        <meta charset="utf-8">
+        <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
         <title><?php echo $title; ?></title>
 
         <!-- Mobile Specific Metas
@@ -86,16 +86,18 @@
 			                <div class="clearfix"></div>
 
 			                <!-- Contact Details -->
-			                <!-- <div class="contact-details">Contacto: <?php echo $offData[0]['text'] ?> </div> -->
+			                <div class="contact-details">Contacto: <?php echo $offData[0]['text'] ?> </div>
 
 			                <div class="clearfix"></div>
 
 			                <!-- Search -->
 			                <nav class="top-search">
-				                <form action= <?php URL::base().Route::get('default')->uri(array('controller' => 'look')); ?> method="get">					                
-					                <button class="log-btn"></button>
-					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Usuario';" onfocus="if(this.value=='Usuario')this.value='';" value="Usuario" />
-					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Contraseña';" onfocus="if(this.value=='Contraseña')this.value='';" value="Contraseña" />
+				                <form action= <?php echo URL::base().Route::get('default')->uri(
+						        	array('controller' => 'search',
+						        	'action' => 'index',
+									'id' => 'realidad')); ?> method="get">					                
+					                <button class="search-btn"></button>
+					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Buscar';" onfocus="if(this.value=='Buscar')this.value='';" value="Buscar" />
 				                </form>
 			                </nav>
 
