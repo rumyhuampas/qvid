@@ -44,15 +44,14 @@
 			<h4>Ultimos blogs</h4>
 			<ul id="twitter-blog"></ul>
 	    	<?php
-			$blogs = helpers_db::getBlogs(2, 100);
 			foreach($blogs as $b): 
 			?>
 			<li>
 			    <h5><a href=<?php echo URL::base().Route::get('default')->uri(
 		        	array('controller' => 'blog',
 		        	'action' => 'read',
-					'id' => $b['id'])); ?> ><?php echo $b['title']; ?></a></h5>
-			    <p><span class="cut"><?php echo $b['text']; ?></span></p>
+					'id' => $b->Id)); ?> ><?php echo $b->Title; ?></a></h5>
+			    <p><span class="cut"><?php echo substr($b->Text, 0, 100).'...'; ?></span></p>
 		    </li>
 		    <?php endforeach ?>
     </aside>
