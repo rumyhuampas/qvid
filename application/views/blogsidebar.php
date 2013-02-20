@@ -4,10 +4,16 @@
 
 	    <!-- Search -->
 	    <nav class="widget-search">
-		    <form action="http://vasterad.com/themes/nevia/404-page.html" method="get">
+	    	<?php 
+        		echo Form::open('search/index', array('method' => 'POST'));
+        		echo Form::button('searchbutton', '', array('type' => "submit", 'class' => "search-btn-widget"));
+				echo Form::input('searchfield', 'Buscar', array('class' => "search-field", 'onblur' => "if(this.value=='')this.value='Buscar';", 'onfocus' => "if(this.value=='Buscar')this.value='';"));
+				echo Form::close(); 
+        	?>
+		    <!--<form action="http://vasterad.com/themes/nevia/404-page.html" method="get">
 			    <button class="search-btn-widget"></button>
 			    <input class="search-field" type="text" onblur="if(this.value=='')this.value='Buscar';" onfocus="if(this.value=='Buscar')this.value='';" value="Buscar" />
-		    </form>
+		    </form>-->
 	    </nav>
 	    <div class="clearfix"></div>
 
