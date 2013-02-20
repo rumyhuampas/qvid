@@ -7,7 +7,12 @@ Class Controller_Search extends Controller
         $view=View::factory('blog');
 		$view->title = "Busqueda";
 		$view->menuid = '0';
-		$search = $this->request->param('id');
+		if(isset($_POST['searchfield'])){
+			$search = $_POST['searchfield'];
+		}
+		else{
+			$search = '';	
+		}
 		$view->blogTitle = 'Busqueda: "'.$search.'"';
 		$view->blogs = ORM::factory('blog')->where_open()->or_where('title', 'LIKE', '%'.$search.'%')
 			->or_where('text', 'LIKE', '%'.$search.'%')
@@ -16,4 +21,4 @@ Class Controller_Search extends Controller
 			->and_where('published', '=', 'T')->order_by('created_at', 'DESC')->find_all();
 		$this->response->body($view->render());
     }
-} // End ServSecurity
+} // End Search

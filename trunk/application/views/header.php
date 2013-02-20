@@ -92,13 +92,19 @@
 
 			                <!-- Search -->
 			                <nav class="top-search">
-				                <form action= <?php echo URL::base().Route::get('default')->uri(
+			                	<?php 
+			                		echo Form::open('search/index', array('method' => 'POST'));
+			                		echo Form::button('searchbutton', '', array('type' => "submit", 'class' => "search-btn"));
+									echo Form::input('searchfield', 'Buscar', array('class' => "search-field", 'onblur' => "if(this.value=='')this.value='Buscar';", 'onfocus' => "if(this.value=='Buscar')this.value='';"));
+									echo Form::close(); 
+			                	?>
+				                <!--<form action= <?php echo URL::base().Route::get('default')->uri(
 						        	array('controller' => 'search',
 						        	'action' => 'index',
-									'id' => 'realidad')); ?> method="get">					                
+									'id' => 'test')); ?> method="get">					                
 					                <button class="search-btn"></button>
 					                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Buscar';" onfocus="if(this.value=='Buscar')this.value='';" value="Buscar" />
-				                </form>
+				                </form>-->
 			                </nav>
 
 		                </div>
