@@ -35,14 +35,14 @@
 		        <h3>Conozca a nuestro equipo</h3><br />
 	        </div>
 
-			<?php $team = helpers_db::getTeam(); 
+			<?php 
 			foreach($team as $t): ?>
-	        <!-- About -->
-	        <div class="one-third column">
-		        <img src=<?php echo URL::base().$t['imagepath']?> alt=""/>
-		        <div class="team-name"><h5><?php echo $t['name']?></h5> <span><?php echo $t['name2']?></span></div>
-		        <div class="team-about"><p><?php echo $t['text']?></p></div>
-	        </div>
+		        <!-- About -->
+		        <div class="one-third column">
+			        <img src=<?php echo URL::base().$t->imagepath?> alt=""/>
+			        <div class="team-name"><h5><?php echo $t->Name?></h5> <span><?php echo $t->Name2?></span></div>
+			        <div class="team-about"><p><?php echo $t->Text?></p></div>
+		        </div>
 	        <?php endforeach; ?>
         </div>
         <!-- 960 Container / End -->

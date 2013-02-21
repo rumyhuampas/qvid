@@ -9,64 +9,36 @@
 	    <div id="layerslider" style="width: 1020px; height: 450px; margin: 0 auto;">
 	    	
 	    	<?php
-			$slides = helpers_db::getHomeSlides();
 			$i = 0;
 			foreach ($slides as $sl):
-			if($i % 2 == 0){ ?>
-		    <!-- Slides -->
-		    <article class="ls-layer" style="slidedelay: 7000;">
-			    <img src=<?php echo URL::base().$sl['path'] ?> class="ls-bg" alt="">
-			    <!--<img class="ls-s4" src="images/slide-01a.png" style="top: 30px; left: 120px; slidedirection: bottom; slideoutdirection: bottom; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;" alt=""/>-->
-			    <h3 class="ls-s1 caption-color"
-			    	style="top: 357px; left: 756px; 
-			    	slidedirection: right; slideoutdirection: right; 
-			    	durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;">
-			    	<?php echo $sl['description'] ?>
-			    </h3>
-		    <?php 
-			}
-			else {
-		    ?>
-		    <article class="ls-layer" style="slidedelay: 7000; slidedirection: top;">
-			    <img src=<?php echo URL::base().$sl['path'] ?> class="ls-bg" alt="">
-			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">
-			    	<?php echo $sl['description'] ?>
-			    </h3>
-		    <?php
-			}
-			?>
-		    </article>
-		    
-		    <?php 
-		    $i++;
+				if($i % 2 == 0){ ?>
+			    	<!-- Slides -->
+			    	<article class="ls-layer" style="slidedelay: 7000;">
+				    	<img src=<?php echo URL::base().$sl->Path ?> class="ls-bg" alt="">
+					    <!--<img class="ls-s4" src="images/slide-01a.png" style="top: 30px; left: 120px; slidedirection: bottom; slideoutdirection: bottom; durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;" alt=""/>-->
+					    <h3 class="ls-s1 caption-color"
+					    	style="top: 357px; left: 756px; 
+					    	slidedirection: right; slideoutdirection: right; 
+					    	durationin: 400; durationout: 1000; easingin: easeOutExpo; delayin: 1000;">
+					    	<?php echo $sl->Description ?>
+					    </h3>
+			    <?php 
+				}
+				else {
+			    ?>
+				    <article class="ls-layer" style="slidedelay: 7000; slidedirection: top;">
+					    <img src=<?php echo URL::base().$sl->Path ?> class="ls-bg" alt="">
+					    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">
+					    	<?php echo $sl->Description ?>
+					    </h3>
+			    <?php
+				}
+				?>
+			    	</article>
+			    
+			    <?php 
+			    $i++;
 		    endforeach ?>
-		
-		    <!-- Slide 2 
-		    <article class="ls-layer" style="slidedelay: 7000; slidedirection: top;">
-			    <img src="assets/images/resources/home/slide2.jpg" class="ls-bg" alt="">
-                <img src="images/slide-02.png" class="ls-bg" alt="">
-			    <img class="ls-s4" src="images/slide-02a.png" style="top: 50%; left: 260px; slidedirection: left; slideoutdirection: left; durationin: 800; durationout: 800; easingin : easeOutExpo; delayin : 1200;" alt=""/>
-			    <img class="ls-s4" src="images/slide-02b.png" style="top: 50%; left: 544px; slidedirection: right; slideoutdirection: right; durationin: 800; durationout: 800; easingin : easeOutExpo; delayin : 1200;" alt=""/>
-			
-			    <img class="ls-s4" src="images/slide-02c.png" style="top: 230px; left: 494px; slidedirection: top; durationin: 800; durationout: 800; easingin : easeOutExpo; delayin : 1200;" alt=""/>
-			
-			    <img class="ls-s2" src="images/slide-02d.png" style="top: 15px; left: -142px; slidedirection: left; slideoutdirection: left; durationin: 600; durationout: 1000; easingin: easeOutExpo; delayin: 1200;" alt=""/>
-			    <img class="ls-s2" src="images/slide-02e.png" style="top: 15px; left: 784px; slidedirection: right; slideoutdirection: right; durationin: 600; durationout: 1000; easingin: easeOutExpo; delayin: 1200;" alt=""/>
-		    </article>
-		
-		    <!-- Slide 3
-		    <article class="ls-layer" style="slidedelay: 7000;">
-			    <img src="assets/images/resources/home/slide3.jpg" class="ls-bg" alt="">
-                <img src="images/slide-03.jpg" class="ls-bg" alt="">
-			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">Image in Slide Directly</h3>
-		    </article>
-
-            <!-- Slide 4
-		    <article class="ls-layer" style="slidedelay: 7000;">
-			    <img src="assets/images/resources/home/slide4.jpg" class="ls-bg" alt="">
-                <img src="images/slide-03.jpg" class="ls-bg" alt="">
-			    <h3 class="ls-s1 caption-transparent" style="top: 357px; left: 40px;">Image in Slide Directly</h3>
-		    </article>-->
 
 	    </div>					
     </section>
@@ -134,10 +106,9 @@
 				    <div class="video">
 				    	<div class="videoloader">
 				        	<?php
-							$video = helpers_db::getHomeVideo();
-							if(count($video) > 0): 
+							if(count($videos) > 0): 
 							?>
-	                        <iframe width="560" height="315" src=<?php echo $video[0]['path']?> frameborder="0"></iframe>
+	                        	<iframe width="560" height="315" src=<?php echo $videos[0]->Path?> frameborder="0"></iframe>
 	                        <?php endif ?>
 	                    </div>
                    	</div>
@@ -173,17 +144,16 @@
 		    <section class="jcarousel recent-work-jc">
 			    <ul>
 			    	<?php
-					$services = helpers_db::getHomeServices();
 					foreach ($services as $srv):
 					?>
 					<!-- Recent Work Item -->
 				    <li class="four columns">
-					    <a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => $srv['link'])); ?> class="portfolio-item">
+					    <a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => $srv->Link)); ?> class="portfolio-item">
 						    <figure>
-							    <img src=<?php echo URL::base().$srv['path'] ?> alt=<?php echo $srv['filename'] ?>/>
+							    <img src=<?php echo URL::base().$srv->Path ?> alt=<?php echo $srv->FileName ?>/>
 							    <figcaption class="item-description">
-								    <h5><?php echo $srv['filename'] ?></h5>
-								    <span><?php echo $srv['description'] ?></span>
+								    <h5><?php echo $srv->FileName ?></h5>
+								    <span><?php echo $srv->Description ?></span>
 							    </figcaption>
 						    </figure>
 					    </a>
@@ -247,8 +217,6 @@
 	    <div class="eight columns">
 
 		    <h3 class="margin-1">Testimonios <span>/ Que dicen nuestros clientes</span></h3>
-
-			<?php $testimonials = helpers_db::getPageData('TESTIMONIAL') ?>
 			
 		    <!-- Testimonial Rotator -->
 		    <section class="flexslider testimonial-slider">
@@ -256,9 +224,9 @@
 			    	<?php foreach($testimonials as $tmonial): ?>
 			    		
 				    <li class="testimonial">
-					    <div class="testimonials"><?php echo $tmonial['text'] ?></div>
+					    <div class="testimonials"><?php echo $tmonial->Text ?></div>
 					    <div class="testimonials-bg"></div>
-					    <div class="testimonials-author"><?php echo $tmonial['name'] ?>, <span><?php echo $tmonial['name2'] ?></span></div>
+					    <div class="testimonials-author"><?php echo $tmonial->Name ?>, <span><?php echo $tmonial->Name2 ?></span></div>
 				    </li>
 				    
 				    <?php endforeach ?>
