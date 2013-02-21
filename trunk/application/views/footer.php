@@ -21,9 +21,9 @@
 		        <div class="six columns">
 			        <h4>Detalles de Contacto</h4>
 			        <ul class="contact-details-alt">
-				        <li><i class="halflings white map-marker"></i> <p><strong>Dirección: </strong><?php echo $offData[1]['text']?></p></li>
-				        <li><i class="halflings white user"></i> <p><strong>Telefono:</strong> <?php echo $offData[0]['text'] ?></p></li>
-				        <li><i class="halflings white envelope"></i> <p><strong>Email:</strong> <a href="#"><?php echo $offData[2]['text'] ?></a></p></li>
+				        <li><i class="halflings white map-marker"></i> <p><strong>Dirección: </strong><?php echo $qvidAddress->Text?></p></li>
+				        <li><i class="halflings white user"></i> <p><strong>Telefono:</strong> <?php echo $qvidPhone->Text ?></p></li>
+				        <li><i class="halflings white envelope"></i> <p><strong>Email:</strong> <a href="#"><?php echo $qvidEmail->Text ?></a></p></li>
 			        </ul>
 		        </div>
 
@@ -41,7 +41,7 @@
 		        <div class="four columns">
 			        <h4>Social</h4>
 			        <ul id="facebook">
-                        <li><a href="http://www.facebook.com/qvid"><?php echo $offData[3]['text'] ?></a></li>
+                        <li><a href="http://www.facebook.com/qvid"><?php echo $qvidFacebook->Text ?></a></li>
                     </ul>
                             
 				        <!-- <script type="text/javascript">

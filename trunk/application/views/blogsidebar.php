@@ -21,14 +21,17 @@
 	    <nav class="widget">
 		    <h4>Top Bloggers</h4>
 		    <ul class="categories">
-		    <?php $bloggers = helpers_db::getTopBloggers();
+		    <?php $bloggers = ORM::factory('user')->select(array(DB::expr('COUNT(blogs.user_id)'), 'usercount'))
+		    	->join('blogs')->on('blogs.user_id', '=', 'user.id')
+				->group_by('blogs.user_id')
+				->order_by(DB::expr('COUNT(blogs.user_id)'), 'DESC')->find_all();
 			foreach($bloggers as $bggs): 
 		    ?>
 		    
 			    <li><a href=<?php echo URL::base().Route::get('default')->uri(
 					        	array('controller' => 'blog',
 					        	'action' => 'getuserblogs',
-								'id' => $bggs['userid'])); ?>><?php echo $bggs['username'] ?> - <?php echo $bggs['usercount'] ?> blogs</a></li>
+								'id' => $bggs->Id)); ?>><?php echo $bggs->Name ?> - <?php echo $bggs->usercount ?> blogs</a></li>
 			<?php endforeach ?>
 		    </ul>
 	    </nav>

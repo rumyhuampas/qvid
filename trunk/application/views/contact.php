@@ -42,13 +42,13 @@
 				    <h4>Informacion General</h4>
 
 				    <ul class="contact-informations">
-					    <li><span class="address"><?php echo $offData[1]['text'] ?></span></li>
+					    <li><span class="address"><?php echo $qvidAddress->Text?></span></li>
 				    </ul>
 
 				    <ul class="contact-informations second">
-					    <li><i class="halflings headphones"></i> <p><?php echo $offData[0]['text'] ?></p></li>
-					    <li><i class="halflings envelope"></i> <p><?php echo $offData[2]['text'] ?></p></li>
-					    <li><i class="halflings globe"></i> <p><?php echo $offData[3]['text'] ?></p></li>
+					    <li><i class="halflings headphones"></i> <p><?php echo $qvidPhone->Text ?></p></li>
+					    <li><i class="halflings envelope"></i> <p><?php echo $qvidEmail->Text ?></p></li>
+					    <li><i class="halflings globe"></i> <p><?php echo $qvidFacebook->Text ?></p></li>
 				    </ul>
 
 			    </div>
