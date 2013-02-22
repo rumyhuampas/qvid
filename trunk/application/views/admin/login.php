@@ -1,13 +1,13 @@
 <?php include Kohana::find_file('views', 'admin/header'); ?>
 
-<div id="container">
+<div id="content">
 
 	<!-- Page Content -->
-    <div class="page-content">
-    
-    	<div class="container">
-    	
-    		<h3 class="margin">QVid Login</h3>
+	<div class="page-content">
+	
+		<div class="container">
+		
+			<h3 class="margin">QVid Login</h3>
 		
 			<section id="contact">
 		    	<?php 
@@ -29,11 +29,9 @@
 			    <div class="clearfix"></div>
 			</section>
 		</div>
-
-    </div>
-    <!-- Page Content / End -->
-
+	
 	</div>
+	<!-- Page Content / End -->
 
 </div>
 

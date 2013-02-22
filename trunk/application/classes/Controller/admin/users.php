@@ -5,7 +5,8 @@ Class Controller_Admin_Users extends Controller
     public function action_index()
     {
         $view=View::factory('admin/users');
-		$view->title = "QVid - Usuarios Admin";
+		$view->title = "QVid Admin - Usuarios";
+		$view->infomsg = $this->request->param('id');
 		$view->menuid = 6;
 		$view->users = ORM::factory('user')->find_all();
 		$this->response->body($view->render());
@@ -15,7 +16,8 @@ Class Controller_Admin_Users extends Controller
     {
     	if(!isset($_POST['username'])){
 	        $view=View::factory('admin/useredit');
-			$view->title = "QVid - Usuarios Admin";
+			$view->title = "QVid Admin - Usuarios";
+			$view->infomsg = null;
 			$view->menuid = 6;
 			$view->user = null;
 			$this->response->body($view->render());
@@ -27,7 +29,9 @@ Class Controller_Admin_Users extends Controller
 			$user->Description = $_POST['userdesc'];
 			$user->create();
 			
-			HTTP::redirect(Route::get('admin')->uri(array('controller' => 'users')));
+			$infomsg = array('0' => 'success', '1' => 'Exito', '2' => 'Usuario guardado con exito.');
+			
+			HTTP::redirect(Route::get('admin')->uri(array('controller' => 'users', 'id' => $infomsg)));
 		}
     }
 	
@@ -35,7 +39,8 @@ Class Controller_Admin_Users extends Controller
     {
     	if(!isset($_POST['username'])){
 	        $view=View::factory('admin/useredit');
-			$view->title = "QVid - Usuarios Admin";
+			$view->title = "QVid Admin - Usuarios";
+			$view->infomsg = null;
 			$view->menuid = 6;
 			$view->user = ORM::factory('user', $this->request->param('id'));
 			$this->response->body($view->render());

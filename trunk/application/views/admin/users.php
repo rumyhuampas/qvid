@@ -1,33 +1,14 @@
 <?php include Kohana::find_file('views', 'admin/header'); ?>
-
+	
 <div id="content">
 
-	<!-- 960 Container -->
-	<div class="container floated">
-	
-		<div class="sixteen floated page-title">
-	
-			<h2>QVid Admin - Usuarios</h2>
-	
-			<nav id="breadcrumbs">
-				<ul>
-					<li>Usted esta aqui:</li>
-				    <li><a href=<?php echo URL::base(); ?> >Inicio</a></li>
-				    <li>Admin</li>
-				    <li>Usuarios</li>
-				</ul>
-			</nav>
-	
-		</div>
-	
-	</div>
-	<!-- 960 Container / End -->
-	
-	<!-- Page Content -->
-    <div class="page-content">
-    
-    	<div class="container">
+	<?php include Kohana::find_file('views', 'admin/headertitle'); ?>	
 
+	<!-- Page Content -->
+	<div class="page-content">
+	
+		<div class="container">
+	
 		<!-- Regular Table
 		================================================== -->
 	
@@ -67,9 +48,9 @@
 	
 			</div>
 		</div>
-
-    </div>
-    <!-- Page Content / End -->
+	
+	</div>
+	<!-- Page Content / End -->
 
 </div>
 
