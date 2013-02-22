@@ -6,17 +6,15 @@ Class Controller_Admin_Login extends Controller
     {
         $view=View::factory('admin/login');
 		$view->title = "QVid - Login";
+		$view->menuid = 0;
 		$this->response->body($view->render());
 		
 		if(isset($_POST['loginuser'])){
 			HTTP::redirect(Route::get('admin')
 				->uri(array(
-					'controller' => 'home')
+					'controller' => 'home',
+					'id' => $_POST['loginuser'])
 				));
-			/*$this->request->redirect(Route::get('admin')
-				->uri(array(
-					'controller' => 'home')
-				));*/
 		}
     }
 }

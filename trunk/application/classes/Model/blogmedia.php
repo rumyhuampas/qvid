@@ -3,4 +3,5 @@
 Class Model_BlogMedia extends ORM
 {
 	protected $_table_name = 'blogmedia';
+	protected $_primary_key = 'Id';
 }	
