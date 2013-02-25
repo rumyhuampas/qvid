@@ -4,10 +4,10 @@
 	<div class="sixteen floated page-title">
 
 		<?php 
-		if($infomsg != null){ 
+		if(isset($infomsgtype)){ 
 		?>
-			<div class="notification '.<?php $infomsg[0] ?>.' closeable" id="notification" style="display: block;">
-				<p><span><?php $infomsg[1] ?></span> <?php $infomsg[2] ?></p>
+			<div class="<?php echo 'notification '.$infomsgtype.' closeable' ?>" id="notification" style="display: block;">
+				<p><span><?php echo $infomsgtitle ?></span> <?php echo $infomsgtext ?></p>
 			<a class="close" href="#"><i class="icon-remove"></i></a></div>
 		<?php
 		}
