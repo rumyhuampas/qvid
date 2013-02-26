@@ -14,7 +14,7 @@
 	
 			<div class="sixteen columns">
 				<!-- Headline -->
-				<h3 class="margin-reset">Usuarios</h3><br>
+				<h3 class="margin-reset">Equipo</h3><br>
 	
 				<table class="standard-table">
 	
@@ -22,22 +22,24 @@
 						<tr>
 							<th>Id</th>
 							<th>Nombre</th>
+							<th>Cargo</th>
 							<th>Descripcion</th>
 							<th>Imagen</th>
 							<th>Acciones</th>
 						</tr>
 						
 						<?php
-						foreach($users as $user){?>
+						foreach($team as $t){?>
 						<tr>
-							<td><?php echo $user->Id ?></td>
-							<td><?php echo $user->Name ?></td>
-							<td><?php echo $user->Description ?></td>
-							<td><?php echo $user->Image_Id ?></td>
+							<td><?php echo $t->Id ?></td>
+							<td><?php echo $t->Name ?></td>
+							<td><?php echo $t->Name2 ?></td>
+							<td><?php echo $t->Text ?></td>
+							<td><?php echo $t->Resource_Id ?></td>
 							<td>
-								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'new')); ?> >Nuevo</a> -
-								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'edit', 'id' => $user->Id)); ?> >Editar</a> -
-								<a href='#'><div class='deleteconfirm' href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'delete', 'id' => $user->Id)); ?> >Eliminar</div></a>
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'new')); ?> >Nuevo</a> -
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'edit', 'id' => $t->Id)); ?> >Editar</a> -
+								<a href='#'><div class='deleteconfirm' href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'delete', 'id' => $t->Id)); ?> >Eliminar</div></a>
 							</td>
 						</tr>
 						<?php }?>
