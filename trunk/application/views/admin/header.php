@@ -41,6 +41,7 @@
     <script src=<?php echo URL::base()."/scripts/jquery.jcarousel.js" ?> type="text/javascript"></script>
     <script src=<?php echo URL::base()."/scripts/jquery.fancybox.min.js" ?> type="text/javascript"></script>
     <script src=<?php echo URL::base()."/scripts/jquery.layerslider.min.js" ?> type="text/javascript"></script>
+    <script src=<?php echo URL::base()."/scripts/jquery.confirmdialog.js" ?> type="text/javascript"></script>
     <script src=<?php echo URL::base()."/scripts/custom.js" ?> type="text/javascript"></script>
 
     <body>
@@ -166,7 +167,7 @@
 	
 		                <li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'contact')); ?> id="5" menuid=<?php echo $menuid; ?>><i class="halflings white envelope"></i> Contacto</a></li>
 		                
-		                <li><a href=<?php echo URL::base().Route::get('admin')->uri(array('controller' => 'users')); ?> id="6" menuid=<?php echo $menuid; ?>><i class="halflings white user"></i> Usuarios</a></li>
+		                <li><a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users')); ?> id="6" menuid=<?php echo $menuid; ?>><i class="halflings white user"></i> Usuarios</a></li>
 	
 	                </ul>
 	                </nav>

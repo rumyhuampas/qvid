@@ -35,9 +35,10 @@
 							<td><?php echo $user->Description ?></td>
 							<td><?php echo $user->Image_Id ?></td>
 							<td>
-								<a href=<?php echo URL::base().Route::get('admin')->uri(array('controller' => 'users', 'action' => 'new')); ?> >Nuevo</a> -
-								<a href=<?php echo URL::base().Route::get('admin')->uri(array('controller' => 'users', 'action' => 'edit', 'id' => $user->Id)); ?> >Editar</a> -
-								<a href=<?php echo URL::base().Route::get('admin')->uri(array('controller' => 'users', 'action' => 'delete', 'id' => $user->Id)); ?> >Eliminar</a>
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'new')); ?> >Nuevo</a> -
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'edit', 'id' => $user->Id)); ?> >Editar</a> -
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'delete', 'id' => $user->Id)); ?> >Eliminar</a>
+								<a href='#'><div class='deleteconfirm'>Eliminar</div></a>
 							</td>
 						</tr>
 						<?php }?>

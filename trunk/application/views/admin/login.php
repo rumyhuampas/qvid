@@ -11,15 +11,15 @@
 		
 			<section id="contact">
 		    	<?php 
-	        		echo Form::open('admin/login', array('method' => 'POST'));
+	        		echo Form::open('admin/home/index', array('method' => 'POST'));
 						echo '<fieldset>';
 							echo '<div>';
 								echo Form::label('loginuser', 'Nombre');
-								echo Form::input('loginuser', 'Nombre', array('onblur' => "if(this.value=='')this.value='Nombre';", 'onfocus' => "if(this.value=='Nombre')this.value='';"));
+								echo Form::input('loginuser', '');
 							echo '</div>';
 							echo '<div>';
 								echo Form::label('loginpass', 'Contraseña');
-								echo Form::input('loginpass', 'Contrasena', array('onblur' => "if(this.value=='')this.value='Contrasena';", 'onfocus' => "if(this.value=='Contrasena')this.value='';"));
+								echo Form::input('loginpass', '');
 							echo '</div>';
 						echo '</fieldset>';
 						echo Form::button('loginbtn', 'Ingresar', array('class' => 'button medium color'));
