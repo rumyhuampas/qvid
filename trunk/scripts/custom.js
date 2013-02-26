@@ -394,20 +394,18 @@ $(window).resize(function () {
 	/*----------------------------------------------------*/
 	
 	$('.deleteconfirm').click(function(){
-		/*alert('test');*/
-        /*var elem = $(this).closest('.item');*/
         $.confirmdialog({
             'title'     : 'Confirmar eliminacion',
             'message'   : 'Usted esta por eliminar el item. <br />Esta seguro?',
             'buttons'   : {
-                'Yes'   : {
+                'Si'   : {
                     'class' : 'blue',
                     'action': function(){
                         //elem.slideUp();
                     }
                 },
                 'No'    : {
-                    'class' : 'gray',
+                    'class' : 'blue',
                     'action': function(){}  // Nothing to do in this case. You can as well omit the action property.
                 }
             }
