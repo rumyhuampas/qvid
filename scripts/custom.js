@@ -394,6 +394,7 @@ $(window).resize(function () {
 	/*----------------------------------------------------*/
 	
 	$('.deleteconfirm').click(function(){
+		var dialog = $(this);
         $.confirmdialog({
             'title'     : 'Confirmar eliminacion',
             'message'   : 'Usted esta por eliminar el item. <br />Esta seguro?',
@@ -401,7 +402,7 @@ $(window).resize(function () {
                 'Si'   : {
                     'class' : 'blue',
                     'action': function(){
-                        //elem.slideUp();
+                        $(location).attr('href', dialog.attr('href'));
                     }
                 },
                 'No'    : {

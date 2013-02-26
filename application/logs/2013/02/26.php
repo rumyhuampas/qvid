@@ -13,3 +13,173 @@
 #9 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #10 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
 #11 {main} in C:\wamp\www\qvid\application\views\admin\login.php:38
+2013-02-26 19:41:44 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:41:44 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:41:56 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:41:56 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:42:25 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:42:25 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:42:33 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:42:33 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:44:05 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:44:05 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:44:08 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:44:08 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:44:15 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:44:15 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:51:42 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:51:42 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:52:06 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:52:06 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:52:28 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:52:28 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:53:02 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:53:02 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:55:12 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 19:55:12 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 20:02:27 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 20:02:27 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 20:08:34 --- CRITICAL: Database_Exception [ 1451 ]: Cannot delete or update a parent row: a foreign key constraint fails (`qvid`.`blogs`, CONSTRAINT `FK_blogs_users` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`)) [ DELETE FROM `users` WHERE `Id` = '1' ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 20:08:34 --- DEBUG: #0 C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(4, 'DELETE FROM `us...', false, Array)
+#1 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(1439): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 C:\wamp\www\qvid\application\classes\Controller\admin\users.php(104): Kohana_ORM->delete()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Users->action_delete()
+#4 [internal function]: Kohana_Controller->execute()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Users))
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#9 {main} in C:\wamp\www\qvid\modules\database\classes\Kohana\Database\Query.php:251
+2013-02-26 20:38:39 --- CRITICAL: Kohana_Exception [ 0 ]: The Name2 property does not exist in the Model_User class ~ MODPATH\orm\classes\Kohana\ORM.php [ 684 ] in C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php:600
+2013-02-26 20:38:39 --- DEBUG: #0 C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php(600): Kohana_ORM->get('Name2')
+#1 C:\wamp\www\qvid\application\views\admin\teamedit.php(50): Kohana_ORM->__get('Name2')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#3 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#4 C:\wamp\www\qvid\application\classes\Controller\admin\team.php(54): Kohana_View->render()
+#5 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Team->action_edit()
+#6 [internal function]: Kohana_Controller->execute()
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Team))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#9 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#10 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#11 {main} in C:\wamp\www\qvid\modules\orm\classes\Kohana\ORM.php:600
+2013-02-26 20:39:10 --- CRITICAL: ErrorException [ 1 ]: Class 'Model_team' not found ~ MODPATH\orm\classes\Kohana\ORM.php [ 46 ] in :
+2013-02-26 20:39:10 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :

@@ -5,7 +5,7 @@ $error_id = uniqid('error');
 
 $title = 'QVid';
 $menuid = 0;
-include Kohana::find_file('views', 'header');
+include Kohana::find_file('views', 'qvidheader');
 
 ?>
 
