@@ -27,18 +27,27 @@ Class Controller_Admin_Users extends Controller
 			$this->response->body($view->render());
 		}
 		else{
-			$user = ORM::factory('user');
-			$user->Name = $_POST['username'];
-			$user->Password = $_POST['userpass'];
-			$user->Description = $_POST['userdesc'];
-			$user->create();
-			
-			HTTP::redirect(Route::get('adminidinfomsg')->uri(array('controller' => 'users','action' => 'index',
-				'id' => $user->Id,
-				'msgtype' => 'success',
-				'msgtitle' => 'Exito!',
-				'msgtext' => 'Usuario creado con exito.')
-			));
+			if($_POST['userpass'] == $_POST['userrepass']){
+				$user = ORM::factory('user');
+				$user->Name = $_POST['username'];
+				$user->Password = $_POST['userpass'];
+				$user->Description = $_POST['userdesc'];
+				$user->create();
+				
+				HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users','action' => 'index',
+					'msgtype' => 'success',
+					'msgtitle' => 'Exito!',
+					'msgtext' => 'Usuario creado con exito.')
+				));
+			}
+			else{
+				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'new',
+					'id' => '-1',
+					'msgtype' => 'error',
+					'msgtitle' => 'Error!',
+					'msgtext' => 'Las contrasenas deben ser iguales.')
+				));
+			}
 		}
     }
 	
@@ -63,15 +72,14 @@ Class Controller_Admin_Users extends Controller
 					$user->Description = $_POST['userdesc'];
 					$user->update();
 					
-					HTTP::redirect(Route::get('adminidinfomsg')->uri(array('controller' => 'users', 'action' => 'index',
-						'id' => '-1',
+					HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
 						'msgtype' => 'success',
 						'msgtitle' => 'Exito!',
 						'msgtext' => 'Usuario modificado con exito.')
 					));
 				}
 				else{
-					HTTP::redirect(Route::get('adminidinfomsg')->uri(array('controller' => 'users', 'action' => 'edit',
+					HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
 						'id' => $_POST['userid'],
 						'msgtype' => 'error',
 						'msgtitle' => 'Error!',
@@ -80,11 +88,11 @@ Class Controller_Admin_Users extends Controller
 				}
 			}
 			else{
-				HTTP::redirect(Route::get('adminidinfomsg')->uri(array('controller' => 'users', 'action' => 'edit',
+				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
 					'id' => $_POST['userid'],
 					'msgtype' => 'error',
 					'msgtitle' => 'Error!',
-					'msgtext' => 'Las contrasenas nuevas deben ser iguales')
+					'msgtext' => 'Las contrasenas nuevas deben ser iguales.')
 				));
 			}
 		}
@@ -95,8 +103,7 @@ Class Controller_Admin_Users extends Controller
         $user = ORM::factory('user', $this->request->param('id'));
 		$user->delete();
 		
-		HTTP::redirect(Route::get('adminidinfomsg')->uri(array('controller' => 'users', 'action' => 'index',
-			'id' => '-1',
+		HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
 			'msgtype' => 'success',
 			'msgtitle' => 'Exito!',
 			'msgtext' => 'Usuario eliminado con exito.')

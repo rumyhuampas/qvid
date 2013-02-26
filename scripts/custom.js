@@ -388,14 +388,37 @@ $(window).resize(function () {
 		});
 
 	});
+	
+	/*----------------------------------------------------*/
+	/*	CONFIRM DIALOG
+	/*----------------------------------------------------*/
+	
+	$('.deleteconfirm').click(function(){
+		/*alert('test');*/
+        /*var elem = $(this).closest('.item');*/
+        $.confirmdialog({
+            'title'     : 'Confirmar eliminacion',
+            'message'   : 'Usted esta por eliminar el item. <br />Esta seguro?',
+            'buttons'   : {
+                'Yes'   : {
+                    'class' : 'blue',
+                    'action': function(){
+                        //elem.slideUp();
+                    }
+                },
+                'No'    : {
+                    'class' : 'gray',
+                    'action': function(){}  // Nothing to do in this case. You can as well omit the action property.
+                }
+            }
+        });
+	});
 
 
 /* ------------------ End Document ------------------ */
 });
 
 })(this.jQuery);
-
-
 
 (function()
 {

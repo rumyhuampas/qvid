@@ -123,21 +123,35 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('adminidinfomsg', '<directory>(/<controller>(/<action>/<id>/<msgtype>/<msgtitle>/<msgtext>))', 
+Route::set('admin', '<directory>(/<controller>/<action>)', 
+	array('directory' => '(admin)'))
+    ->defaults(array(
+        'directory'  => 'admin',
+        'controller' => 'login',
+        'action' => 'index',
+));
+Route::set('adminwithid', '<directory>(/<controller>/<action>/<id>)', 
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
         'controller' => 'home',
         'action' => 'index',
-        'msgtype' => 'success',
-        'msgtitle' => 'Exito!',
-        'msgtext' => 'La operacion se completo exitosamente.'
+        'id' => '-1'
+)); 
+Route::set('adminwithmsg', '<directory>(/<controller>/<action>/<msgtype>/<msgtitle>/<msgtext>)', 
+	array('directory' => '(admin)'))
+    ->defaults(array(
+        'directory'  => 'admin',
+        'controller' => 'home',
+        'action' => 'index'
 ));
-Route::set('admin', '<directory>(/<controller>(/<action>(/<id>)))', array('directory' => '(admin)'))
-->defaults(array(
-    'directory'  => 'admin',
-    'controller' => 'login',
-    'action'     => 'index',
+Route::set('adminwithidmsg', '<directory>(/<controller>/<action>/<id>/<msgtype>/<msgtitle>/<msgtext>)', 
+	array('directory' => '(admin)'))
+    ->defaults(array(
+        'directory'  => 'admin',
+        'controller' => 'home',
+        'action' => 'index',
+        'id' => '-1'
 ));
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
