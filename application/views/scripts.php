@@ -1,0 +1,14 @@
+<script src=<?php echo URL::base()."/scripts/jquery.min.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery-ui.min.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.flexslider.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.selectnav.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.twitter.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.modernizr.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.easing.1.3.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.contact.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.isotope.min.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.jcarousel.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.fancybox.min.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.layerslider.min.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.confirmdialog.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/custom.js" ?> type="text/javascript"></script>

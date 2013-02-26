@@ -7,4 +7,4 @@
 
 </div>
 
-<?php include Kohana::find_file('views', 'admin/footer'); ?>
+<?php include Kohana::find_file('views', 'footer'); ?>
