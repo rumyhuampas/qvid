@@ -3246,6 +3246,10 @@
 	width:220px;
 }
 
+ #contact fieldset div input.large  {
+	width:440px;
+}
+
  #contact textarea  {
 	max-width:620px;
 	min-width:620px;
