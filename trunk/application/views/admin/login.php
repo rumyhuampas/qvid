@@ -1,17 +1,17 @@
 <?php include Kohana::find_file('views', 'admin/header'); ?>
 
 <div id="content">
+	
+	<?php include Kohana::find_file('views', 'admin/headertitle'); ?>
 
 	<!-- Page Content -->
 	<div class="page-content">
 	
 		<div class="container">
 		
-			<h3 class="margin">QVid Login</h3>
-		
 			<section id="contact">
 		    	<?php 
-	        		echo Form::open('admin/home/index', array('method' => 'POST'));
+	        		echo Form::open('admin/login/index', array('method' => 'POST'));
 						echo '<fieldset>';
 							echo '<div>';
 								echo Form::label('loginuser', 'Nombre');
@@ -19,7 +19,7 @@
 							echo '</div>';
 							echo '<div>';
 								echo Form::label('loginpass', 'Contraseña');
-								echo Form::input('loginpass', '');
+								echo Form::input('loginpass', '', array('type' => 'password'));
 							echo '</div>';
 						echo '</fieldset>';
 						echo Form::button('loginbtn', 'Ingresar', array('class' => 'button medium color'));

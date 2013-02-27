@@ -83,13 +83,14 @@
 				    <script src=<?php echo URL::base()."scripts/jquery.gmap.min.js" ?>></script>
 
 				    <script type="text/javascript">
+				    var location = <?php echo $location; ?>;
 				    jQuery('#googlemaps').gMap({
 					    maptype: 'ROADMAP',
 					    scrollwheel: false,
 					    zoom: 16,
 					    markers: [
 						    {
-							    address: "-26.821524,-65.213417", // Your Adress Here
+							    address: location, // Your Adress Here
 							    html: '',
 							    popup: false,
 						    }
