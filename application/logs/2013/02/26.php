@@ -183,3 +183,27 @@
 2013-02-26 20:39:10 --- CRITICAL: ErrorException [ 1 ]: Class 'Model_team' not found ~ MODPATH\orm\classes\Kohana\ORM.php [ 46 ] in :
 2013-02-26 20:39:10 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
 #1 {main} in :
+2013-02-26 22:27:59 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: basic ~ APPPATH\views\admin\basics.php [ 29 ] in C:\wamp\www\qvid\application\views\admin\basics.php:29
+2013-02-26 22:27:59 --- DEBUG: #0 C:\wamp\www\qvid\application\views\admin\basics.php(29): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\admin\basics.php(14): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Basics->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Basics))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\admin\basics.php:29
+2013-02-26 22:28:57 --- CRITICAL: ErrorException [ 8 ]: Undefined property: Database_MySQL_Result::$Name ~ APPPATH\views\admin\basics.php [ 29 ] in C:\wamp\www\qvid\application\views\admin\basics.php:29
+2013-02-26 22:28:57 --- DEBUG: #0 C:\wamp\www\qvid\application\views\admin\basics.php(29): Kohana_Core::error_handler(8, 'Undefined prope...', 'C:\wamp\www\qvi...', 29, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\View.php(61): include('C:\wamp\www\qvi...')
+#2 C:\wamp\www\qvid\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\wamp\www\qvi...', Array)
+#3 C:\wamp\www\qvid\application\classes\Controller\admin\basics.php(14): Kohana_View->render()
+#4 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_Basics->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_Basics))
+#7 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\wamp\www\qvid\application\views\admin\basics.php:29
