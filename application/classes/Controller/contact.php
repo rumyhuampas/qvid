@@ -7,6 +7,7 @@ Class Controller_Contact extends Controller
         $view=View::factory('contact');
 		$view->title = "Contacto";
 		$view->menuid = '5';
+		$view->location = ORM::factory('pagedata')->where('tag', '=', 'LOCATION')->and_where('published', '=', 'T')->find();
 		$this->response->body($view->render());
     }
 } // End Contact

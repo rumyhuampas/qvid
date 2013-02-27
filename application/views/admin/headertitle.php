@@ -15,14 +15,15 @@
 
 		<h2><?php echo $title ?></h2>
 
-		<nav id="breadcrumbs">
-			<ul>
-				<li>Usted esta aqui:</li>
-			    <li><a href=<?php echo URL::base(); ?> >Inicio</a></li>
-			    <li>Admin</li>
-			    <li>Usuarios</li>
-			</ul>
-		</nav>
+		<?php if(!isset($islogin)){?>
+			<nav id="breadcrumbs">
+				<ul>
+				    <li><a href=<?php echo URL::base().Route::get('admin')->uri(array('controller' => 'login', 'action' => 'index')); ?> >Salir de Admin</a></li>
+				</ul>
+			</nav>
+		<?php
+		}
+		?>
 
 	</div>
 
