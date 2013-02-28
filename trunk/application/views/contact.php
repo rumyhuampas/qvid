@@ -81,16 +81,16 @@
 
 				    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 				    <script src=<?php echo URL::base()."scripts/jquery.gmap.min.js" ?>></script>
-
+					<?php echo $location->Text; ?>
 				    <script type="text/javascript">
-				    var location = <?php echo $location; ?>;
+				    var loc = "<?php echo $location->Text; ?>";
 				    jQuery('#googlemaps').gMap({
 					    maptype: 'ROADMAP',
 					    scrollwheel: false,
 					    zoom: 16,
 					    markers: [
 						    {
-							    address: location, // Your Adress Here
+							    address: loc, // Your Adress Here
 							    html: '',
 							    popup: false,
 						    }
@@ -110,7 +110,28 @@
 					    <!-- Success Message -->
 					    <mark id="message"></mark>
 
-					    <!-- Form -->
+						<?php
+						echo Form::open('admin/contact/sendemail', array('method' => 'POST'));
+							echo '<fieldset>';
+								echo '<div>';
+									echo Form::label('name', 'Nombre');
+									echo Form::input('name', 'Nombre', array('onblur' => "if(this.value=='')this.value='Nombre';", 'onfocus' => "if(this.value=='Nombre')this.value='';"));
+								echo '</div>';
+								echo '<div>';
+									echo Form::label('email', 'Email <span>*</span>');
+									echo Form::input('email', 'Email', array('type' => 'email', 'pattern' => "^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"));
+								echo '</div>';
+								echo '<div>';
+									echo Form::label('comments', 'Comentarios <span>*</span>');
+									echo Form::textarea('comments', '');
+								echo '</div>';
+							echo '</fieldset>';
+							echo Form::button('newtmbtn', 'Guardar', array('class' => 'button medium color'));
+							echo '<div class="clearfix"></div>';
+						echo Form::close();
+						?>
+						
+					    <!-- Form
 					    <form method="post" action="http://vasterad.com/themes/nevia/contact.php" name="contactform" id="contactform">
 
 						    <fieldset>
@@ -135,7 +156,7 @@
 						    <input type="submit" class="submit" id="submit" value="Enviar Mensaje" />
 						    <div class="clearfix"></div>
 
-					    </form>
+					    </form> -->
 
 				    </section>
 				    <!-- Contact Form / End -->
