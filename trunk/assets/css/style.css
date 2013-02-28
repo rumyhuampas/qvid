@@ -1430,6 +1430,11 @@
 	padding:40px 0;
 }
 
+.sidebar.center, .page-content.center{
+	width: 50%;
+    margin: 0px auto;
+}
+
  h4.margin  {
 	margin:0 0 10px 0;
 }
@@ -3236,7 +3241,7 @@
 
  .pricing-table .color-3 h4, .color-3 .sign-up .button  {
 	background-color:#169fe6;
-}
+} 
 
  #contact fieldset div  {
 	margin-bottom:20px;
@@ -3247,7 +3252,7 @@
 }
 
  #contact fieldset div input.large  {
-	width:440px;
+	width:520px;
 }
 
  #contact textarea  {

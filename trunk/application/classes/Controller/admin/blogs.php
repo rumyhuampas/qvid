@@ -1,29 +1,29 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 	
-Class Controller_Admin_Users extends Controller
+Class Controller_Admin_Blogs extends Controller
 {	
     public function action_index()
     {
-        $view=View::factory('admin/users');
-		$view->title = "QVid Admin - Usuarios";
-		$view->menuid = 3;
+        $view=View::factory('admin/blogs');
+		$view->title = "QVid Admin - Blogs";
+		$view->menuid = 2;
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->users = ORM::factory('user')->find_all();
+		$view->blogs = ORM::factory('blog')->find_all();
 		$this->response->body($view->render());
     }
 	
 	public function action_new()
     {
     	if(!isset($_POST['username'])){
-	        $view=View::factory('admin/useredit');
-			$view->title = "QVid Admin - Usuarios";
-			$view->menuid = 3;
+	        $view=View::factory('admin/blogedit');
+			$view->title = "QVid Admin - Blogs";
+			$view->menuid = 2;
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
-			$view->user = null;
+			$view->blog = null;
 			$this->response->body($view->render());
 		}
 		else{
@@ -34,14 +34,14 @@ Class Controller_Admin_Users extends Controller
 				$user->Description = $_POST['userdesc'];
 				$user->create();
 				
-				HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users','action' => 'index',
+				HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs','action' => 'index',
 					'msgtype' => 'success',
 					'msgtitle' => 'Exito!',
 					'msgtext' => 'Usuario creado con exito.')
 				));
 			}
 			else{
-				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'new',
+				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'blogs', 'action' => 'new',
 					'id' => '-1',
 					'msgtype' => 'error',
 					'msgtitle' => 'Error!',
@@ -54,13 +54,13 @@ Class Controller_Admin_Users extends Controller
 	public function action_edit()
     {
     	if(!isset($_POST['username'])){
-	        $view=View::factory('admin/useredit');
-			$view->title = "QVid Admin - Usuarios";
+	        $view=View::factory('admin/blogsedit');
+			$view->title = "QVid Admin - Blogs";
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->menuid = 3;
-			$view->user = ORM::factory('user', $this->request->param('id'));
+			$view->blog = ORM::factory('blog', $this->request->param('id'));
 			$this->response->body($view->render());
 		}
 		else{
@@ -72,14 +72,14 @@ Class Controller_Admin_Users extends Controller
 					$user->Description = $_POST['userdesc'];
 					$user->update();
 					
-					HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
+					HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs', 'action' => 'index',
 						'msgtype' => 'success',
 						'msgtitle' => 'Exito!',
 						'msgtext' => 'Usuario modificado con exito.')
 					));
 				}
 				else{
-					HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
+					HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'blogs', 'action' => 'edit',
 						'id' => $_POST['userid'],
 						'msgtype' => 'error',
 						'msgtitle' => 'Error!',
@@ -88,7 +88,7 @@ Class Controller_Admin_Users extends Controller
 				}
 			}
 			else{
-				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
+				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'blogs', 'action' => 'edit',
 					'id' => $_POST['userid'],
 					'msgtype' => 'error',
 					'msgtitle' => 'Error!',
@@ -100,10 +100,10 @@ Class Controller_Admin_Users extends Controller
 	
 	public function action_delete()
     {
-        $user = ORM::factory('user', $this->request->param('id'));
+        $user = ORM::factory('blog', $this->request->param('id'));
 		$user->delete();
 		
-		HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
+		HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs', 'action' => 'index',
 			'msgtype' => 'success',
 			'msgtitle' => 'Exito!',
 			'msgtext' => 'Usuario eliminado con exito.')

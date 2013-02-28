@@ -21,7 +21,7 @@ Class Controller_Admin_Login extends Controller
 				if($log->loaded()){
 					HTTP::redirect(Route::get('admin')
 						->uri(array(
-							'controller' => 'home',
+							'controller' => 'basics', 'action' => 'index',
 							'id' => $_POST['loginuser'])
 						));
 				}

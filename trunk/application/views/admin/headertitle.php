@@ -18,7 +18,11 @@
 		<?php if(!isset($islogin)){?>
 			<nav id="breadcrumbs">
 				<ul>
-				    <li><a href=<?php echo URL::base().Route::get('admin')->uri(array('controller' => 'login', 'action' => 'index')); ?> >Salir de Admin</a></li>
+				    <li><a href=<?php echo URL::base().Route::get('adminwithmsg')->uri(array('controller' => 'login','action' => 'index',
+						'msgtype' => 'success',
+						'msgtitle' => 'Gracias!',
+						'msgtext' => 'Gracias%20por%20utilizar%20nuestros%20servicios.')); ?> >
+						<div class='button medium color'>Salir de Admin</div></a></li>
 				</ul>
 			</nav>
 		<?php
