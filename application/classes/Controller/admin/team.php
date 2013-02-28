@@ -6,7 +6,7 @@ Class Controller_Admin_Team extends Controller
     {
         $view=View::factory('admin/team');
 		$view->title = "QVid Admin - Equipo";
-		$view->menuid = 2;
+		$view->menuid = 1;
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
@@ -19,7 +19,7 @@ Class Controller_Admin_Team extends Controller
     	if(!isset($_POST['tmname'])){
 	        $view=View::factory('admin/teamedit');
 			$view->title = "QVid Admin - Equipo";
-			$view->menuid = 2;
+			$view->menuid = 1;
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
@@ -51,7 +51,7 @@ Class Controller_Admin_Team extends Controller
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
-			$view->menuid = 2;
+			$view->menuid = 1;
 			$view->tm = ORM::factory('pagedata', $this->request->param('id'));
 			$this->response->body($view->render());
 		}

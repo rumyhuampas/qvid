@@ -7,7 +7,7 @@ Class Controller_Admin_Basics extends Controller
     	if(!isset($_POST['bphone'])){
 	        $view=View::factory('admin/basics');
 			$view->title = "QVid Admin - Informacion basica";
-			$view->menuid = 2;
+			$view->menuid = 1;
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
