@@ -134,7 +134,7 @@ Route::set('adminwithid', '<directory>(/<controller>/<action>/<id>)',
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
-        'controller' => 'home',
+        'controller' => 'login',
         'action' => 'index',
         'id' => '-1'
 )); 
@@ -142,14 +142,14 @@ Route::set('adminwithmsg', '<directory>(/<controller>/<action>/<msgtype>/<msgtit
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
-        'controller' => 'home',
+        'controller' => 'login',
         'action' => 'index'
 ));
 Route::set('adminwithidmsg', '<directory>(/<controller>/<action>/<id>/<msgtype>/<msgtitle>/<msgtext>)', 
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
-        'controller' => 'home',
+        'controller' => 'login',
         'action' => 'index',
         'id' => '-1'
 ));
@@ -158,3 +158,8 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
 		'controller' => 'home',
 		'action'     => 'index',
 ));
+
+/**
+ * Cookies secure salt
+ */
+Cookie::$salt = 'qvid quadcopter videos 31127435';
