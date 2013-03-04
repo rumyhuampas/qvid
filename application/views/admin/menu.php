@@ -14,10 +14,17 @@
         </ul>
     </li>
 
-    <li><a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs')); ?> id="2" menuid=<?php echo $menuid; ?>><i class="halflings white pencil"></i> Blog</a>
+    <li>
+    	<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs')); ?> id="2" menuid=<?php echo $menuid; ?>><i class="halflings white pencil"></i> Blog</a>
     </li>
     
-    <li><a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users')); ?> id="3" menuid=<?php echo $menuid; ?>><i class="halflings white user"></i> Usuarios</a></li>
+    <li>
+    	<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'mediaresources')); ?> id="3" menuid=<?php echo $menuid; ?>><i class="halflings white film"></i> Media</a>
+    </li>
+    
+    <li>
+    	<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users')); ?> id="4" menuid=<?php echo $menuid; ?>><i class="halflings white user"></i> Usuarios</a>
+    </li>
 
 </ul>
 </nav>

@@ -1,16 +1,16 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 	
-Class Controller_Admin_Users extends Controller
+Class Controller_Admin_MediaResources extends Controller
 {	
     public function action_index()
     {
-        $view=View::factory('admin/users');
-		$view->title = "QVid Admin - Usuarios";
-		$view->menuid = 4;
+        $view=View::factory('admin/mediaresources');
+		$view->title = "QVid Admin - Media";
+		$view->menuid = 3;
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->users = ORM::factory('user')->find_all();
+		$view->media = ORM::factory('mediaresource')->find_all();
 		$this->response->body($view->render());
     }
 	
@@ -19,7 +19,7 @@ Class Controller_Admin_Users extends Controller
     	if(!isset($_POST['username'])){
 	        $view=View::factory('admin/useredit');
 			$view->title = "QVid Admin - Usuarios";
-			$view->menuid = 4;
+			$view->menuid = 3;
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
@@ -59,7 +59,7 @@ Class Controller_Admin_Users extends Controller
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
-			$view->menuid = 4;
+			$view->menuid = 3;
 			$view->user = ORM::factory('user', $this->request->param('id'));
 			$this->response->body($view->render());
 		}
