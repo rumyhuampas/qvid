@@ -2811,7 +2811,14 @@
 	padding:0 0 0 18px;
 }
 
+.scrolldiv {
+	height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
  table.standard-table  {
+ 	overflow: scroll;
 	width:100%;
 	border-collapse:separate;
 	border-spacing:0;

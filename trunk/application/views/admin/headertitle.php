@@ -19,7 +19,7 @@
 			<nav id="breadcrumbs">
 				<ul>
 				    <li><a href=<?php echo URL::base().'admin/login/logoff' ?> >
-							<div class='button medium color'>Salir de Admin</div>
+							<div class='button color'>Salir de Admin</div>
 						</a>
 					</li>
 				</ul>
