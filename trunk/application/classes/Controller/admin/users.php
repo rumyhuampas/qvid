@@ -10,7 +10,9 @@ Class Controller_Admin_Users extends Controller
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->users = ORM::factory('user')->find_all();
+		$view->users = ORM::factory('user')
+			->select(array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=user.Image_id)'), 'imagepath'))
+			->find_all();
 		$this->response->body($view->render());
     }
 	
@@ -24,6 +26,7 @@ Class Controller_Admin_Users extends Controller
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->user = null;
+			$view->images = ORM::factory('mediaresource')->where('filetag', '=', 'UserImage')->find_all();
 			$this->response->body($view->render());
 		}
 		else{
@@ -60,7 +63,11 @@ Class Controller_Admin_Users extends Controller
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->menuid = 4;
-			$view->user = ORM::factory('user', $this->request->param('id'));
+			$view->user = ORM::factory('user')
+				->select(array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=user.Image_id)'), 'imagepath'))
+				->where('Id', '=', $this->request->param('id'))
+				->find();
+			$view->images = ORM::factory('mediaresource')->where('filetag', '=', 'UserImage')->find_all();
 			$this->response->body($view->render());
 		}
 		else{
