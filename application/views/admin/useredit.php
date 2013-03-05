@@ -32,11 +32,20 @@
 									echo Form::label('userrepass', 'Reingresar Contraseña');
 									echo Form::input('userrepass', '', array('type' => 'password'));
 								echo '</div>';
+								
+								include Kohana::find_file('views', 'admin/imagechoose');
+								
+								echo '<div>';
+									echo Form::label('userimg', 'Imagen');
+									echo Form::input('userimg', 'Imagen', array('readonly'));
+								echo '</div>';
+								
 								echo '<div>';
 									echo Form::label('userdesc', 'Descripcion');
 									echo Form::textarea('userdesc', 'Descripcion', array('onblur' => "if(this.value=='')this.value='Descripcion';", 'onfocus' => "if(this.value=='Descripcion')this.value='';"));
 								echo '</div>';
 							echo '</fieldset>';
+							
 							echo Form::button('newuserbtn', 'Guardar', array('class' => 'button medium color'));
 							echo '<div class="clearfix"></div>';
 						echo Form::close();
@@ -61,11 +70,20 @@
 									echo Form::label('userrepass', 'Reingresar Contraseña');
 									echo Form::input('userrepass', '', array('type' => 'password'));
 								echo '</div>';
+								
+								include Kohana::find_file('views', 'admin/imagechoose');
+								
+								echo '<div>';
+									echo Form::label('userimg', 'Imagen');
+									echo Form::input('userimg', $imageid, array('readonly'));
+								echo '</div>';
+								
 								echo '<div>';
 									echo Form::label('userdesc', 'Descripcion');
 									echo Form::textarea('userdesc', $user->Description, array('onblur' => "if(this.value=='')this.value='Descripcion';", 'onfocus' => "if(this.value=='Descripcion')this.value='';"));
 								echo '</div>';
 							echo '</fieldset>';
+							
 							echo Form::button('edituserbtn', 'Guardar', array('class' => 'button medium color'));
 							echo '<div class="clearfix"></div>';
 						echo Form::close();

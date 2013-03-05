@@ -34,7 +34,7 @@
 								<td><?php echo $user->Id ?></td>
 								<td><?php echo $user->Name ?></td>
 								<td><?php echo $user->Description ?></td>
-								<td><?php echo $user->Image_Id ?></td>
+								<td><img src=<?php echo URL::base().$user->imagepath ?> class="ls-bg" alt=""></td>
 								<td>
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'new')); ?> >Nuevo</a> -
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'edit', 'id' => $user->Id)); ?> >Editar</a> -
