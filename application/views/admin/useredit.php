@@ -37,8 +37,11 @@
 								
 								echo '<div>';
 									echo Form::label('userimg', 'Imagen');
-									echo Form::input('userimg', 'Imagen', array('readonly'));
+									echo Form::input('userimg', '', array('id' => 'userimg', 'readonly'));
+									echo '<div class="clearfix"></div>';
+									echo '<li class="three columns"><img src="#" id="chosenimage" /></li>';
 								echo '</div>';
+								echo '<div class="clearfix"></div>';
 								
 								echo '<div>';
 									echo Form::label('userdesc', 'Descripcion');
@@ -75,8 +78,11 @@
 								
 								echo '<div>';
 									echo Form::label('userimg', 'Imagen');
-									echo Form::input('userimg', $imageid, array('readonly'));
+									echo Form::input('userimg', $user->Image_Id, array('id' => 'userimg', 'readonly'));
+									echo '<div class="clearfix"></div>';
+									echo '<li class="three columns"><img src="'.URL::base().$user->imagepath.'" id="chosenimage" /></li>';
 								echo '</div>';
+								echo '<div class="clearfix"></div>';
 								
 								echo '<div>';
 									echo Form::label('userdesc', 'Descripcion');

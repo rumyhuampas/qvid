@@ -15,8 +15,11 @@
 	    <?php $imageid = -1; ?>
 	    <script languaje="JavaScript">
 		$(document).ready(function(){
-		    $("#chooseimage").click(function(){
-		    	alert($(this).closest('a').attr('id'));
+		    $(".chooseimage").click(function(){
+		    	$choseninput = jQuery('#userimg');
+		    	$chosen = jQuery('#chosenimage');
+		    	$choseninput.attr('value', $(this).closest("a").attr("id"));
+		    	$chosen.attr('src', $(this).attr("src"));
 		    });
 		});
 	    </script>
@@ -29,9 +32,9 @@
 				?>
 				<!-- Recent Work Item -->
 			    <li class="three columns">
-				    <a href='#' id=<?php $img->Id; ?> class="portfolio-item">
+				    <a id=<?php echo $img->Id; ?> class="portfolio-item">
 					    <figure>
-						    <img src=<?php echo URL::base().$img->Path ?> alt=<?php echo $img->FileName ?> id='chooseimage'  />
+						    <img src=<?php echo URL::base().$img->Path ?> alt=<?php echo $img->FileName ?> class='chooseimage'  />
 					    </figure>
 				    </a>
 			    </li>
