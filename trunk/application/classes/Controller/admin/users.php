@@ -35,6 +35,9 @@ Class Controller_Admin_Users extends Controller
 				$user->Name = $_POST['username'];
 				$user->Password = $_POST['userpass'];
 				$user->Description = $_POST['userdesc'];
+				if($_POST['userimg'] != ''){
+					$user->Image_Id = $_POST['userimg'];
+				}
 				$user->create();
 				
 				HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users','action' => 'index',
@@ -77,6 +80,9 @@ Class Controller_Admin_Users extends Controller
 					$user->Name = $_POST['username'];
 					$user->Password = $_POST['userpass'];
 					$user->Description = $_POST['userdesc'];
+					if($_POST['userimg'] != ''){
+						$user->Image_Id = $_POST['userimg'];
+					}
 					$user->update();
 					
 					HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
