@@ -130,22 +130,22 @@ Route::set('admin', '<directory>(/<controller>/<action>)',
         'controller' => 'login',
         'action' => 'index',
 ));
-Route::set('adminwithid', '<directory>(/<controller>/<action>/<id>)', 
+Route::set('adminwithid', '<directory>/<controller>(/<action>/<id>)', 
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
         'controller' => 'login',
         'action' => 'index',
         'id' => '-1'
-)); 
-Route::set('adminwithmsg', '<directory>(/<controller>/<action>/<msgtype>/<msgtitle>/<msgtext>)', 
+));
+Route::set('adminwithmsg', '<directory>/<controller>/<action>(/<msgtype>/<msgtitle>/<msgtext>)', 
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
         'controller' => 'login',
         'action' => 'index'
 ));
-Route::set('adminwithidmsg', '<directory>(/<controller>/<action>/<id>/<msgtype>/<msgtitle>/<msgtext>)', 
+Route::set('adminwithidmsg', '<directory>/<controller>/<action>(/<id>/<msgtype>/<msgtitle>/<msgtext>)', 
 	array('directory' => '(admin)'))
     ->defaults(array(
         'directory'  => 'admin',
