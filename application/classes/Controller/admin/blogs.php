@@ -16,7 +16,7 @@ Class Controller_Admin_Blogs extends Controller
 	
 	public function action_new()
     {
-    	if(!isset($_POST['username'])){
+    	if(!isset($_POST['blogtitle'])){
 	        $view=View::factory('admin/blogedit');
 			$view->title = "QVid Admin - Blogs";
 			$view->menuid = 2;
@@ -27,86 +27,56 @@ Class Controller_Admin_Blogs extends Controller
 			$this->response->body($view->render());
 		}
 		else{
-			if($_POST['userpass'] == $_POST['userrepass']){
-				$user = ORM::factory('user');
-				$user->Name = $_POST['username'];
-				$user->Password = $_POST['userpass'];
-				$user->Description = $_POST['userdesc'];
-				$user->create();
-				
-				HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs','action' => 'index',
-					'msgtype' => 'success',
-					'msgtitle' => 'Exito!',
-					'msgtext' => 'Usuario creado con exito.')
-				));
-			}
-			else{
-				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'blogs', 'action' => 'new',
-					'id' => '-1',
-					'msgtype' => 'error',
-					'msgtitle' => 'Error!',
-					'msgtext' => 'Las contrasenas deben ser iguales.')
-				));
-			}
+			$blog = ORM::factory('blog');
+			$blog->Title = $_POST['blogtitle'];
+			$blog->Text = $_POST['blogtext'];
+			$blog->Tags = $_POST['blogtags'];
+			$blog->create();
+			
+			HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs','action' => 'index',
+				'msgtype' => 'success',
+				'msgtitle' => 'Exito!',
+				'msgtext' => 'Blog creado con exito.')
+			));
 		}
     }
 	
 	public function action_edit()
     {
-    	if(!isset($_POST['username'])){
+    	if(!isset($_POST['blogtitle'])){
 	        $view=View::factory('admin/blogsedit');
 			$view->title = "QVid Admin - Blogs";
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
-			$view->menuid = 3;
+			$view->menuid = 2;
 			$view->blog = ORM::factory('blog', $this->request->param('id'));
 			$this->response->body($view->render());
 		}
 		else{
-			if($_POST['userpass'] == $_POST['userrepass']){
-				$user = ORM::factory('user', $_POST['userid']);
-				if($_POST['useroldpass'] == $user->Password){
-					$user->Name = $_POST['username'];
-					$user->Password = $_POST['userpass'];
-					$user->Description = $_POST['userdesc'];
-					$user->update();
-					
-					HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs', 'action' => 'index',
-						'msgtype' => 'success',
-						'msgtitle' => 'Exito!',
-						'msgtext' => 'Usuario modificado con exito.')
-					));
-				}
-				else{
-					HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'blogs', 'action' => 'edit',
-						'id' => $_POST['userid'],
-						'msgtype' => 'error',
-						'msgtitle' => 'Error!',
-						'msgtext' => 'La contrasena actual es incorrecta.')
-					));
-				}
-			}
-			else{
-				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'blogs', 'action' => 'edit',
-					'id' => $_POST['userid'],
-					'msgtype' => 'error',
-					'msgtitle' => 'Error!',
-					'msgtext' => 'Las contrasenas nuevas deben ser iguales.')
-				));
-			}
+			$blog = ORM::factory('blog', $_POST['blogid']);
+			$blog->Title = $_POST['blogtitle'];
+			$blog->Text = $_POST['blogtext'];
+			$blog->Tags = $_POST['blogtags'];
+			$blog->update();
+			
+			HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs', 'action' => 'index',
+				'msgtype' => 'success',
+				'msgtitle' => 'Exito!',
+				'msgtext' => 'Blog modificado con exito.')
+			));
 		}
     }
 	
 	public function action_delete()
     {
-        $user = ORM::factory('blog', $this->request->param('id'));
-		$user->delete();
+        $blog = ORM::factory('blog', $this->request->param('id'));
+		$blog->delete();
 		
 		HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs', 'action' => 'index',
 			'msgtype' => 'success',
 			'msgtitle' => 'Exito!',
-			'msgtext' => 'Usuario eliminado con exito.')
+			'msgtext' => 'Blog eliminado con exito.')
 		));
     }
 }

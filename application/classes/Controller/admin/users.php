@@ -74,38 +74,55 @@ Class Controller_Admin_Users extends Controller
 			$this->response->body($view->render());
 		}
 		else{
-			if($_POST['userpass'] == $_POST['userrepass']){
-				$user = ORM::factory('user', $_POST['userid']);
-				if($_POST['useroldpass'] == $user->Password){
-					$user->Name = $_POST['username'];
-					$user->Password = $_POST['userpass'];
-					$user->Description = $_POST['userdesc'];
-					if($_POST['userimg'] != ''){
-						$user->Image_Id = $_POST['userimg'];
+			if($_POST['useroldpass'] != '' || $_POST['userpass'] != '' || $_POST['userrepass'] != ''){
+				if($_POST['userpass'] == $_POST['userrepass']){
+					$user = ORM::factory('user', $_POST['userid']);
+					if($_POST['useroldpass'] == $user->Password){
+						$user->Name = $_POST['username'];
+						$user->Password = $_POST['userpass'];
+						$user->Description = $_POST['userdesc'];
+						if($_POST['userimg'] != ''){
+							$user->Image_Id = $_POST['userimg'];
+						}
+						$user->update();
+						
+						HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
+							'msgtype' => 'success',
+							'msgtitle' => 'Exito!',
+							'msgtext' => 'Usuario modificado con exito.')
+						));
 					}
-					$user->update();
-					
-					HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
-						'msgtype' => 'success',
-						'msgtitle' => 'Exito!',
-						'msgtext' => 'Usuario modificado con exito.')
-					));
+					else{
+						HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
+							'id' => $_POST['userid'],
+							'msgtype' => 'error',
+							'msgtitle' => 'Error!',
+							'msgtext' => 'La contrasena actual es incorrecta.')
+						));
+					}
 				}
 				else{
 					HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
 						'id' => $_POST['userid'],
 						'msgtype' => 'error',
 						'msgtitle' => 'Error!',
-						'msgtext' => 'La contrasena actual es incorrecta.')
+						'msgtext' => 'Las contrasenas nuevas deben ser iguales.')
 					));
 				}
 			}
 			else{
-				HTTP::redirect(Route::get('adminwithidmsg')->uri(array('controller' => 'users', 'action' => 'edit',
-					'id' => $_POST['userid'],
-					'msgtype' => 'error',
-					'msgtitle' => 'Error!',
-					'msgtext' => 'Las contrasenas nuevas deben ser iguales.')
+				$user = ORM::factory('user', $_POST['userid']);
+				$user->Name = $_POST['username'];
+				$user->Description = $_POST['userdesc'];
+				if($_POST['userimg'] != ''){
+					$user->Image_Id = $_POST['userimg'];
+				}
+				$user->update();
+				
+				HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',
+					'msgtype' => 'success',
+					'msgtitle' => 'Exito!',
+					'msgtext' => 'Usuario modificado con exito.')
 				));
 			}
 		}
