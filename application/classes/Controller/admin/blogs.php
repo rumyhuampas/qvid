@@ -23,6 +23,7 @@ Class Controller_Admin_Blogs extends Controller
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
+			$view->authors = DB::select('id', 'name')->from('users')->execute()->as_array('id', 'name');
 			$view->blog = null;
 			$this->response->body($view->render());
 		}
@@ -31,6 +32,10 @@ Class Controller_Admin_Blogs extends Controller
 			$blog->Title = $_POST['blogtitle'];
 			$blog->Text = $_POST['blogtext'];
 			$blog->Tags = $_POST['blogtags'];
+			$blog->User_Id = $_POST['blogauthor'];
+			$blog->Created_At = DB::expr('Now()');
+			$blog->Modified_At = DB::expr('Now()');
+			$blog->Published = $_POST['blogpublished'];
 			$blog->create();
 			
 			HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs','action' => 'index',
@@ -44,12 +49,13 @@ Class Controller_Admin_Blogs extends Controller
 	public function action_edit()
     {
     	if(!isset($_POST['blogtitle'])){
-	        $view=View::factory('admin/blogsedit');
+	        $view=View::factory('admin/blogedit');
 			$view->title = "QVid Admin - Blogs";
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->menuid = 2;
+			$view->authors = DB::select('id', 'name')->from('users')->execute()->as_array('id', 'name');
 			$view->blog = ORM::factory('blog', $this->request->param('id'));
 			$this->response->body($view->render());
 		}
@@ -58,6 +64,9 @@ Class Controller_Admin_Blogs extends Controller
 			$blog->Title = $_POST['blogtitle'];
 			$blog->Text = $_POST['blogtext'];
 			$blog->Tags = $_POST['blogtags'];
+			$blog->User_Id = $_POST['blogauthor'];
+			$blog->Modified_At = DB::expr('Now()');
+			$blog->Published = $_POST['blogpublished'];
 			$blog->update();
 			
 			HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'blogs', 'action' => 'index',

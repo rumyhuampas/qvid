@@ -397,7 +397,7 @@ $(window).resize(function () {
 		var dialog = $(this);
         $.confirmdialog({
             'title'     : 'Confirmar eliminacion',
-            'message'   : 'Usted esta por eliminar el item. <br />Esta seguro?',
+            'message'   : dialog.attr('message'),
             'buttons'   : {
                 'Si'   : {
                     'class' : 'blue',

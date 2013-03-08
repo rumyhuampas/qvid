@@ -17,7 +17,7 @@ Class Controller_Admin_MediaResources extends Controller
 	public function action_new()
     {
     	if(!isset($_POST['username'])){
-	        $view=View::factory('admin/useredit');
+	        $view=View::factory('admin/mediaedit');
 			$view->title = "QVid Admin - Usuarios";
 			$view->menuid = 3;
 			$view->infomsgtype = $this->request->param('msgtype');
@@ -54,7 +54,7 @@ Class Controller_Admin_MediaResources extends Controller
 	public function action_edit()
     {
     	if(!isset($_POST['username'])){
-	        $view=View::factory('admin/useredit');
+	        $view=View::factory('admin/mediaedit');
 			$view->title = "QVid Admin - Usuarios";
 			$view->infomsgtype = $this->request->param('msgtype');
 			$view->infomsgtitle = $this->request->param('msgtitle');

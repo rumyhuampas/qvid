@@ -130,7 +130,16 @@ Class Controller_Admin_Users extends Controller
 	
 	public function action_delete()
     {
-        $user = ORM::factory('user', $this->request->param('id'));
+    	$userid = $this->request->param('id');
+    	$blogs = ORM::factory('blog')->where('user_id', '=', $userid);
+		foreach($blogs as $b){
+			$bm = ORM::factory('blogmedia')->where('blog_id', '=', $b->Id);
+			if($bm->loaded()){
+				$bm->delete();
+			}
+			$b->delete();
+		}
+        $user = ORM::factory('user', $userid);
 		$user->delete();
 		
 		HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'users', 'action' => 'index',

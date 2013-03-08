@@ -38,7 +38,11 @@
 								<td>
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'new')); ?> >Nuevo</a> -
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'edit', 'id' => $user->Id)); ?> >Editar</a> -
-									<a href='#'><div class='deleteconfirm' href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'delete', 'id' => $user->Id)); ?> >Eliminar</div></a>
+									<a href='#'><div class='deleteconfirm' 
+											message='Esta por eliminar el usuario.<br />Esta seguro?<br /><br />Tenga en cuenta que todos los items relacionados con el mismo seran eliminados tambien (ejemplo blogs)' 
+											href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'delete', 'id' => $user->Id)); ?> >
+										Eliminar</div>
+									</a>
 								</td>
 							</tr>
 							<?php }?>
