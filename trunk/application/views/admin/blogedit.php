@@ -22,7 +22,7 @@
 							echo '<fieldset>';
 								echo '<div>';
 									echo Form::label('blogtitle', 'Titulo');
-									echo Form::input('blogtitle', 'Titulo', array('onblur' => "if(this.value=='')this.value='Titulo';", 'onfocus' => "if(this.value=='Titulo')this.value='';"));
+									echo Form::input('blogtitle', 'Titulo', array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Titulo';", 'onfocus' => "if(this.value=='Titulo')this.value='';"));
 								echo '</div>';
 								echo '<div>';
 									echo Form::label('blogtext', 'Texto');
@@ -30,7 +30,15 @@
 								echo '</div>';
 								echo '<div>';
 									echo Form::label('blogtags', 'Tags');
-									echo Form::input('blogtags', 'Tags', array('onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
+									echo Form::input('blogtags', 'Tags', array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
+								echo '</div>';
+								echo '<div>';
+									echo Form::label('blogauthor', 'Autor');
+									echo Form::select('blogauthor', $authors);
+								echo '</div>';
+								echo '<div>';
+									echo Form::label('blogpublished', 'Publicado');
+									echo Form::select('blogpublished', array('T' => 'Si','F' => 'No'));
 								echo '</div>';
 							echo '</fieldset>';
 							
@@ -44,7 +52,7 @@
 							echo '<fieldset>';
 								echo '<div>';
 									echo Form::label('blogtitle', 'Titulo');
-									echo Form::input('blogtitle', $blog->Title, array('onblur' => "if(this.value=='')this.value='Titulo';", 'onfocus' => "if(this.value=='Titulo')this.value='';"));
+									echo Form::input('blogtitle', $blog->Title, array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Titulo';", 'onfocus' => "if(this.value=='Titulo')this.value='';"));
 								echo '</div>';
 								echo '<div>';
 									echo Form::label('blogtext', 'Texto');
@@ -52,7 +60,15 @@
 								echo '</div>';
 								echo '<div>';
 									echo Form::label('blogtags', 'Tags');
-									echo Form::input('blogtags', $blog->Tags, array('onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
+									echo Form::input('blogtags', $blog->Tags, array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
+								echo '</div>';
+								echo '<div>';
+									echo Form::label('blogauthor', 'Autor');
+									echo Form::select('blogauthor', $authors, $blog->User_Id);
+								echo '</div>';
+								echo '<div>';
+									echo Form::label('blogpublished', 'Publicado');
+									echo Form::select('blogpublished', array('T' => 'Si','F' => 'No'));
 								echo '</div>';
 							echo '</fieldset>';
 							
