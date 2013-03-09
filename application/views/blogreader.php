@@ -53,9 +53,8 @@
 					->and_where('blogmedia.published', '=', 'T')->find_all();
 				foreach ($bVids as $bVid) 
 				{?>
-			    	<a href=<?php echo URL::base().$bVid->Path ?> rel="fancybox-gallery" title=<?php echo $bVid->FileName ?>>
-		    			<div class="video"><iframe width="560" height="315" src=<?php echo $bVid->Path?> frameborder="0"></iframe></div>
-			    	</a>
+		    		<div class="video"><iframe width="560" height="315" src=<?php echo $bVid->Path?> frameborder="0"></iframe></div>
+			    	<br/>
 				<?php
 				}
 		    	?>

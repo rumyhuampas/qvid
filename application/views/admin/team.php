@@ -36,11 +36,15 @@
 								<td><?php echo $t->Name ?></td>
 								<td><?php echo $t->Name2 ?></td>
 								<td><?php echo $t->Text ?></td>
-								<td><?php echo $t->Resource_Id ?></td>
+								<td><img src=<?php echo URL::base().$t->imagepath ?> class="ls-bg" alt=""></td>
 								<td>
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'new')); ?> >Nuevo</a> -
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'edit', 'id' => $t->Id)); ?> >Editar</a> -
-									<a href='#'><div class='deleteconfirm' href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'delete', 'id' => $t->Id)); ?> >Eliminar</div></a>
+									<a href='#'><div class='deleteconfirm' 
+											message='Esta por eliminar el registro.<br />Esta seguro?' 
+											href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'delete', 'id' => $t->Id)); ?> >
+										Eliminar</div>
+									</a>
 								</td>
 							</tr>
 							<?php }?>

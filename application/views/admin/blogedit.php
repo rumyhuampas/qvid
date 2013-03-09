@@ -32,6 +32,17 @@
 									echo Form::label('blogtags', 'Tags');
 									echo Form::input('blogtags', 'Tags', array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
 								echo '</div>';
+								
+								include Kohana::find_file('views', 'admin/imagechoose');
+								
+								echo '<div>';
+									echo Form::label('blogimg', 'Imagen');
+									echo Form::hidden('blogimg', '', array('id' => 'hiddenimgid'));
+									echo '<div class="clearfix"></div>';
+									echo '<li class="three columns"><img src="#" id="chosenimage" /></li>';
+								echo '</div>';
+								echo '<div class="clearfix"></div>';
+								
 								echo '<div>';
 									echo Form::label('blogauthor', 'Autor');
 									echo Form::select('blogauthor', $authors);
@@ -62,6 +73,17 @@
 									echo Form::label('blogtags', 'Tags');
 									echo Form::input('blogtags', $blog->Tags, array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
 								echo '</div>';
+								
+								include Kohana::find_file('views', 'admin/imagechoose');
+								
+								echo '<div>';
+									echo Form::label('blogimg', 'Imagen');
+									echo Form::hidden('blogimg', '', array('id' => 'hiddenimgid'));
+									echo '<div class="clearfix"></div>';
+									echo '<li class="three columns"><img src="#" id="chosenimage" /></li>';
+								echo '</div>';
+								echo '<div class="clearfix"></div>';
+								
 								echo '<div>';
 									echo Form::label('blogauthor', 'Autor');
 									echo Form::select('blogauthor', $authors, $blog->User_Id);

@@ -28,6 +28,17 @@
 									echo Form::label('tmname2', 'Cargo');
 									echo Form::input('tmname2', 'Cargo', array('onblur' => "if(this.value=='')this.value='Cargo';", 'onfocus' => "if(this.value=='Cargo')this.value='';"));
 								echo '</div>';
+								
+								include Kohana::find_file('views', 'admin/imagechoose');
+								
+								echo '<div>';
+									echo Form::label('tmimg', 'Imagen');
+									echo Form::hidden('tmimg', '', array('id' => 'hiddenimgid'));
+									echo '<div class="clearfix"></div>';
+									echo '<li class="three columns"><img src="#" id="chosenimage" /></li>';
+								echo '</div>';
+								echo '<div class="clearfix"></div>';
+								
 								echo '<div>';
 									echo Form::label('tmdesc', 'Descripcion');
 									echo Form::textarea('tmdesc', 'Descripcion', array('onblur' => "if(this.value=='')this.value='Descripcion';", 'onfocus' => "if(this.value=='Descripcion')this.value='';"));
@@ -39,7 +50,7 @@
 					}
 					else{
 						echo Form::open('admin/team/edit', array('method' => 'POST'));
-							echo Form::hidden('userid', $tm->Id);
+							echo Form::hidden('tmid', $tm->Id);
 							echo '<fieldset>';
 								echo '<div>';
 									echo Form::label('tmname', 'Nombre');
@@ -49,6 +60,17 @@
 									echo Form::label('tmname2', 'Cargo');
 									echo Form::input('tmname2', $tm->Name2, array('onblur' => "if(this.value=='')this.value='Cargo';", 'onfocus' => "if(this.value=='Cargo')this.value='';"));
 								echo '</div>';
+								
+								include Kohana::find_file('views', 'admin/imagechoose');
+								
+								echo '<div>';
+									echo Form::label('tmimg', 'Imagen');
+									echo Form::hidden('tmimg', $tm->Resource_Id, array('id' => 'hiddenimgid'));
+									echo '<div class="clearfix"></div>';
+									echo '<li class="three columns"><img src="'.URL::base().$tm->imagepath.'" id="chosenimage" /></li>';
+								echo '</div>';
+								echo '<div class="clearfix"></div>';
+								
 								echo '<div>';
 									echo Form::label('tmdesc', 'Descripcion');
 									echo Form::textarea('tmdesc', $tm->Text, array('onblur' => "if(this.value=='')this.value='Descripcion';", 'onfocus' => "if(this.value=='Descripcion')this.value='';"));

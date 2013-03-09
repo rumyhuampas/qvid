@@ -25,6 +25,7 @@ Class Controller_Admin_Blogs extends Controller
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->authors = DB::select('id', 'name')->from('users')->execute()->as_array('id', 'name');
 			$view->blog = null;
+			$view->images = ORM::factory('mediaresource')->find_all();
 			$this->response->body($view->render());
 		}
 		else{

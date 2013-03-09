@@ -108,7 +108,7 @@
 				        	<?php
 							if(count($videos) > 0): 
 							?>
-	                        	<iframe width="560" height="315" src=<?php echo $videos[0]->Path?> frameborder="0"></iframe>
+	                        	<iframe src=<?php echo $videos[0]->Path?> frameborder="0"></iframe>
 	                        <?php endif ?>
 	                    </div>
                    	</div>
