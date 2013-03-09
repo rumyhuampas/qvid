@@ -412,6 +412,17 @@ $(window).resize(function () {
             }
         });
 	});
+	
+	/*----------------------------------------------------*/
+	/*	IMAGE CHOOSER
+	/*----------------------------------------------------*/
+	
+	$(".chooseimage").click(function(){
+    	$choseninput = jQuery('#hiddenimgid');
+    	$chosen = jQuery('#chosenimage');
+    	$choseninput.attr('value', $(this).closest("a").attr("id"));
+    	$chosen.attr('src', $(this).attr("src"));
+    });
 
 
 /* ------------------ End Document ------------------ */

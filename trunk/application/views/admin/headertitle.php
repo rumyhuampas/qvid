@@ -2,7 +2,6 @@
 <div class="container floated">
 
 	<div class="sixteen floated page-title">
-
 		<?php 
 		if(isset($infomsgtype)){ 
 		?>

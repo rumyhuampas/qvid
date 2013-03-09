@@ -37,7 +37,7 @@
 								
 								echo '<div>';
 									echo Form::label('userimg', 'Imagen');
-									echo Form::input('userimg', '', array('id' => 'userimg', 'readonly'));
+									echo Form::hidden('userimg', '', array('id' => 'hiddenimgid'));
 									echo '<div class="clearfix"></div>';
 									echo '<li class="three columns"><img src="#" id="chosenimage" /></li>';
 								echo '</div>';
@@ -78,7 +78,7 @@
 								
 								echo '<div>';
 									echo Form::label('userimg', 'Imagen');
-									echo Form::input('userimg', $user->Image_Id, array('id' => 'userimg', 'readonly'));
+									echo Form::hidden('userimg', $user->Image_Id, array('id' => 'hiddenimgid'));
 									echo '<div class="clearfix"></div>';
 									echo '<li class="three columns"><img src="'.URL::base().$user->imagepath.'" id="chosenimage" /></li>';
 								echo '</div>';

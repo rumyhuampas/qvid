@@ -38,7 +38,11 @@
 								<td>
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs', 'action' => 'new')); ?> >Nuevo</a> -
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs', 'action' => 'edit', 'id' => $blog->Id)); ?> >Editar</a> -
-									<a href='#'><div class='deleteconfirm' href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs', 'action' => 'delete', 'id' => $blog->Id)); ?> >Eliminar</div></a>
+									<a href='#'><div class='deleteconfirm' 
+											message='Esta por eliminar el blog.<br />Esta seguro?' 
+											href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs', 'action' => 'delete', 'id' => $blog->Id)); ?> >
+										Eliminar</div>
+									</a>
 								</td>
 							</tr>
 							<?php }?>

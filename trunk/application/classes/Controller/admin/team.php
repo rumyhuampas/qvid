@@ -10,7 +10,9 @@ Class Controller_Admin_Team extends Controller
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->team = ORM::factory('pagedata')->where('tag', '=', 'TEAMMEMBER')->find_all();
+		$view->team = ORM::factory('pagedata')->where('tag', '=', 'TEAMMEMBER')
+			->select(array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=pagedata.Resource_id)'), 'imagepath'))
+			->find_all();
 		$this->response->body($view->render());
     }
 	
@@ -24,6 +26,7 @@ Class Controller_Admin_Team extends Controller
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->tm = null;
+			$view->images = ORM::factory('mediaresource')->where('filetag', '=', 'UserImage')->find_all();
 			$this->response->body($view->render());
 		}
 		else{
@@ -31,6 +34,9 @@ Class Controller_Admin_Team extends Controller
 			$tm->Name = $_POST['tmname'];
 			$tm->Name2 = $_POST['tmname2'];
 			$tm->Text = $_POST['tmdesc'];
+			if($_POST['tmimg'] != ''){
+				$tm->Resource_Id = $_POST['tmimg'];
+			}
 			$tm->Tag = 'TEAMMEMBER';
 			$tm->Published = 'T';
 			$tm->create();
@@ -52,7 +58,11 @@ Class Controller_Admin_Team extends Controller
 			$view->infomsgtitle = $this->request->param('msgtitle');
 			$view->infomsgtext = $this->request->param('msgtext');
 			$view->menuid = 1;
-			$view->tm = ORM::factory('pagedata', $this->request->param('id'));
+			$view->tm = ORM::factory('pagedata')
+				->select(array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=pagedata.Resource_id)'), 'imagepath'))
+				->where('Id', '=', $this->request->param('id'))
+				->find();
+			$view->images = ORM::factory('mediaresource')->where('filetag', '=', 'UserImage')->find_all();
 			$this->response->body($view->render());
 		}
 		else{
@@ -60,6 +70,9 @@ Class Controller_Admin_Team extends Controller
 			$tm->Name = $_POST['tmname'];
 			$tm->Name2 = $_POST['tmname2'];
 			$tm->Text = $_POST['tmdesc'];
+			if($_POST['tmimg'] != ''){
+				$tm->Resource_Id = $_POST['tmimg'];
+			}
 			$tm->update();
 			
 			HTTP::redirect(Route::get('adminwithmsg')->uri(array('controller' => 'team', 'action' => 'index',
