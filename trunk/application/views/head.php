@@ -4,6 +4,7 @@
     ================================================== -->
     <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
     <title><?php echo $title; ?></title>
+    <link rel="shortcut icon" href=<?php echo URL::base()."/assets/images/favicon3.ico" ?> type="image/x-icon"/> 
 
     <!-- Mobile Specific Metas
     ================================================== -->
