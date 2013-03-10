@@ -32,16 +32,46 @@
 									echo Form::label('blogtags', 'Tags');
 									echo Form::input('blogtags', 'Tags', array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
 								echo '</div>';
+								?>
 								
-								include Kohana::find_file('views', 'admin/imagechoose');
+								<div class="scrolldiv">
+									<table class="standard-table">
+						
+										<tbody>
+											<tr>
+												<th>Id</th>
+												<th>Media</th>
+												<th>Nombre</th>
+												<th>Acciones</th>
+											</tr>
+											
+											<?php
+											foreach($media as $m){?>
+											<tr>
+												<td><?php echo $m->Id ?></td>
+												<?php if($m->Resource_Type == 'PICTURE'){ ?>
+													<td><img src=<?php echo URL::base().$m->Path ?> class="ls-bg" alt=""></td>
+												<?php
+												}
+												else{
+												?>
+													<td><iframe width=260 src=<?php echo $m->Path?> frameborder="0"></iframe></td>
+												<?php
+												}
+												?>
+												<td><?php echo $m->FileName ?></td>
+												<td>
+													<?php echo Form::checkbox('imagecheck', 1, FALSE); ?>
+												</td>
+											</tr>
+											<?php }?>
+						
+										</tbody>
+									
+									</table>
+								</div>
 								
-								echo '<div>';
-									echo Form::label('blogimg', 'Imagen');
-									echo Form::hidden('blogimg', '', array('id' => 'hiddenimgid'));
-									echo '<div class="clearfix"></div>';
-									echo '<li class="three columns"><img src="#" id="chosenimage" /></li>';
-								echo '</div>';
-								echo '<div class="clearfix"></div>';
+								<?php
 								
 								echo '<div>';
 									echo Form::label('blogauthor', 'Autor');
