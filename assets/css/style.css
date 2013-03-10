@@ -3889,6 +3889,13 @@
 	height: 180px;
 }
 
+#confirmBox {
+	width: 280px;
+	left:0;
+	top:0;
+	margin: 5% 0 0 5%;
+}
+
  ;
 }
 
