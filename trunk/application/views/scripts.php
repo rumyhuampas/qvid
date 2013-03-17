@@ -11,4 +11,5 @@
 <script src=<?php echo URL::base()."/scripts/jquery.fancybox.min.js" ?> type="text/javascript"></script>
 <script src=<?php echo URL::base()."/scripts/jquery.layerslider.min.js" ?> type="text/javascript"></script>
 <script src=<?php echo URL::base()."/scripts/jquery.confirmdialog.js" ?> type="text/javascript"></script>
+<script src=<?php echo URL::base()."/scripts/jquery.cookie.js" ?> type="text/javascript"></script>
 <script src=<?php echo URL::base()."/scripts/custom.js" ?> type="text/javascript"></script>

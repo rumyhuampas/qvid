@@ -81,7 +81,6 @@
 
 				    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 				    <script src=<?php echo URL::base()."scripts/jquery.gmap.min.js" ?>></script>
-					<?php echo $location->Text; ?>
 				    <script type="text/javascript">
 				    var loc = "<?php echo $location->Text; ?>";
 				    jQuery('#googlemaps').gMap({
