@@ -29,4 +29,27 @@ class helpers_db {
 	public static function splitField($field, $delimiter){
 		return explode($field, $delimiter);
 	}
+	
+	public static function setpost($key, $value){
+		$_POST[$key] = $value;
+	}
+	
+	public static function addpostitem($key, $value){
+		$val = $_POST[$key];
+		$val = ','.$value;
+		setpost($key, $val);
+	}
+	
+	public static function removepostitem($key, $value){
+		$val = $_POST[$key];
+		$array = explode(',', $val);
+		for($i=0;$i<count($array);$i++){
+			if($array[$i] == $value){
+				unset($array[$i]);
+				break;
+			}
+		}
+		$val = implode(',', $array);
+		setpost($key, $val);
+	}
 }

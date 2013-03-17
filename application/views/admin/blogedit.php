@@ -33,44 +33,9 @@
 									echo Form::input('blogtags', 'Tags', array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
 								echo '</div>';
 								?>
-								
-								<div class="scrolldiv">
-									<table class="standard-table">
-						
-										<tbody>
-											<tr>
-												<th>Id</th>
-												<th>Media</th>
-												<th>Nombre</th>
-												<th>Acciones</th>
-											</tr>
-											
-											<?php
-											foreach($media as $m){?>
-											<tr>
-												<td><?php echo $m->Id ?></td>
-												<?php if($m->Resource_Type == 'PICTURE'){ ?>
-													<td><img src=<?php echo URL::base().$m->Path ?> class="ls-bg" alt=""></td>
-												<?php
-												}
-												else{
-												?>
-													<td><iframe width=260 src=<?php echo $m->Path?> frameborder="0"></iframe></td>
-												<?php
-												}
-												?>
-												<td><?php echo $m->FileName ?></td>
-												<td>
-													<?php echo Form::checkbox('imagecheck', 1, FALSE); ?>
-												</td>
-											</tr>
-											<?php }?>
-						
-										</tbody>
-									
-									</table>
-								</div>
-								
+								<a href=<?php echo URL::base().'admin/mediachoose/index' ?> >
+									<div class='button color'>Seleccionar media</div>
+								</a>
 								<?php
 								
 								echo '<div>';
