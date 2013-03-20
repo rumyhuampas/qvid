@@ -34,7 +34,7 @@
 								<td><?php echo $user->Id ?></td>
 								<td><?php echo $user->Name ?></td>
 								<td><?php echo $user->Description ?></td>
-								<td><img src=<?php echo URL::base().$user->imagepath ?> class="ls-bg" alt=""></td>
+								<td><img class="tableimg" src=<?php echo URL::base().$user->imagepath ?> class="ls-bg" alt=""></td>
 								<td>
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'new')); ?> >Nuevo</a> -
 									<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'edit', 'id' => $user->Id)); ?> >Editar</a> -
@@ -51,6 +51,45 @@
 					
 					</table>
 				</div>
+				
+				<!-- Pagination -->
+			    <nav class="pagination">
+				    <ul>
+				    	<?php 
+				    	if($currentpage > 1){
+				    	?>
+				    		<li><a href=<?php echo URL::base().Route::get('adminwithid')
+				    			->uri(array('controller' => 'users', 'action' => 'getpage', 'id' => $currentpage-1)); ?> 
+				    			>Anterior</a></li>
+				    	<?php
+						}
+						for($i=1; $i<$totalpages+1; $i++){ ?>
+				    		<li>
+				    			<a href=<?php echo URL::base().Route::get('adminwithid')
+				    				->uri(array('controller' => 'users', 'action' => 'getpage', 'id' => $i)); 
+				    				if($currentpage == $i){
+				    				?>
+				    					class="current"
+				    				<?php
+									}
+									?>
+				    				>
+				    				<?php echo $i ?>
+				    			</a>
+				    		</li>
+					    <?php
+						} 
+				    	if($currentpage < $totalpages){
+				    	?>
+					    	<li><a href=<?php echo URL::base().Route::get('adminwithid')
+					    		->uri(array('controller' => 'users', 'action' => 'getpage', 'id' => $currentpage+1)); ?> 
+					    		>Siguiente</a></li>
+					    <?php
+						}
+						?>
+				    </ul>
+				    <div class="clearfix"></div>
+			    </nav>
 	
 			</div>
 		</div>

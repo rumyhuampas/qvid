@@ -2,15 +2,24 @@
 	
 Class Controller_Admin_MediaResources extends Controller
 {	
-    public function action_index()
+	public function action_index()
     {
-        $view=View::factory('admin/mediaresources');
+		HTTP::redirect(Route::get('adminwithid')->uri(array('controller' => 'mediaresources', 'action' => 'getpage', 'id' => '1')));
+    }
+	
+	public function action_getpage()
+    {
+    	$current = $this->request->param('id');
+		
+		$view=View::factory('admin/mediaresources');
 		$view->title = "QVid Admin - Media";
 		$view->menuid = 3;
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->media = ORM::factory('mediaresource')->find_all();
+		$view->media = ORM::factory('mediaresource')->limit(10)->offset(10*($current-1))->find_all();
+		$view->currentpage = $current;
+		$view->totalpages = (int) ORM::factory('mediaresource')->find_all()->count() / 10; 		
 		$this->response->body($view->render());
     }
 	

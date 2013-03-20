@@ -2,9 +2,16 @@
 	
 Class Controller_Admin_Users extends Controller
 {	
-    public function action_index()
+	public function action_index()
     {
-        $view=View::factory('admin/users');
+		HTTP::redirect(Route::get('adminwithid')->uri(array('controller' => 'users', 'action' => 'getpage', 'id' => '1')));
+    }
+	
+	public function action_getpage()
+    {
+    	$current = $this->request->param('id');
+		
+		$view=View::factory('admin/users');
 		$view->title = "QVid Admin - Usuarios";
 		$view->menuid = 4;
 		$view->infomsgtype = $this->request->param('msgtype');
@@ -12,7 +19,9 @@ Class Controller_Admin_Users extends Controller
 		$view->infomsgtext = $this->request->param('msgtext');
 		$view->users = ORM::factory('user')
 			->select(array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=user.Image_id)'), 'imagepath'))
-			->find_all();
+			->limit(10)->offset(10*($current-1))->find_all();
+		$view->currentpage = $current;
+		$view->totalpages = (int) ORM::factory('user')->find_all()->count() / 10; 		
 		$this->response->body($view->render());
     }
 	
