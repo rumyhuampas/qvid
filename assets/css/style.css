@@ -3539,6 +3539,15 @@
     left: 5px;
 }
 
+/*--------------TABLE MEDIA---------------------*/
+img.tableimg{
+	width: 260px; important;
+}
+
+iframe.tablevid{
+	width: 260px; important;
+}
+
 /* -------------  KOHANA ERROR --------------*/
 #kohana_error { background: #fff; font-size: 1em; font-family:sans-serif; text-align: left; color: #111; }
 #kohana_error h1,

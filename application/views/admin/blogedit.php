@@ -33,11 +33,10 @@
 									echo Form::input('blogtags', 'Tags', array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
 								echo '</div>';
 								?>
-								<a href=<?php echo URL::base().'admin/mediachoose/index' ?> >
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'mediachoose', 'action' => 'index')); ?> >
 									<div class='button color'>Seleccionar media</div>
 								</a>
 								<?php
-								
 								echo '<div>';
 									echo Form::label('blogauthor', 'Autor');
 									echo Form::select('blogauthor', $authors);
@@ -68,9 +67,11 @@
 									echo Form::label('blogtags', 'Tags');
 									echo Form::input('blogtags', $blog->Tags, array('class' => 'large', 'onblur' => "if(this.value=='')this.value='Tags';", 'onfocus' => "if(this.value=='Tags')this.value='';"));
 								echo '</div>';
-								
-								include Kohana::find_file('views', 'admin/imagechoose');
-								
+								?>
+								<a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'mediachoose', 'action' => 'index')); ?> >
+									<div class='button color'>Seleccionar media</div>
+								</a>
+								<?php
 								echo '<div>';
 									echo Form::label('blogimg', 'Imagen');
 									echo Form::hidden('blogimg', '', array('id' => 'hiddenimgid'));
