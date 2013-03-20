@@ -110,3 +110,12 @@
 #8 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #9 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
 #10 {main} in C:\wamp\www\qvid\application\views\admin\team.php:33
+2013-03-19 22:20:03 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: selecteditems ~ APPPATH\classes\Controller\admin\mediachoose.php [ 52 ] in C:\wamp\www\qvid\application\classes\Controller\admin\mediachoose.php:52
+2013-03-19 22:20:03 --- DEBUG: #0 C:\wamp\www\qvid\application\classes\Controller\admin\mediachoose.php(52): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\wamp\www\qvi...', 52, Array)
+#1 C:\wamp\www\qvid\system\classes\Kohana\Controller.php(84): Controller_Admin_MediaChoose->action_removeselecteditem()
+#2 [internal function]: Kohana_Controller->execute()
+#3 C:\wamp\www\qvid\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Admin_MediaChoose))
+#4 C:\wamp\www\qvid\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 C:\wamp\www\qvid\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 C:\wamp\www\qvid\index.php(118): Kohana_Request->execute()
+#7 {main} in C:\wamp\www\qvid\application\classes\Controller\admin\mediachoose.php:52

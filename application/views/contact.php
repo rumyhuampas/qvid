@@ -118,7 +118,7 @@
 								echo '</div>';
 								echo '<div>';
 									echo Form::label('email', 'Email <span>*</span>');
-									echo Form::input('email', 'Email', array('type' => 'email', 'pattern' => "^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"));
+									echo Form::input('email', 'Email', array('type' => 'email', 'pattern' => "^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"));
 								echo '</div>';
 								echo '<div>';
 									echo Form::label('comments', 'Comentarios <span>*</span>');
