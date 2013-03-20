@@ -2,17 +2,27 @@
 	
 Class Controller_Admin_Team extends Controller
 {	
-    public function action_index()
+	public function action_index()
     {
-        $view=View::factory('admin/team');
+		HTTP::redirect(Route::get('adminwithid')->uri(array('controller' => 'team', 'action' => 'getpage', 'id' => '1')));
+    }
+	
+	public function action_getpage()
+    {
+    	$current = $this->request->param('id');
+		
+		$view=View::factory('admin/team');
 		$view->title = "QVid Admin - Equipo";
 		$view->menuid = 1;
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->team = ORM::factory('pagedata')->where('tag', '=', 'TEAMMEMBER')
+		$view->team = ORM::factory('pagedata')
+			->where('tag', '=', 'TEAMMEMBER')
 			->select(array(DB::expr('(SELECT path FROM mediaresource WHERE mediaresource.id=pagedata.Resource_id)'), 'imagepath'))
-			->find_all();
+			->limit(10)->offset(10*($current-1))->find_all();
+		$view->currentpage = $current;
+		$view->totalpages = (int) ORM::factory('pagedata')->where('tag', '=', 'TEAMMEMBER')->find_all()->count() / 10; 		
 		$this->response->body($view->render());
     }
 	

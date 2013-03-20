@@ -51,6 +51,45 @@
 					
 					</table>
 				</div>
+				
+				<!-- Pagination -->
+			    <nav class="pagination">
+				    <ul>
+				    	<?php 
+				    	if($currentpage > 1){
+				    	?>
+				    		<li><a href=<?php echo URL::base().Route::get('adminwithid')
+				    			->uri(array('controller' => 'blogs', 'action' => 'getpage', 'id' => $currentpage-1)); ?> 
+				    			>Anterior</a></li>
+				    	<?php
+						}
+						for($i=1; $i<$totalpages+1; $i++){ ?>
+				    		<li>
+				    			<a href=<?php echo URL::base().Route::get('adminwithid')
+				    				->uri(array('controller' => 'blogs', 'action' => 'getpage', 'id' => $i)); 
+				    				if($currentpage == $i){
+				    				?>
+				    					class="current"
+				    				<?php
+									}
+									?>
+				    				>
+				    				<?php echo $i ?>
+				    			</a>
+				    		</li>
+					    <?php
+						} 
+				    	if($currentpage < $totalpages){
+				    	?>
+					    	<li><a href=<?php echo URL::base().Route::get('adminwithid')
+					    		->uri(array('controller' => 'blogs', 'action' => 'getpage', 'id' => $currentpage+1)); ?> 
+					    		>Siguiente</a></li>
+					    <?php
+						}
+						?>
+				    </ul>
+				    <div class="clearfix"></div>
+			    </nav>
 	
 			</div>
 		</div>

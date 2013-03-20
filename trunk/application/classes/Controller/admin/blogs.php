@@ -4,13 +4,22 @@ Class Controller_Admin_Blogs extends Controller
 {	
     public function action_index()
     {
-        $view=View::factory('admin/blogs');
+		HTTP::redirect(Route::get('adminwithid')->uri(array('controller' => 'blogs', 'action' => 'getpage', 'id' => '1')));
+    }
+	
+	public function action_getpage()
+    {
+    	$current = $this->request->param('id');
+		
+		$view=View::factory('admin/blogs');
 		$view->title = "QVid Admin - Blogs";
 		$view->menuid = 2;
 		$view->infomsgtype = $this->request->param('msgtype');
 		$view->infomsgtitle = $this->request->param('msgtitle');
 		$view->infomsgtext = $this->request->param('msgtext');
-		$view->blogs = ORM::factory('blog')->find_all();
+		$view->blogs = ORM::factory('blog')->limit(10)->offset(10*($current-1))->find_all();
+		$view->currentpage = $current;
+		$view->totalpages = (int) ORM::factory('blog')->find_all()->count() / 10; 		
 		$this->response->body($view->render());
     }
 	

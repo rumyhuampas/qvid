@@ -35,12 +35,12 @@
 							<tr>
 								<td><?php echo $m->Id ?></td>
 								<?php if($m->Resource_Type == 'PICTURE'){ ?>
-									<td><img src=<?php echo URL::base().$m->Path ?> class="ls-bg" alt=""></td>
+									<td><img class="tableimg" src=<?php echo URL::base().$m->Path ?> class="ls-bg" alt=""></td>
 								<?php
 								}
 								else{
 								?>
-									<td><iframe width=260 src=<?php echo $m->Path?> frameborder="0"></iframe></td>
+									<td><iframe class="tablevid" src=<?php echo $m->Path?> frameborder="0"></iframe></td>
 								<?php
 								}
 								?>
@@ -60,6 +60,45 @@
 					
 					</table>
 				</div>
+				
+				<!-- Pagination -->
+			    <nav class="pagination">
+				    <ul>
+				    	<?php 
+				    	if($currentpage > 1){
+				    	?>
+				    		<li><a href=<?php echo URL::base().Route::get('adminwithid')
+				    			->uri(array('controller' => 'mediaresources', 'action' => 'getpage', 'id' => $currentpage-1)); ?> 
+				    			>Anterior</a></li>
+				    	<?php
+						}
+						for($i=1; $i<$totalpages+1; $i++){ ?>
+				    		<li>
+				    			<a href=<?php echo URL::base().Route::get('adminwithid')
+				    				->uri(array('controller' => 'mediaresources', 'action' => 'getpage', 'id' => $i)); 
+				    				if($currentpage == $i){
+				    				?>
+				    					class="current"
+				    				<?php
+									}
+									?>
+				    				>
+				    				<?php echo $i ?>
+				    			</a>
+				    		</li>
+					    <?php
+						} 
+				    	if($currentpage < $totalpages){
+				    	?>
+					    	<li><a href=<?php echo URL::base().Route::get('adminwithid')
+					    		->uri(array('controller' => 'mediaresources', 'action' => 'getpage', 'id' => $currentpage+1)); ?> 
+					    		>Siguiente</a></li>
+					    <?php
+						}
+						?>
+				    </ul>
+				    <div class="clearfix"></div>
+			    </nav>
 	
 			</div>
 		</div>
