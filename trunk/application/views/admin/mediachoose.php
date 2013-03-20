@@ -34,13 +34,24 @@
 								$(document).ready(function(){
 								    $(".mediachooser").click(function(event){
 								    	var id = $(this).attr('id');
-								    	$.ajax({
-											type:'POST',
-											url: '/qvid/admin/mediachoose/getpage/1',
-											cache: false,
-											dataType:'json',
-											data:{selecteditem: id}
-										});
+								    	if ($(this).is(":checked")) {
+									    	$.ajax({
+												type:'POST',
+												url: '/qvid/admin/mediachoose/addselecteditem/',
+												cache: false,
+												dataType:'json',
+												data:{selecteditem: id}
+											});
+										}
+										else{
+											$.ajax({
+												type:'POST',
+												url: '/qvid/admin/mediachoose/removeselecteditem/',
+												cache: false,
+												dataType:'json',
+												data:{selecteditem: id}
+											});
+										}
 								    });
 								});
 
@@ -52,12 +63,12 @@
 							<tr>
 								<td><?php echo $m->Id ?></td>
 								<?php if($m->Resource_Type == 'PICTURE'){ ?>
-									<td><img src=<?php echo URL::base().$m->Path ?> class="ls-bg" alt=""></td>
+									<td><img class="tableimg" src=<?php echo URL::base().$m->Path ?> class="ls-bg" alt=""></td>
 								<?php
 								}
 								else{
 								?>
-									<td><iframe width=260 src=<?php echo $m->Path?> frameborder="0"></iframe></td>
+									<td><iframe class="tablevid" src=<?php echo $m->Path?> frameborder="0"></iframe></td>
 								<?php
 								}
 								?>
@@ -115,6 +126,10 @@
 				    </ul>
 				    <div class="clearfix"></div>
 			    </nav>
+			    
+			    <a href=<?php echo URL::base().Route::get('adminwithid')->uri(array('controller' => 'blogs', 'action' => 'new')); ?>>
+			    	<div class='button medium color'>Guardar</div>
+			    </a>
 	
 			</div>
 		</div>

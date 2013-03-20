@@ -4,6 +4,8 @@ Class Controller_Admin_MediaChoose extends Controller
 {	
     public function action_index()
     {
+    	$session = Session::instance();
+		$session->delete('selecteditems');
         HTTP::redirect(Route::get('adminwithid')->uri(array('controller' => 'mediachoose', 'action' => 'getpage', 'id' => '1')));
     }
 	
@@ -21,20 +23,33 @@ Class Controller_Admin_MediaChoose extends Controller
 		$view->currentpage = $current;
 		$view->totalpages = (int) ORM::factory('mediaresource')->find_all()->count() / 10; 		
 		$session = Session::instance();
-		$selecteditems = $session->get('selecteditems');
+		$selecteditems = explode(',', $session->get('selecteditems'));
 		if(isset($selecteditems)){
 			$view->selecteditems = $selecteditems;
 		}
 		else{
-			//$view->selecteditems = array();	
+			$view->selecteditems = array();	
 		}
 		$this->response->body($view->render());
     }
 	
-	public function action_setpost(){
+	public function action_addselecteditem(){
 		if ($this->request->is_ajax()) {
 			$session = Session::instance();
-			$session->set('selecteditems', json_decode($_POST['selecteditem']));
+			$selecteditems = explode(',', $session->get('selecteditems'));
+			$item = json_decode($_POST['selecteditem']);
+			array_push($selecteditems, $item);
+			$session->set('selecteditems', implode(',', $selecteditems));
+		}
+	}
+	
+	public function action_removeselecteditem(){
+		if ($this->request->is_ajax()) {
+			$session = Session::instance();
+			$selecteditems = explode(',', $session->get('selecteditems'));
+			$item = json_decode($_POST['selecteditem']);
+			unset($selecteditems, $item);
+			$session->set('selecteditems', implode(',', $selecteditems));
 		}
 	}
 }
