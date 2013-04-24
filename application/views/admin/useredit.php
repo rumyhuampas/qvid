@@ -25,11 +25,11 @@
 									echo Form::input('username', 'Nombre', array('onblur' => "if(this.value=='')this.value='Nombre';", 'onfocus' => "if(this.value=='Nombre')this.value='';"));
 								echo '</div>';
 								echo '<div>';
-									echo Form::label('userpass', 'Contraseña');
+									echo Form::label('userpass', 'Contrase\u00F1a');
 									echo Form::input('userpass', '', array('type' => 'password'));
 								echo '</div>';
 								echo '<div>';
-									echo Form::label('userrepass', 'Reingresar Contraseña');
+									echo Form::label('userrepass', 'Reingresar Contrase\u00F1a');
 									echo Form::input('userrepass', '', array('type' => 'password'));
 								echo '</div>';
 								
@@ -62,15 +62,15 @@
 									echo Form::input('username', $user->Name, array('onblur' => "if(this.value=='')this.value='Nombre';", 'onfocus' => "if(this.value=='Nombre')this.value='';"));
 								echo '</div>';
 								echo '<div>';
-									echo Form::label('useroldpass', 'Contraseña Actual');
+									echo Form::label('useroldpass', 'Contrase\u00F1a Actual');
 									echo Form::input('useroldpass', '', array('type' => 'password'));
 								echo '</div>';
 								echo '<div>';
-									echo Form::label('userpass', 'Contraseña Nueva');
+									echo Form::label('userpass', 'Contrase\u00F1a Nueva');
 									echo Form::input('userpass', '', array('type' => 'password'));
 								echo '</div>';
 								echo '<div>';
-									echo Form::label('userrepass', 'Reingresar Contraseña');
+									echo Form::label('userrepass', 'Reingresar Contrase\u00F1a');
 									echo Form::input('userrepass', '', array('type' => 'password'));
 								echo '</div>';
 								

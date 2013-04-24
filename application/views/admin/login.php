@@ -18,7 +18,7 @@
 								echo Form::input('loginuser', '');
 							echo '</div>';
 							echo '<div>';
-								echo Form::label('loginpass', 'Contraseña');
+								echo Form::label('loginpass', 'Contrase\u00F1a');
 								echo Form::input('loginpass', '', array('type' => 'password'));
 							echo '</div>';
 						echo '</fieldset>';
